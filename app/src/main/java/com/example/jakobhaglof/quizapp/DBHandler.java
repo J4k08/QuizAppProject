@@ -13,6 +13,8 @@ public class DBHandler extends SQLiteOpenHelper {
         super(context, name, factory, version);
     }
 
+    private static final String dbName = "Database";
+
     @Override
     public void onCreate(SQLiteDatabase db) {
 
