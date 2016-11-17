@@ -11,7 +11,7 @@ public class Game {
     int timer = 0;
     int correctAnswer = 0;
     int gameScore = 0;
-    private ArrayList<Questions> questions = new ArrayList<Questions>;
+    private ArrayList<Questions> questions = new ArrayList<Questions>();
     private Player player;
 
     public Game(int timer, int correctAnswer, int gameScore, ArrayList<Questions> questions, Player player) {
