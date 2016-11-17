@@ -71,7 +71,7 @@ public class Questions {
     }
 
     public void removeQuestion(){
-        //ctrl+alt+del
+        //En metod som ska ligga på en knapp som tar bort vald fråga
     }
 
     public void shuffleQuestion(){
