@@ -34,15 +34,24 @@ public class DBHelper extends SQLiteOpenHelper {
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "question VARCHAR(255) NOT NULL," +
                 "category VARCHAR(255) NOT NULL," +
+                "correct VARCHAR(255) NOT NULL," +
                 "choice1 VARCHAR(255) NOT NULL, " +
                 "choice2 VARCHAR(255) NOT NULL, " +
                 "choice3 VARCHAR(255) NOT NULL, " +
-                "choice4 VARCHAR(255) NOT NULL, " +
-                "correct VARCHAR(255) NOT NULL)";
+                "choice4 VARCHAR(255) NOT NULL)";
+
+
 
         sqLiteDatabase.execSQL(sqlQuestions);
 
+
         dbase.close();
+    }
+
+    public void addQuestion() {
+
+        Questions q1 = new Questions("What is 2 + 2?", "Math", "4", "1", "2", "4", "300");
+
     }
 
     @Override
