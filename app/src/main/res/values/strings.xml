@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">QuizApp</string>
     <string name="btn_play_settings">Play</string>
+    <string name="actionbar_back_btn">Back To Menu</string>
 </resources>
