@@ -15,7 +15,6 @@ public class MainMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
     }
 
-
     public void sendToGamesettings(View view) {
 
         Intent intent = new Intent(this,GameSettingsActivity.class);

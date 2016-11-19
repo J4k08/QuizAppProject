@@ -7,19 +7,23 @@ package com.example.jakobhaglof.quizapp;
 public class Questions {
 
     private String category;
-
     private String question;
-
     private String correctAnswer;
+    private String choice1;
+    private String choice2;
+    private String choice3;
+    private String choice4;
 
-    private String wrongAnswer1;
+    public Questions(String question, String category, String correctAnswer, String choice1, String choice2, String choice3, String choice4) {
 
-    private String wrongAnswer2;
-
-    private String wrongAnswer3;
-
-    public Questions(String question) {
         this.question = question;
+        this.category = category;
+        this.correctAnswer = correctAnswer;
+        this.choice1 = choice1;
+        this.choice2 = choice2;
+        this.choice3 = choice3;
+        this.choice4 = choice4;
+
     }
 
     public String getCategory() {
@@ -43,25 +47,32 @@ public class Questions {
         this.correctAnswer = correctAnswer;
     }
 
-    public String getWrongAnswer1() {
-        return wrongAnswer1;
+    public String getChoice1() {
+        return choice1;
     }
-    public void setWrongAnswer1(String wrongAnswer1) {
-        this.wrongAnswer1 = wrongAnswer1;
-    }
-
-    public String getWrongAnswer2() {
-        return wrongAnswer2;
-    }
-    public void setWrongAnswer2(String wrongAnswer2) {
-        this.wrongAnswer2 = wrongAnswer2;
+    public void setChoice1(String choice1) {
+        this.choice1 = choice1;
     }
 
-    public String getWrongAnswer3() {
-        return wrongAnswer3;
+    public String getChoice2() {
+        return choice2;
     }
-    public void setWrongAnswer3(String wrongAnswer3) {
-        this.wrongAnswer3 = wrongAnswer3;
+    public void setChoice2(String choice2) {
+        this.choice2= choice2;
+    }
+
+    public String getChoice3() {
+        return choice3;
+    }
+    public void setChoice3(String choice3) {
+        this.choice3= choice3;
+    }
+
+    public String getChoice4() {
+        return choice4;
+    }
+    public void setChoice4(String choice4) {
+        this.choice4 = choice4;
     }
 
     public Questions addQuestion(Questions questions) {
