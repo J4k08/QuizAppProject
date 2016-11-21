@@ -12,11 +12,7 @@ public class HighScoreActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-<<<<<<< HEAD
         setContentView(R.layout.activity_high_score);
-=======
-        setContentView(R.layout.activity_highscores);
->>>>>>> 2e94e6f4ef4870bd1ddacbe5bbc7f33e11c89de0
     }
 
     @Override
