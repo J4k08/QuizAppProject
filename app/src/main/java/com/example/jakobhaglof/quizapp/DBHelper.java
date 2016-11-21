@@ -4,6 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by jakobhaglof on 16/11/16.
@@ -14,6 +17,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String db_name = "myDataBase";
     private SQLiteDatabase dbase;
 
+    private static final String QUEST_TABLE = "questions";
     private static final String ID = "QuestionID";
     private static final String QUEST = "question";
     private static final String CATEGORY = "category";
@@ -23,9 +27,10 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String CHOICE3 = "choice3";
     private static final String CHOICE4 = "choice4";
 
+    private static final String P_TABLE = "players";
     private static final String P_ID = "pId";
     private static final String P_NAME = "name";
-    private static final String HIGHSCORE = "highscore";
+    private static final String P_HIGHSCORE = "highscore";
 
     public DBHelper(Context context) {
         super(context, db_name, null, 1);
@@ -34,16 +39,16 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sqlPlayer = "CREATE TABLE players (" +
+        String sqlPlayer = "CREATE TABLE" + P_TABLE + "(" +
 
          P_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
          P_NAME + " VARCHAR(255) NOT NULL," +
-         HIGHSCORE + " INTEGER" +
-         ")";
+         P_HIGHSCORE + " INTEGER" + ")";
 
         sqLiteDatabase.execSQL(sqlPlayer);
 
-        String sqlQuestions ="CREATE TABLE questions ("+
+
+        String sqlQuestions ="CREATE TABLE" + QUEST_TABLE + "("+
 
                 ID +" INTEGER PRIMARY KEY AUTOINCREMENT," +
                 QUEST +" VARCHAR(255) NOT NULL," +
@@ -54,13 +59,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 CHOICE3 +" VARCHAR(255) NOT NULL, " +
                 CHOICE4 +" VARCHAR(255) NOT NULL)";
 
-
-
         sqLiteDatabase.execSQL(sqlQuestions);
         addQuestion();
-
-
-        dbase.close();
     }
 
     public void addQuestion() {
@@ -73,6 +73,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         dbase = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+
         values.put(QUEST, quest.getQuestion());
         values.put(CATEGORY, quest.getCategory());
         values.put(CORRECT, quest.getCorrectAnswer());
@@ -80,6 +81,22 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(CHOICE2, quest.getChoice2());
         values.put(CHOICE3, quest.getChoice3());
         values.put(CHOICE4, quest.getChoice4());
+
+        dbase.insert(QUEST_TABLE, null, values);
+        dbase.close();
+
+    }
+
+    public void addPlayer(Player player) {
+
+        dbase = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(P_NAME, player.getName());
+        values.put(P_HIGHSCORE, player.getHighScore());
+
+        dbase.insert(P_TABLE, null, values);
+        dbase.close();
 
     }
 
