@@ -15,8 +15,7 @@ public class MainMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
 
         DBHelper db = new DBHelper(this);
-        Player p1 = new Player(10, "Jakob", 10);
-        db.addPlayer(p1);
+        db.addQuestion();
 
     }
 

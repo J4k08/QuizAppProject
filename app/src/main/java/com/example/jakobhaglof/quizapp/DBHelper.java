@@ -40,7 +40,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sqlPlayer = "CREATE TABLE" + P_TABLE + "(" +
+        String sqlPlayer = "CREATE TABLE IF NOT EXISTS " + P_TABLE + "(" +
 
          P_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
          P_NAME + " VARCHAR(255) NOT NULL," +
@@ -49,26 +49,26 @@ public class DBHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(sqlPlayer);
 
 
-        String sqlQuestions ="CREATE TABLE" + QUEST_TABLE + "("+
+        String sqlQuestions ="CREATE TABLE " + QUEST_TABLE + "("+
 
-                ID +" INTEGER PRIMARY KEY AUTOINCREMENT," +
+                ID +"_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 QUEST +" VARCHAR(255) NOT NULL," +
                 CATEGORY +" VARCHAR(255) NOT NULL," +
                 CORRECT +" VARCHAR(255) NOT NULL," +
                 CHOICE1 +" VARCHAR(255) NOT NULL, " +
                 CHOICE2 +" VARCHAR(255) NOT NULL, " +
                 CHOICE3 +" VARCHAR(255) NOT NULL, " +
-                CHOICE4 +" VARCHAR(255) NOT NULL)";
+                CHOICE4 +" VARCHAR(255) NOT NULL"+")";
 
         sqLiteDatabase.execSQL(sqlQuestions);
-        addQuestion();
+
     }
 
     public void addQuestion() {
 
         Questions q1 = new Questions("What is 2 + 2?", "Math", "4", "1", "2", "4", "300");
         this.addQuestion(q1);
-        Log.d("lagt till question", "row id " + id);
+
 
     }
     public void addQuestion(Questions quest) {
@@ -84,8 +84,10 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(CHOICE3, quest.getChoice3());
         values.put(CHOICE4, quest.getChoice4());
 
-        dbase.insert(QUEST_TABLE, null, values);
+        long id = dbase.insert(QUEST_TABLE, null, values);
+        Log.d("lagt till question", "row id " + id);
         dbase.close();
+
 
     }
 
@@ -97,7 +99,8 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(P_NAME, player.getName());
         values.put(P_HIGHSCORE, player.getHighScore());
 
-        dbase.insert(P_TABLE, null, values);
+        long id = dbase.insert(P_TABLE, null, values);
+        Log.d("lagt till player", "row id " + id);
         dbase.close();
 
     }
