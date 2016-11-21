@@ -18,7 +18,6 @@ public class HighScore {
         this.totHighScore = totHighScore;
     }
 
-
     public int[] getTotHighScore() {
         return totHighScore;
     }
@@ -36,6 +35,5 @@ public class HighScore {
     public void showHighScore(){
 
     }
-
 
 }
