@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">QuizApp</string>
-    <string name="btn_play_settings">Play</string>
     <string name="actionbar_back_btn">Back To Menu</string>
     <string name="cool_production">COOL PRODUCTION</string>
     <string name="home">home</string>
@@ -9,4 +8,8 @@
     <string name="info">info</string>
     <string name="highscores">highscores</string>
     <string name="settings">settings</string>
+    <string name="head">GRUPP FYRANS QUIZ APP!!!</string>
+    <string name="main_menu_play">Spela</string>
+    <string name="main_menu_profiles">Profiler</string>
+    <string name="main_menu_settings">Inställningar</string>
 </resources>
