@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import static android.R.attr.id;
 import static android.content.ContentValues.TAG;
 
 /**
@@ -67,6 +68,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         Questions q1 = new Questions("What is 2 + 2?", "Math", "4", "1", "2", "4", "300");
         this.addQuestion(q1);
+        Log.d("lagt till question", "row id " + id);
 
     }
     public void addQuestion(Questions quest) {
@@ -99,6 +101,7 @@ public class DBHelper extends SQLiteOpenHelper {
         dbase.close();
 
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
