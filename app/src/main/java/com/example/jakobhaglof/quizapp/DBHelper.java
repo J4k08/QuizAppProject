@@ -18,7 +18,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private SQLiteDatabase dbase;
 
     private static final String QUEST_TABLE = "questions";
-    private static final String ID = "QuestionID";
+    private static final String ID = "questionID";
     private static final String QUEST = "question";
     private static final String CATEGORY = "category";
     private static final String CORRECT = "correct";
