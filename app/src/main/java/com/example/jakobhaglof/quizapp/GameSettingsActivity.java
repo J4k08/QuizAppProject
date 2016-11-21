@@ -16,7 +16,7 @@ public class GameSettingsActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.menu_settings, menu);
         return true;
     }
     @Override
