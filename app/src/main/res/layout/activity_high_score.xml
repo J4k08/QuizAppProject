@@ -8,10 +8,12 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+<<<<<<< HEAD:app/src/main/res/layout/activity_high_score.xml
     tools:context="com.example.jakobhaglof.quizapp.HighScoreActivity">
 
+=======
+>>>>>>> 2e94e6f4ef4870bd1ddacbe5bbc7f33e11c89de0:app/src/main/res/layout/activity_high_score_settings.xml
     tools:context="com.example.jakobhaglof.quizapp.HighScoreActivity"
     android:background="@drawable/background">
->>>>>>> master
 
 </RelativeLayout>
