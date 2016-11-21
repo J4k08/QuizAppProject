@@ -55,9 +55,9 @@ public class MainMenuActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void sendToGame(View view) {
+    public void sendToGameSettings(View view) {
 
-        Intent intent = new Intent(this, GameActivity.class);
+        Intent intent = new Intent(this, GameSettingsActivity.class);
         startActivity(intent);
     }
 

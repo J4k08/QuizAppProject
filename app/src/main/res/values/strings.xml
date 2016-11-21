@@ -8,8 +8,16 @@
     <string name="info">info</string>
     <string name="highscores">highscores</string>
     <string name="settings">settings</string>
-    <string name="head">GRUPP FYRANS QUIZ APP!!!</string>
+    <string name="head">GRUPP FYRAS QUIZ APP!!!</string>
     <string name="main_menu_play">Spela</string>
     <string name="main_menu_profiles">Profiler</string>
     <string name="main_menu_settings">Inställningar</string>
+    <string name="chooseCategories">Välj kategori(er)</string>
+    <string name="category_1">Kategori 1</string>
+    <string name="category_2">Kategori 2</string>
+    <string name="category_3">Kategori 3</string>
+    <string name="category_4">Kategori 4</string>
+    <string name="all_categories">Alla kategorier</string>
+    <string name="start_game">Starta spel</string>
+    <string name="my_questions">Mina frågor</string>
 </resources>

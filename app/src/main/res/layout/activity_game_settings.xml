@@ -4,11 +4,107 @@
     android:id="@+id/activity_game_settings"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.jakobhaglof.quizapp.GameSettingsActivity"
-    android:background="@drawable/background">
+    tools:context="com.example.jakobhaglof.quizapp.GameSettingsActivity">
+
+
+    <TextView
+        android:id="@+id/categoryHead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="40dp"
+        android:text="@string/chooseCategories"
+        android:textColor="@color/textColorBlack"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/categoryLine1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/categoryHead"
+        android:paddingTop="5dp">
+
+        <CheckBox
+            android:id="@+id/category1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/category_1"
+            android:textColor="@color/textColorBlack" />
+
+        <CheckBox
+            android:id="@+id/category2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/category_2"
+            android:textColor="@color/textColorBlack" />
+
+        <CheckBox
+            android:id="@+id/category3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/category_3"
+            android:textColor="@color/textColorBlack" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/categoryLine2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/categoryLine1"
+        android:paddingTop="5dp">
+
+
+        <CheckBox
+            android:id="@+id/category4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/category_4"
+            android:textColor="@color/textColorBlack" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/categoryLine3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/categoryLine2"
+        android:paddingTop="5dp">
+
+
+        <CheckBox
+            android:id="@+id/categoryAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/all_categories"
+            android:textColor="@color/textColorBlack"
+            android:textStyle="bold" />
+
+        <CheckBox
+            android:id="@+id/myCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_questions"
+            android:textColor="@color/textColorBlack"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/backgroundrede"
+        android:onClick="sendToGame"
+        android:text="@string/start_game"
+        android:textColor="@color/textColorBlack"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>
