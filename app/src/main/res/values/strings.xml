@@ -3,4 +3,5 @@
     <string name="btn_play_settings">Play</string>
     <string name="actionbar_back_btn">Back To Menu</string>
     <string name="cool_production">COOL PRODUCTION</string>
+    <string name="name_id">Name</string>
 </resources>

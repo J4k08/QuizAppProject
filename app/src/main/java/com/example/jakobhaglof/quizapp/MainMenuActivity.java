@@ -19,6 +19,8 @@ public class MainMenuActivity extends AppCompatActivity {
         db.addQuestion();
         db.addPlayer(p1);
 
+        db.getAllQuestions();
+
     }
 
     public void sendToGamesettings(View view) {

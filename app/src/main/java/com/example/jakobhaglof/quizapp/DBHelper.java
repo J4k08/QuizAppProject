@@ -2,12 +2,14 @@ package com.example.jakobhaglof.quizapp;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import static android.R.attr.id;
-import static android.content.ContentValues.TAG;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Created by jakobhaglof on 16/11/16.
@@ -15,8 +17,11 @@ import static android.content.ContentValues.TAG;
 
 public class DBHelper extends SQLiteOpenHelper {
 
+    private static final String TAG = "Databas: ";
+
     private static final String db_name = "myDataBase";
-    private SQLiteDatabase dbase;
+    private SQLiteDatabase db;
+
 
     private static final String QUEST_TABLE = "questions";
     private static final String ID = "questionID";
@@ -64,50 +69,78 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public void addQuestion() {
-
-        Questions q1 = new Questions("What is 2 + 2?", "Math", 4, "1", "2", "4", "300");
-        this.addQuestion(q1);
-
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
-    public void addQuestion(Questions quest) {
 
-        dbase = this.getWritableDatabase();
+    public void addQuestion() {
+
+        Question q1 = new Question("What is 2 + 2?", "Math", 4, "1", "2", "4", "300");
+        this.addQuestion(q1);
+
+    }
+    public void addQuestion(Question quest) {
+
+        db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
         values.put(QUEST, quest.getQuestion());
         values.put(CATEGORY, quest.getCategory());
-        values.put(CORRECT, quest.getCorrectAnswer());
+        values.put(CORRECT, quest.getCorrectAnswerId());
         values.put(CHOICE1, quest.getChoice1());
         values.put(CHOICE2, quest.getChoice2());
         values.put(CHOICE3, quest.getChoice3());
         values.put(CHOICE4, quest.getChoice4());
 
-        long id = dbase.insert(QUEST_TABLE, null, values);
+        long id = db.insert(QUEST_TABLE, null, values);
         Log.d("lagt till question", "row id " + id);
-        dbase.close();
-
-
+        db.close();
     }
-
     public void addPlayer(Player player) {
 
-        dbase = this.getWritableDatabase();
+        db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
         values.put(P_NAME, player.getName());
         values.put(P_HIGHSCORE, player.getHighScore());
 
-        long id = dbase.insert(P_TABLE, null, values);
+        long id = db.insert(P_TABLE, null, values);
         Log.d("lagt till player", "row id " + id);
-        dbase.close();
+        db.close();
+    }
+
+    public List<Question> getAllQuestions() {
+
+        List<Question> questionList = new ArrayList<Question>();
+
+        String selectQuery = "SELECT * FROM " + QUEST_TABLE;
+        db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()) {
+            do {
+                Question quest = new Question();
+
+                quest.setQuestion(cursor.getString(cursor.getColumnIndex(QUEST)));
+                quest.setCategory(cursor.getString(cursor.getColumnIndex(CATEGORY)));
+                quest.setCorrectAnswerId(cursor.getInt(cursor.getColumnIndex(CORRECT)));
+                quest.setChoice1(cursor.getString(cursor.getColumnIndex(CHOICE1)));
+                quest.setChoice2(cursor.getString(cursor.getColumnIndex(CHOICE2)));
+                quest.setChoice3(cursor.getString(cursor.getColumnIndex(CHOICE3)));
+                quest.setChoice4(cursor.getString(cursor.getColumnIndex(CHOICE4)));
+
+                questionList.add(quest);
+            } while (cursor.moveToNext());
+
+        }
+        cursor.close();
+
+        Log.d(TAG,"questionList skapad!");
+
+        return questionList;
+
 
     }
 
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-    }
 }

@@ -10,10 +10,10 @@ public class Game {
 
     private int timer = 0;
     private int gameScore = 0;
-    private ArrayList<Questions> questions = new ArrayList<Questions>();
+    private ArrayList<Question> questions = new ArrayList<Question>();
     private Player player;
 
-    public Game(int timer, int gameScore, ArrayList<Questions> questions, Player player) {
+    public Game(int timer, int gameScore, ArrayList<Question> questions, Player player) {
         this.timer = timer;
         this.gameScore = gameScore;
         this.questions = questions;
@@ -28,10 +28,10 @@ public class Game {
         this.player = player;
     }
 
-    public ArrayList<Questions> getQuestions() {
+    public ArrayList<Question> getQuestions() {
         return questions;
     }
-    public void setQuestions(ArrayList<Questions> questions) {
+    public void setQuestions(ArrayList<Question> questions) {
         this.questions = questions;
     }
 
@@ -49,8 +49,7 @@ public class Game {
         this.gameScore = gameScore;
     }
 
-    public void startGame(Player player, ArrayList<Questions> questions) {
-
+    public void startGame(Player player, ArrayList<Question> questions) {
 
 
     }
