@@ -11,4 +11,89 @@
     tools:context="com.example.jakobhaglof.quizapp.ProfileActivity"
     android:background="@drawable/background">
 
+    <TextView
+        android:id="@+id/profiles_head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/profiles"
+        android:textColor="@color/textColorWhite"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:id="@+id/addNameAndList"
+        android:layout_below="@+id/profiles_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        >
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/add_name"
+            android:textColor="@color/textColorBlack"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginRight="10dp"/>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="35dp"
+            android:background="@color/textColorBlack"
+            android:layout_marginRight="10dp">
+        </View>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profiler"
+            android:textColor="@color/textColorBlack"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </Spinner>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/monkey1"
+        android:layout_below="@+id/addNameAndList"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/monkey"
+        android:layout_marginTop="20dp"
+        android:onClick="saveMonkey" />
+    <Button
+        android:id="@+id/monkey2"
+        android:layout_below="@+id/monkey1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/monkey"
+        android:layout_marginTop="20dp"
+        android:onClick="saveMonkey" />
+    <Button
+        android:id="@+id/monkey3"
+        android:layout_below="@+id/monkey2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/monkey"
+        android:layout_marginTop="20dp"
+        android:onClick="saveMonkey" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/continue_main"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/backgroundrede"
+        android:onClick="sendToMain"/>
+
+
+
 </RelativeLayout>

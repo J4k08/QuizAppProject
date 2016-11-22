@@ -61,7 +61,7 @@ public class Splash extends AppCompatActivity {
                     public void onAnimationEnd(Animation animation) {
                         iv.startAnimation(an3);
                         finish();
-                        Intent i = new Intent(Splash.this, MainMenuActivity.class);
+                        Intent i = new Intent(Splash.this, ProfileActivity.class);
                         startActivity(i);
                     }
 

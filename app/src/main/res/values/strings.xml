@@ -20,4 +20,8 @@
     <string name="all_categories">Alla kategorier</string>
     <string name="start_game">Starta spel</string>
     <string name="my_questions">Mina frågor</string>
+    <string name="question_head">Fråga: </string>
+    <string name="continue_main">Fortsätt</string>
+    <string name="profiles">Profiler</string>
+    <string name="add_name">Lägg till namn..</string>
 </resources>
