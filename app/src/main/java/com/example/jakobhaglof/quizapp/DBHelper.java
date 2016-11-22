@@ -54,7 +54,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 ID +"_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 QUEST +" VARCHAR(255) NOT NULL," +
                 CATEGORY +" VARCHAR(255) NOT NULL," +
-                CORRECT +" VARCHAR(255) NOT NULL," +
+                CORRECT +" INTEGER," +
                 CHOICE1 +" VARCHAR(255) NOT NULL, " +
                 CHOICE2 +" VARCHAR(255) NOT NULL, " +
                 CHOICE3 +" VARCHAR(255) NOT NULL, " +
@@ -66,7 +66,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public void addQuestion() {
 
-        Questions q1 = new Questions("What is 2 + 2?", "Math", "4", "1", "2", "4", "300");
+        Questions q1 = new Questions("What is 2 + 2?", "Math", 4, "1", "2", "4", "300");
         this.addQuestion(q1);
 
 
