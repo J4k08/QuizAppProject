@@ -3,6 +3,7 @@ package com.example.jakobhaglof.quizapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -22,22 +23,18 @@ public class ProfileActivity extends AppCompatActivity {
     DBHelper db;
     EditText et;
     Button ib;
+    private final static String TAG = "PROFILE_ACTIVITY: ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        DBHelper db = new DBHelper(this);
+        db = new DBHelper(this);
 
-        playersList = db.getAllPlayers();
         playerNames = getNameOfPlayer();
+        listProfiles(playerNames);
 
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, playerNames);
-
-        ListView lw = (ListView)findViewById(R.id.item_list);
-
-        lw.setAdapter(adapter);
     }
 
     public void sendToGamesettings(View view) {
@@ -47,6 +44,8 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public ArrayList<String> getNameOfPlayer() {
+
+        playersList = db.getAllPlayers();
 
         ArrayList<String> playerNames = new ArrayList<String>();
 
@@ -59,17 +58,33 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-    public void createPlayer(View view) {
+    public void saveProfile(View view) {
 
-        et = (EditText)findViewById(R.id.nameId);
+        et = (EditText)findViewById(R.id.add_name);
 
-        Player p1 = new Player(0, et.getText().toString(), 0);
+        String name = et.getText().toString();
+        db = new DBHelper(getApplicationContext());
+
+        Log.d(TAG, name);
+
+        Player p1 = new Player(0, name, 0);
 
         db.addPlayer(p1);
-        db.getAllPlayers();
+        playerNames = getNameOfPlayer();
+
+        listProfiles(playerNames);
 
     }
 
+    public void listProfiles(ArrayList<String> playerNames) {
+
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, playerNames);
+
+        ListView lw = (ListView)findViewById(R.id.item_list);
+
+        lw.setAdapter(adapter);
+
+    }
 
 
     public void sendToMain(View view) {
@@ -91,6 +106,4 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
-    public void saveProfile(View view) {
-    }
 }

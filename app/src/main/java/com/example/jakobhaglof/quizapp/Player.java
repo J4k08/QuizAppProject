@@ -15,7 +15,6 @@ public class Player {
         currentScore = 0;
         name = "";
         highScore = 0;
-
     }
 
     public Player(int currentScore, String name, int highScore) {
