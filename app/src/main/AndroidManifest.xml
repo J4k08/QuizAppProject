@@ -33,6 +33,8 @@
         <activity android:name=".SettingsActivity" />
         <activity android:name=".HighScoreActivity" />
         <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".AboutActivity"></activity>
+
     </application>
 
 </manifest>

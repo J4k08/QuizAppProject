@@ -4,4 +4,11 @@
     <string name="actionbar_back_btn">Back To Menu</string>
     <string name="cool_production">COOL PRODUCTION</string>
     <string name="name_id">Name</string>
+    <string name="home">home</string>
+    <string name="play">play</string>
+    <string name="back">back</string>
+    <string name="info">info</string>
+    <string name="highscores">highscores</string>
+    <string name="settings">settings</string>
+
 </resources>

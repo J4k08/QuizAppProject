@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group>
+
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/home"
+            android:orderInCategory="1"
+            android:title="@string/home"
+            app:showAsAction="always" />
+        <item
+            android:id="@+id/play"
+            android:icon="@drawable/play"
+            android:orderInCategory="2"
+            android:title="@string/play"
+            app:showAsAction="always" />
+        <item
+            android:id="@+id/info"
+            android:icon="@drawable/info"
+            android:orderInCategory="4"
+            android:title="@string/info"
+            app:showAsAction="always" />
+        <item
+            android:id="@+id/highscores"
+            android:icon="@drawable/highscores"
+            android:orderInCategory="3"
+            android:title="@string/highscores"
+            app:showAsAction="always" />
+    </group>
+
+</menu>
