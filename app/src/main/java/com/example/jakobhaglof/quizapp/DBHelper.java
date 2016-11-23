@@ -76,8 +76,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public void addQuestion() {
 
-        Question q1 = new Question("What is 2 + 2?", "Math", 4, "1", "2", "4", "300");
+        Question q1 = new Question("Vem spelade Harry Potter i filmen Harry Potter?"
+                , "Kultur", 2, "Marlon Brando", "Daniel Radcliffe", "Sven Wolter", "Han ljudkillen från polisskolan");
         this.addQuestion(q1);
+        Question q2 = new Question("Vem är inte en medlem i ABBA?", "Kultur", 3, "Björn Ulvaeus", "Anni-Frid Lyngstad",
+                "Babben Larsson", "Agnetha Fältskog");
+        this.addQuestion(q2);
 
     }
     public void addQuestion(Question quest) {
@@ -141,6 +145,33 @@ public class DBHelper extends SQLiteOpenHelper {
         return questionList;
 
 
+    }
+
+    public List<Player> getAllPlayers() {
+
+        List<Player> playerList = new ArrayList<Player>();
+
+        String selectQuery = "SELECT * FROM " + P_TABLE;
+        db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()) {
+            do {
+                Player p = new Player();
+
+                p.setName(cursor.getString(cursor.getColumnIndex(P_NAME)));
+                p.setHighScore(cursor.getInt(cursor.getColumnIndex(P_HIGHSCORE)));
+
+
+                playerList.add(p);
+            } while (cursor.moveToNext());
+
+        }
+        cursor.close();
+
+        Log.d(TAG,"PlayerList skapad!");
+
+        return playerList;
     }
 
 }

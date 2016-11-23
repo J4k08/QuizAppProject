@@ -10,13 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.jakobhaglof.quizapp.MainMenuActivity"
     android:background="@drawable/background">
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn_to_Game_settings"
-        android:text="@string/btn_play_settings"
-        android:onClick="sendToGamesettings"
-        />
 
 
 </RelativeLayout>

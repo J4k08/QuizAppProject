@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainMenuActivity extends AppCompatActivity {
 
@@ -14,18 +19,5 @@ public class MainMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        Player p1 = new Player(10, "Jakob", 10);
-        DBHelper db = new DBHelper(this);
-        db.addQuestion();
-        db.addPlayer(p1);
-
-        db.getAllQuestions();
-
-    }
-
-    public void sendToGamesettings(View view) {
-
-        Intent intent = new Intent(this,GameSettingsActivity.class);
-        startActivity(intent);
     }
 }
