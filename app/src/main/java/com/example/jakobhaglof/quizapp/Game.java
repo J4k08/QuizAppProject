@@ -1,6 +1,10 @@
 package com.example.jakobhaglof.quizapp;
 
+import android.content.Context;
+import java.util.Collection;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by jakobhaglof on 17/11/16.
@@ -12,6 +16,8 @@ public class Game {
     private int gameScore = 0;
     private ArrayList<Question> questions = new ArrayList<Question>();
     private Player player;
+    private DBHelper db;
+    private Context context;
 
     public Game(int timer, int gameScore, ArrayList<Question> questions, Player player) {
         this.timer = timer;
@@ -49,15 +55,38 @@ public class Game {
         this.gameScore = gameScore;
     }
 
-    public void startGame(Player player, ArrayList<Question> questions) {
+    public void prepGame(ArrayList<Question> questions) {
+
+        db = new DBHelper(context);
+
+        questions = getQuestionsFromDb();
+
+        shuffleQuestions(questions);
+
+    }
+
+    public void playRound(Player player, ArrayList<Question> questions) {
+
 
 
     }
 
-    public void timeOut(int timer) {
+    public ArrayList<Question> getQuestionsFromDb() {
 
+        List<Question> questionsList = db.getAllQuestions();
+        ArrayList<Question> questions = new ArrayList<>();
 
+        for(int i = 0; i < questionsList.size(); i++){
+
+            questions.add(questionsList.get(i));
+        }
+        return questions;
     }
+    public void shuffleQuestions(ArrayList<Question> questions) {
+
+        Collections.shuffle(questions);
+    }
+
 
 }
 
