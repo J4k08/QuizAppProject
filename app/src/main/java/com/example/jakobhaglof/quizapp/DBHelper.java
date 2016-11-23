@@ -2,8 +2,14 @@ package com.example.jakobhaglof.quizapp;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Created by jakobhaglof on 16/11/16.
@@ -11,10 +17,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final String db_name = "myDataBase";
-    private SQLiteDatabase dbase;
+    private static final String TAG = "Databas: ";
 
-    private static final String ID = "QuestionID";
+    private static final String db_name = "myDataBase";
+    private SQLiteDatabase db;
+
+
+    private static final String QUEST_TABLE = "questions";
+    private static final String ID = "questionID";
     private static final String QUEST = "question";
     private static final String CATEGORY = "category";
     private static final String CORRECT = "correct";
@@ -23,9 +33,10 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String CHOICE3 = "choice3";
     private static final String CHOICE4 = "choice4";
 
+    private static final String P_TABLE = "players";
     private static final String P_ID = "pId";
     private static final String P_NAME = "name";
-    private static final String HIGHSCORE = "highscore";
+    private static final String P_HIGHSCORE = "highscore";
 
     public DBHelper(Context context) {
         super(context, db_name, null, 1);
@@ -34,52 +45,27 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sqlPlayer = "CREATE TABLE players (" +
+        String sqlPlayer = "CREATE TABLE IF NOT EXISTS " + P_TABLE + "(" +
 
          P_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
          P_NAME + " VARCHAR(255) NOT NULL," +
-         HIGHSCORE + " INTEGER" +
-         ")";
+         P_HIGHSCORE + " INTEGER" + ")";
 
         sqLiteDatabase.execSQL(sqlPlayer);
 
-        String sqlQuestions ="CREATE TABLE questions ("+
 
-                ID +" INTEGER PRIMARY KEY AUTOINCREMENT," +
+        String sqlQuestions ="CREATE TABLE " + QUEST_TABLE + "("+
+
+                ID +"_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 QUEST +" VARCHAR(255) NOT NULL," +
                 CATEGORY +" VARCHAR(255) NOT NULL," +
-                CORRECT +" VARCHAR(255) NOT NULL," +
+                CORRECT +" INTEGER," +
                 CHOICE1 +" VARCHAR(255) NOT NULL, " +
                 CHOICE2 +" VARCHAR(255) NOT NULL, " +
                 CHOICE3 +" VARCHAR(255) NOT NULL, " +
-                CHOICE4 +" VARCHAR(255) NOT NULL)";
-
-
+                CHOICE4 +" VARCHAR(255) NOT NULL"+")";
 
         sqLiteDatabase.execSQL(sqlQuestions);
-        addQuestion();
-
-
-        dbase.close();
-    }
-
-    public void addQuestion() {
-
-        Questions q1 = new Questions("What is 2 + 2?", "Math", "4", "1", "2", "4", "300");
-        this.addQuestion(q1);
-
-    }
-    public void addQuestion(Questions quest) {
-
-        dbase = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(QUEST, quest.getQuestion());
-        values.put(CATEGORY, quest.getCategory());
-        values.put(CORRECT, quest.getCorrectAnswer());
-        values.put(CHOICE1, quest.getChoice1());
-        values.put(CHOICE2, quest.getChoice2());
-        values.put(CHOICE3, quest.getChoice3());
-        values.put(CHOICE4, quest.getChoice4());
 
     }
 
@@ -87,4 +73,105 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
+    public void addQuestion() {
+
+        Question q1 = new Question("Vem spelade Harry Potter i filmen Harry Potter?"
+                , "Kultur", 2, "Marlon Brando", "Daniel Radcliffe", "Sven Wolter", "Han ljudkillen från polisskolan");
+        this.addQuestion(q1);
+        Question q2 = new Question("Vem är inte en medlem i ABBA?", "Kultur", 3, "Björn Ulvaeus", "Anni-Frid Lyngstad",
+                "Babben Larsson", "Agnetha Fältskog");
+        this.addQuestion(q2);
+
+    }
+    public void addQuestion(Question quest) {
+
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(QUEST, quest.getQuestion());
+        values.put(CATEGORY, quest.getCategory());
+        values.put(CORRECT, quest.getCorrectAnswerId());
+        values.put(CHOICE1, quest.getChoice1());
+        values.put(CHOICE2, quest.getChoice2());
+        values.put(CHOICE3, quest.getChoice3());
+        values.put(CHOICE4, quest.getChoice4());
+
+        long id = db.insert(QUEST_TABLE, null, values);
+        Log.d("lagt till question", "row id " + id);
+        db.close();
+    }
+    public void addPlayer(Player player) {
+
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(P_NAME, player.getName());
+        values.put(P_HIGHSCORE, player.getHighScore());
+
+        long id = db.insert(P_TABLE, null, values);
+        Log.d("lagt till player", "row id " + id);
+        db.close();
+    }
+
+    public List<Question> getAllQuestions() {
+
+        List<Question> questionList = new ArrayList<Question>();
+
+        String selectQuery = "SELECT * FROM " + QUEST_TABLE;
+        db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()) {
+            do {
+                Question quest = new Question();
+
+                quest.setQuestion(cursor.getString(cursor.getColumnIndex(QUEST)));
+                quest.setCategory(cursor.getString(cursor.getColumnIndex(CATEGORY)));
+                quest.setCorrectAnswerId(cursor.getInt(cursor.getColumnIndex(CORRECT)));
+                quest.setChoice1(cursor.getString(cursor.getColumnIndex(CHOICE1)));
+                quest.setChoice2(cursor.getString(cursor.getColumnIndex(CHOICE2)));
+                quest.setChoice3(cursor.getString(cursor.getColumnIndex(CHOICE3)));
+                quest.setChoice4(cursor.getString(cursor.getColumnIndex(CHOICE4)));
+
+                questionList.add(quest);
+            } while (cursor.moveToNext());
+
+        }
+        cursor.close();
+
+        Log.d(TAG,"questionList skapad!");
+
+        return questionList;
+
+
+    }
+
+    public List<Player> getAllPlayers() {
+
+        List<Player> playerList = new ArrayList<Player>();
+
+        String selectQuery = "SELECT * FROM " + P_TABLE;
+        db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()) {
+            do {
+                Player p = new Player();
+
+                p.setName(cursor.getString(cursor.getColumnIndex(P_NAME)));
+                p.setHighScore(cursor.getInt(cursor.getColumnIndex(P_HIGHSCORE)));
+
+
+                playerList.add(p);
+            } while (cursor.moveToNext());
+
+        }
+        cursor.close();
+
+        Log.d(TAG,"PlayerList skapad!");
+
+        return playerList;
+    }
+
 }

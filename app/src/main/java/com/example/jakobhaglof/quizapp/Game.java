@@ -8,15 +8,13 @@ import java.util.ArrayList;
 
 public class Game {
 
-    int timer = 0;
-    int correctAnswer = 0;
-    int gameScore = 0;
-    private ArrayList<Questions> questions = new ArrayList<Questions>();
+    private int timer = 0;
+    private int gameScore = 0;
+    private ArrayList<Question> questions = new ArrayList<Question>();
     private Player player;
 
-    public Game(int timer, int correctAnswer, int gameScore, ArrayList<Questions> questions, Player player) {
+    public Game(int timer, int gameScore, ArrayList<Question> questions, Player player) {
         this.timer = timer;
-        this.correctAnswer = correctAnswer;
         this.gameScore = gameScore;
         this.questions = questions;
         this.player = player;
@@ -30,10 +28,10 @@ public class Game {
         this.player = player;
     }
 
-    public ArrayList<Questions> getQuestions() {
+    public ArrayList<Question> getQuestions() {
         return questions;
     }
-    public void setQuestions(ArrayList<Questions> questions) {
+    public void setQuestions(ArrayList<Question> questions) {
         this.questions = questions;
     }
 
@@ -44,13 +42,6 @@ public class Game {
         this.timer = timer;
     }
 
-    public int getCorrectAnswer() {
-        return correctAnswer;
-    }
-    public void setCorrectAnswer(int correctAnswer) {
-        this.correctAnswer = correctAnswer;
-    }
-
     public int getGameScore() {
         return gameScore;
     }
@@ -58,9 +49,9 @@ public class Game {
         this.gameScore = gameScore;
     }
 
-    public void startGame(Player player, ArrayList<Questions> questions) {
+    public void startGame(Player player, ArrayList<Question> questions) {
 
-        //tar emot ett player-objekt och en ArrayList av Questions-objekt och spelar igenom spelet!
+
     }
 
     public void timeOut(int timer) {

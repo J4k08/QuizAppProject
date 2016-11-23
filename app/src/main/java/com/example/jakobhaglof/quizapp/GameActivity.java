@@ -19,6 +19,7 @@ public class GameActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_game, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
 

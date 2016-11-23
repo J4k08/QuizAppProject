@@ -8,13 +8,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+
 public class MainMenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-
 
     }
 
@@ -59,5 +59,6 @@ public class MainMenuActivity extends AppCompatActivity {
 
         Intent intent = new Intent(this,GameActivity.class);
         startActivity(intent);
+
     }
 }

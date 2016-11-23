@@ -7,21 +7,29 @@ package com.example.jakobhaglof.quizapp;
 public class Player {
 
     private int currentScore;
-    private String Name;
+    private String name;
     private int highScore;
+
+    public Player() {
+
+        currentScore = 0;
+        name = "";
+        highScore = 0;
+
+    }
 
     public Player(int currentScore, String name, int highScore) {
         this.currentScore = currentScore;
-        Name = name;
+        this.name = name;
         this.highScore = highScore;
     }
 
 
     public String getName() {
-        return Name;
+        return name;
     }
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public int getCurrentScore() {

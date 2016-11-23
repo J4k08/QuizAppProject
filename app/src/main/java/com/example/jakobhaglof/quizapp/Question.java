@@ -4,21 +4,31 @@ package com.example.jakobhaglof.quizapp;
  * Created by Curject on 17/11/16.
  */
 
-public class Questions {
+public class Question {
 
     private String category;
     private String question;
-    private String correctAnswer;
+    private int correctAnswerId;
     private String choice1;
     private String choice2;
     private String choice3;
     private String choice4;
 
-    public Questions(String question, String category, String correctAnswer, String choice1, String choice2, String choice3, String choice4) {
+    public Question() {
+        category = "";
+        question = "";
+        correctAnswerId = 0;
+        choice1 = "";
+        choice2 = "";
+        choice3 = "";
+        choice4 = "";
+    }
+
+    public Question(String question, String category, int correctAnswerId, String choice1, String choice2, String choice3, String choice4) {
 
         this.question = question;
         this.category = category;
-        this.correctAnswer = correctAnswer;
+        this.correctAnswerId = 0;
         this.choice1 = choice1;
         this.choice2 = choice2;
         this.choice3 = choice3;
@@ -40,11 +50,11 @@ public class Questions {
         this.question = question;
     }
 
-    public String getCorrectAnswer() {
-        return correctAnswer;
+    public int getCorrectAnswerId() {
+        return correctAnswerId;
     }
-    public void setCorrectAnswer(String correctAnswer) {
-        this.correctAnswer = correctAnswer;
+    public void setCorrectAnswerId(int correctAnswerId) {
+        this.correctAnswerId = correctAnswerId;
     }
 
     public String getChoice1() {
@@ -75,9 +85,9 @@ public class Questions {
         this.choice4 = choice4;
     }
 
-    public Questions addQuestion(Questions questions) {
+    public Question addQuestion(Question question) {
 
-        return questions;
+        return question;
         //Överflödig metod?
     }
 
