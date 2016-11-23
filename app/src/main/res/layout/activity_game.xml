@@ -4,23 +4,124 @@
     android:id="@+id/activity_game"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.jakobhaglof.quizapp.GameActivity"
-    android:background="@drawable/background">
+    tools:context="com.example.jakobhaglof.quizapp.GameActivity">
 
-    <TextView
-        android:text="Game"
+    <LinearLayout
+        android:id="@+id/pointsAndTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="87dp"
-        android:layout_marginStart="87dp"
-        android:layout_marginTop="72dp"
-        android:id="@+id/textViewGame" />
+        android:layout_centerHorizontal="true">
+
+    <TextView
+        android:id="@+id/points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="POÄNG"
+        android:textColor="@color/textColorWhite"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+        <View
+            android:layout_width="3dp"
+            android:layout_height="20dp"
+            android:background="@android:color/white"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp" />
+
+        <TextView
+            android:id="@+id/questionTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TID"
+            android:textColor="@color/textColorWhite"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/pointsAndTime"
+        android:background="@android:color/white" />
+
+
+    <LinearLayout
+        android:id="@+id/gameHead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/categoryHead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="70dp"
+            android:text="@string/question_head"
+            android:textColor="@color/textColorBlack"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="70dp"
+            android:text="Vem är du?"
+            android:textColor="@color/textColorBlack"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonLine1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gameHead">
+
+        <Button
+            android:id="@+id/btnChoice1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="categoryBoxes"
+            android:text="Vem är jag?" />
+
+        <Button
+            android:id="@+id/btnChoice2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="categoryBoxes"
+            android:text="Arja" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonLine2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonLine1">
+
+        <Button
+            android:id="@+id/btnChoice3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="categoryBoxes"
+            android:text="Levande charader" />
+
+        <Button
+            android:id="@+id/btnChoice4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="categoryBoxes"
+            android:text="hon där finska" />
+    </LinearLayout>
+
 
 </RelativeLayout>

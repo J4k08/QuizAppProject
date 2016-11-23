@@ -8,10 +8,10 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainMenuActivity">
+        <activity android:name=".ProfileActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.jakobhaglof.quizapp.MainMenuActivity" />
+                android:value="com.example.jakobhaglof.quizapp.ProfileActivity" />
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,9 +32,8 @@
         <activity android:name=".PostGameActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".HighScoreActivity" />
-        <activity android:name=".ProfileActivity"></activity>
-        <activity android:name=".AboutActivity"></activity>
-
+        <activity android:name=".AboutActivity" />
+        <activity android:name=".MainMenuActivity" />
     </application>
 
 </manifest>

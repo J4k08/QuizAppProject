@@ -12,7 +12,7 @@
     android:background="@drawable/background">
 
     <TextView
-        android:text="About"
+        android:text="HELLO JAKOB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

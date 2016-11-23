@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +21,7 @@ public class ProfileActivity extends AppCompatActivity {
     ArrayList<String> playerNames;
     DBHelper db;
     EditText et;
+    Button ib;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, playerNames);
 
-        ListView lw = (ListView)findViewById(R.id.item_list;
+        ListView lw = (ListView)findViewById(R.id.item_list);
 
         lw.setAdapter(adapter);
     }
@@ -66,4 +70,27 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
+
+
+    public void sendToMain(View view) {
+
+        Intent intent = new Intent(this, MainMenuActivity.class);
+        startActivity(intent);
+    }
+
+    public void saveMonkey(View view) {
+
+        if (view.equals(findViewById(R.id.monkey1))){
+            ib = (Button) findViewById(R.id.monkey1);
+        }
+        else if (view.equals(findViewById(R.id.monkey2))){
+            ib = (Button) findViewById(R.id.monkey2);
+        }
+        else if (view.equals(findViewById(R.id.monkey3))){
+            ib = (Button) findViewById(R.id.monkey3);
+        }
+    }
+
+    public void saveProfile(View view) {
+    }
 }
