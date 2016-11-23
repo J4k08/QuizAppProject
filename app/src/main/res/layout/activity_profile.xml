@@ -46,7 +46,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Profiler"
+            android:text="@string/profiles"
             android:textColor="@color/textColorBlack"
             android:textSize="17sp"
             android:textStyle="bold" />
@@ -97,8 +97,8 @@
                 android:layout_below="@+id/monkey3"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/backgroundrede"
-                android:text="@string/create_profile"
-                android:onClick="saveProfile"/>
+                android:onClick="saveProfile"
+                android:text="@string/create_profile" />
 
 
         </RelativeLayout>
