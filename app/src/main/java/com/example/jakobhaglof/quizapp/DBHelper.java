@@ -49,7 +49,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
          P_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
          P_NAME + " VARCHAR(255) NOT NULL," +
-         P_HIGHSCORE + " INTEGER" + ")";
+         P_HIGHSCORE + " INTEGER)";
 
         sqLiteDatabase.execSQL(sqlPlayer);
 
@@ -63,7 +63,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 CHOICE1 +" VARCHAR(255) NOT NULL, " +
                 CHOICE2 +" VARCHAR(255) NOT NULL, " +
                 CHOICE3 +" VARCHAR(255) NOT NULL, " +
-                CHOICE4 +" VARCHAR(255) NOT NULL"+")";
+                CHOICE4 +" VARCHAR(255) NOT NULL)";
 
         sqLiteDatabase.execSQL(sqlQuestions);
 
