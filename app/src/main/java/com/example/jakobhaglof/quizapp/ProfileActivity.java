@@ -61,9 +61,10 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void createPlayer(View view) {
 
-        et = (EditText)findViewById(R.id.nameId);
+        et = (EditText)findViewById(R.id.add_name);
+        String name = et.getText().toString();
 
-        Player p1 = new Player(0, et.getText().toString(), 0);
+        Player p1 = new Player(0, name, 0);
 
         db.addPlayer(p1);
         db.getAllPlayers();
@@ -92,5 +93,12 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void saveProfile(View view) {
+        et = (EditText)findViewById(R.id.add_name);
+        String name = et.getText().toString();
+
+        Player p1 = new Player(0, name, 0);
+
+        db.addPlayer(p1);
+        db.getAllPlayers();
     }
 }
