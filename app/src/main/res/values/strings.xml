@@ -26,4 +26,6 @@
     <string name="profiles">Profiler</string>
     <string name="add_name">Lägg till namn..</string>
     <string name="create_profile">Skapa profil!</string>
+    <string name="highscore">Rekord</string>
+    <string name="chooseCategory">Välj kategori:</string>
 </resources>
