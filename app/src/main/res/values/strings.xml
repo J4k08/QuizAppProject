@@ -24,4 +24,5 @@
     <string name="continue_main">Fortsätt</string>
     <string name="profiles">Profiler</string>
     <string name="add_name">Lägg till namn..</string>
+    <string name="create_profile">Skapa profil!</string>
 </resources>

@@ -11,21 +11,46 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.jakobhaglof.quizapp.GameActivity">
 
+    <LinearLayout
+        android:id="@+id/pointsAndTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
     <TextView
         android:id="@+id/points"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:text="POÄNG"
         android:textColor="@color/textColorWhite"
         android:textSize="20sp"
         android:textStyle="bold" />
 
+        <View
+            android:layout_width="3dp"
+            android:layout_height="20dp"
+            android:background="@android:color/white"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
+
+        <TextView
+            android:id="@+id/questionTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TID"
+            android:textColor="@color/textColorWhite"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_below="@+id/points"
+        android:layout_below="@+id/pointsAndTime"
         android:background="@android:color/white" />
+
 
     <LinearLayout
         android:id="@+id/gameHead"
@@ -63,16 +88,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Vem är jag?"
-            android:onClick="categoryBoxes" />
+            android:onClick="categoryBoxes"
+            android:text="Vem är jag?" />
 
         <Button
             android:id="@+id/btnChoice2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Arja"
-            android:onClick="categoryBoxes" />
+            android:onClick="categoryBoxes"
+            android:text="Arja" />
     </LinearLayout>
 
     <LinearLayout
@@ -86,16 +111,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Levande charader"
-            android:onClick="categoryBoxes" />
+            android:onClick="categoryBoxes"
+            android:text="Levande charader" />
 
         <Button
             android:id="@+id/btnChoice4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="hon där finska"
-            android:onClick="categoryBoxes"/>
+            android:onClick="categoryBoxes"
+            android:text="hon där finska" />
     </LinearLayout>
 
 
