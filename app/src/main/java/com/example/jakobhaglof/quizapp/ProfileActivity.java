@@ -86,7 +86,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-
     public void sendToMain(View view) {
 
         Intent intent = new Intent(this, MainMenuActivity.class);
