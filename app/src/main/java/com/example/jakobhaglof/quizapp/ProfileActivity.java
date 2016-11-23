@@ -7,13 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 public class ProfileActivity extends AppCompatActivity {
+    Button ib;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
     }
 
     public void sendToMain(View view) {
@@ -23,7 +26,6 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void saveMonkey(View view) {
-        Button ib;
 
         if (view.equals(findViewById(R.id.monkey1))){
             ib = (Button) findViewById(R.id.monkey1);
@@ -34,5 +36,8 @@ public class ProfileActivity extends AppCompatActivity {
         else if (view.equals(findViewById(R.id.monkey3))){
             ib = (Button) findViewById(R.id.monkey3);
         }
+    }
+
+    public void saveProfile(View view) {
     }
 }

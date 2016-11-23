@@ -97,7 +97,8 @@
                 android:layout_below="@+id/monkey3"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/backgroundrede"
-                android:text="@string/create_profile" />
+                android:text="@string/create_profile"
+                android:onClick="saveProfile"/>
 
 
         </RelativeLayout>
