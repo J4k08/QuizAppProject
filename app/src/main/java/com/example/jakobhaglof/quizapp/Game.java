@@ -1,6 +1,8 @@
 package com.example.jakobhaglof.quizapp;
 
 import android.content.Context;
+import android.widget.Switch;
+
 import java.util.Collection;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,7 +27,6 @@ public class Game {
         this.questions = questions;
         this.player = player;
     }
-
 
     public Player getPlayer() {
         return player;
@@ -55,11 +56,11 @@ public class Game {
         this.gameScore = gameScore;
     }
 
-    public void prepGame(ArrayList<Question> questions) {
+    public void prepGame(ArrayList<Question> questions, int checkboxId) {
 
         db = new DBHelper(context);
 
-        questions = getQuestionsFromDb();
+        questions = getQuestionsFromDb(checkboxId);
 
         shuffleQuestions(questions);
 
@@ -68,23 +69,55 @@ public class Game {
     public void playRound(Player player, ArrayList<Question> questions) {
 
 
-
     }
 
-    public ArrayList<Question> getQuestionsFromDb() {
+    public ArrayList<Question> getQuestionsFromDb(int checkboxId) {
 
-        List<Question> questionsList = db.getAllQuestions();
+        List<Question> questionsList;
         ArrayList<Question> questions = new ArrayList<>();
 
-        for(int i = 0; i < questionsList.size(); i++){
+        switch(checkboxId) {
 
-            questions.add(questionsList.get(i));
+            case 1:
+                questionsList = db.getAllQuestions();
+                questions = ListToArrayList(questionsList, questions);
+                break;
+
+            case 2:
+                questionsList = db.getCultureQuestions();
+                questions = ListToArrayList(questionsList, questions);
+                break;
+
+            case 3:
+                questionsList = db.getHistoryQuestions();
+                questions = ListToArrayList(questionsList, questions);
+                break;
+
+            case 4:
+                // sport
+                break;
+
+            default:
+                break;
         }
+
+
         return questions;
     }
     public void shuffleQuestions(ArrayList<Question> questions) {
 
         Collections.shuffle(questions);
+    }
+
+    public ArrayList<Question> ListToArrayList (List<Question> questionList, ArrayList<Question> questions) {
+
+
+        for(int i = 0; i < questionList.size(); i++){
+
+            questions.add(questionList.get(i));
+        }
+        return questions;
+
     }
 
 
