@@ -56,11 +56,11 @@ public class Game {
         this.gameScore = gameScore;
     }
 
-    public void prepGame(ArrayList<Question> questions, int checkboxId) {
+    public void prepGame(ArrayList<Question> questions, String categoryChoice) {
 
         db = new DBHelper(context);
 
-        questions = getQuestionsFromDb(checkboxId);
+        questions = getQuestionsFromDb(categoryChoice);
 
         shuffleQuestions(questions);
 
@@ -71,36 +71,21 @@ public class Game {
 
     }
 
-    public ArrayList<Question> getQuestionsFromDb(int checkboxId) {
+    public ArrayList<Question> getQuestionsFromDb(String categoryChoice) {
 
         List<Question> questionsList;
         ArrayList<Question> questions = new ArrayList<>();
 
-        switch(checkboxId) {
+        if(categoryChoice.equals("all")) {
 
-            case 1:
-                questionsList = db.getAllQuestions();
+            questionsList = db.getAllQuestions();
+            questions = ListToArrayList(questionsList, questions);
+
+        } else {
+
+                questionsList = db.getSpecificQuestions(categoryChoice);
                 questions = ListToArrayList(questionsList, questions);
-                break;
-
-            case 2:
-                questionsList = db.getCultureQuestions();
-                questions = ListToArrayList(questionsList, questions);
-                break;
-
-            case 3:
-                questionsList = db.getHistoryQuestions();
-                questions = ListToArrayList(questionsList, questions);
-                break;
-
-            case 4:
-                // sport
-                break;
-
-            default:
-                break;
         }
-
 
         return questions;
     }

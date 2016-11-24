@@ -152,11 +152,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public List<Question> getCultureQuestions() {
+    public List<Question> getSpecificQuestions(String categoryChoice) {
 
         List<Question> questionList = new ArrayList<Question>();
 
-        String selectQuery = "SELECT * FROM " + QUEST_TABLE + " WHERE " + CATEGORY +"=Culture";
+        String selectQuery = "SELECT * FROM " + QUEST_TABLE + " WHERE " + CATEGORY +"="+categoryChoice;
         db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(selectQuery, null);
