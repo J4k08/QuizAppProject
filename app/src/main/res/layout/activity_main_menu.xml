@@ -47,6 +47,7 @@
         android:layout_height="50dp"
         android:text="@string/main_menu_play"
         android:background="@drawable/backgroundrede"
+        android:layout_marginBottom="10dp"
         android:onClick="sendToGameSettings"
         />
 
@@ -57,6 +58,7 @@
         android:layout_below="@+id/playBtn"
         android:text="@string/main_menu_profiles"
         android:background="@drawable/backgroundrede"
+        android:layout_marginBottom="10dp"
         android:onClick="sendToProfiles"
 
         />
@@ -68,6 +70,7 @@
         android:layout_below="@+id/profiles"
         android:text="@string/main_menu_settings"
         android:background="@drawable/backgroundrede"
+        android:layout_marginBottom="10dp"
         android:onClick="sendToSettings"
 
         />

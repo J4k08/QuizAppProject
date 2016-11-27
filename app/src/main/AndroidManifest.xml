@@ -34,6 +34,8 @@
         <activity android:name=".HighScoreActivity" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".MainMenuActivity" />
+        <activity android:name=".AddQuestionActivity" />
+        <activity android:name=".RemoveQuestionActivity"></activity>
     </application>
 
 </manifest>

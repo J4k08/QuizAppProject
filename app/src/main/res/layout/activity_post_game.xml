@@ -11,4 +11,126 @@
     tools:context="com.example.jakobhaglof.quizapp.PostGameActivity"
     android:background="@drawable/background">
 
+    <TextView
+        android:id="@+id/Post_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/game_results"
+        android:textColor="@color/textColorWhite"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/post_game_line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/Post_game"
+        android:background="@android:color/white"
+        android:layout_marginBottom="30dp"/>
+
+    <LinearLayout
+        android:id="@+id/name_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/post_game_line">
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/player"
+        android:textColor="@color/textColorBlack"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"/>
+
+    <TextView
+        android:id="@+id/writePlayerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textColorBlack"
+        android:text="BAJS"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/played_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name_player"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/played_category"
+            android:textColor="@color/textColorBlack"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <TextView
+            android:id="@+id/writePlayedCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColorBlack"
+            android:text="BAJS"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/points_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/played_category"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/points_game"
+            android:textColor="@color/textColorBlack"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <TextView
+            android:id="@+id/writePointsGame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColorBlack"
+            android:text="BAJS"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/highScore_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/points_game"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/highScore_player"
+            android:textColor="@color/textColorBlack"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"/>
+
+        <TextView
+            android:id="@+id/writePlayerHighScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColorBlack"
+            android:text="BAJS"/>
+
+    </LinearLayout>
+
+    
 </RelativeLayout>

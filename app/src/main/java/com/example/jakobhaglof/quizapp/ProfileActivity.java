@@ -9,8 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
