@@ -28,4 +28,9 @@
     <string name="create_profile">Skapa profil!</string>
     <string name="highscore">Rekord</string>
     <string name="chooseCategory">Välj kategori:</string>
+    <string name="game_results">Resultat för rundan</string>
+    <string name="player">Spelare:</string>
+    <string name="played_category">Spelad kategori:</string>
+    <string name="points_game">Poäng för rundan:</string>
+    <string name="highScore_player">Spelares rekord:</string>
 </resources>
