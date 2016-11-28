@@ -15,16 +15,18 @@ public class GameActivity extends AppCompatActivity {
     private final static String TAG = "GAME_ACTIVITY: ";
     DBHelper db = new DBHelper(this);
     Player player;
+    String pName = "";
     ArrayList<String> clicked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        Intent i = getIntent();
+        player = db.getPlayerFromDB(pName = i.getStringExtra("pName"));
 
-        Log.d("MESSAGE", "is this shit working??");
+        Log.d(TAG, player.getName());
         clicked = (ArrayList<String>) getIntent().getSerializableExtra("clicked");
-
 
     }
     @Override

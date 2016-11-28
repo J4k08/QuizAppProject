@@ -11,10 +11,14 @@ import android.widget.TextView;
 
 public class Splash extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DBHelper db = new DBHelper(this);
         setContentView(R.layout.splashh);
+        db.addQuestion();
         final ImageView iv = (ImageView) findViewById(R.id.image);
         final TextView tv = (TextView) findViewById(R.id.introText);
         final Animation an = AnimationUtils.loadAnimation(getBaseContext(), R.anim.rotate);

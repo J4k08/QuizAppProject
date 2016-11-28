@@ -3,6 +3,7 @@ package com.example.jakobhaglof.quizapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,12 +11,19 @@ import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
 
+    Player player;
+    String pName = "";
+    DBHelper db = new DBHelper(this);
+
     private final static String TAG = "SETTINGS_ACTIVITY: ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        Intent i = getIntent();
+        player = db.getPlayerFromDB(pName = i.getExtras().getString("pName"));
+        Log.d(TAG, "onCreate: " + player.getName());
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

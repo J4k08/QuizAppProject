@@ -67,8 +67,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(sqlQuestions);
 
-        addQuestion();
-
     }
 
     @Override
@@ -159,7 +157,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         for(int i = 1; i < categories.size(); i++) {
 
-            choices +="OR" + " " +categories.get(i);
+            choices +=" OR " +categories.get(i);
         }
 
         String selectQuery = "SELECT * FROM " + QUEST_TABLE + " WHERE " + CATEGORY + "=" + choices;
@@ -194,14 +192,20 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public Player getPlayerFromDB(String name) {
 
-        String selectQuery = "SELECT * FROM " + P_TABLE + "WHERE " + P_NAME + "=" + name;
+        String selectQuery = "SELECT * FROM " + P_TABLE + " WHERE " + P_NAME + "=\""+ name +"\"";
         db = this.getReadableDatabase();
+
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         Player player = new Player();
 
-        player.setName(cursor.getString(cursor.getColumnIndex((P_NAME))));
-        player.setHighScore(cursor.getInt(cursor.getColumnIndex(P_HIGHSCORE)));
+        if(cursor.moveToFirst()) {
+            cursor.moveToFirst();
+            player.setName(cursor.getString(cursor.getColumnIndex((P_NAME))));
+            player.setHighScore(cursor.getInt(cursor.getColumnIndex(P_HIGHSCORE)));
+        } else {
+            player = null;
+        }
 
         cursor.close();
         Log.d(TAG, player.getName() + " " + player.getHighScore());
@@ -212,27 +216,29 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public List<Player> getAllPlayers() {
 
+
         List<Player> playerList = new ArrayList<Player>();
 
-        String selectQuery = "SELECT * FROM " + P_TABLE;
-        db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
+            String selectQuery = "SELECT * FROM " + P_TABLE;
+            db = this.getReadableDatabase();
+            Cursor cursor = db.rawQuery(selectQuery, null);
 
-        if(cursor.moveToFirst()) {
-            do {
-                Player p = new Player();
+            if (cursor.moveToFirst()) {
+                do {
+                    Player p = new Player();
 
-                p.setName(cursor.getString(cursor.getColumnIndex(P_NAME)));
-                p.setHighScore(cursor.getInt(cursor.getColumnIndex(P_HIGHSCORE)));
+                    p.setName(cursor.getString(cursor.getColumnIndex(P_NAME)));
+                    p.setHighScore(cursor.getInt(cursor.getColumnIndex(P_HIGHSCORE)));
 
 
-                playerList.add(p);
-            } while (cursor.moveToNext());
+                    playerList.add(p);
+                } while (cursor.moveToNext());
 
-        }
-        cursor.close();
+            }
+            cursor.close();
+            db.close();
 
-        Log.d(TAG,"PlayerList skapad!");
+            Log.d(TAG, "PlayerList skapad!");
 
         return playerList;
     }
