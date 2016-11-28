@@ -162,15 +162,12 @@ public class DBHelper extends SQLiteOpenHelper {
             choices +="OR" + " " +categories.get(i);
         }
 
-        String selectQuery = "SELECT * FROM " + QUEST_TABLE + " WHERE " + CATEGORY +"="+ choices;
+        String selectQuery = "SELECT * FROM " + QUEST_TABLE + " WHERE " + CATEGORY + "=" + choices;
 
-
-
-        //for loop, kör igenom så många gånger som arrayen är stor. Lägg på "," + namn på kategori
         db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(selectQuery, null);
-        //Cursor cursor = db.query(QUEST_TABLE, null, )
+
         if(cursor.moveToFirst()) {
             do {
                 Question quest = new Question();
@@ -192,6 +189,24 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.d(TAG,"questionList skapad!");
 
         return questionList;
+
+    }
+
+    public Player getPlayerFromDB(String name) {
+
+        String selectQuery = "SELECT * FROM " + P_TABLE + "WHERE " + P_NAME + "=" + name;
+        db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        Player player = new Player();
+
+        player.setName(cursor.getString(cursor.getColumnIndex((P_NAME))));
+        player.setHighScore(cursor.getInt(cursor.getColumnIndex(P_HIGHSCORE)));
+
+        cursor.close();
+        Log.d(TAG, player.getName() + " " + player.getHighScore());
+
+        return player;
 
     }
 
