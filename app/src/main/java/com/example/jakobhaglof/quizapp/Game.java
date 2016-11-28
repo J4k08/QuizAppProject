@@ -56,11 +56,11 @@ public class Game {
         this.gameScore = gameScore;
     }
 
-    public void prepGame(ArrayList<Question> questions, String categoryChoice) {
+    public void prepGame(ArrayList<Question> questions, ArrayList<String> clicked) {
 
         db = new DBHelper(context);
 
-        questions = getQuestionsFromDb(categoryChoice);
+        questions = getQuestionsFromDb(clicked);
 
         shuffleQuestions(questions);
 
@@ -71,21 +71,13 @@ public class Game {
 
     }
 
-    public ArrayList<Question> getQuestionsFromDb(String categoryChoice) {
+    public ArrayList<Question> getQuestionsFromDb(ArrayList<String> clicked) {
 
         List<Question> questionsList;
         ArrayList<Question> questions = new ArrayList<>();
 
-        if(categoryChoice.equals("all")) {
-
-            questionsList = db.getAllQuestions();
+            questionsList = db.getSpecificQuestions(clicked);
             questions = ListToArrayList(questionsList, questions);
-
-        } else {
-
-                questionsList = db.getSpecificQuestions(categoryChoice);
-                questions = ListToArrayList(questionsList, questions);
-        }
 
         return questions;
     }

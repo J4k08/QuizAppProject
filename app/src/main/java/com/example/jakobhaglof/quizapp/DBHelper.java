@@ -152,11 +152,21 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public List<Question> getSpecificQuestions(String categoryChoice) {
+    public List<Question> getSpecificQuestions(ArrayList<String> categories) {
 
+        String choices = categories.get(0);
         List<Question> questionList = new ArrayList<Question>();
 
-        String selectQuery = "SELECT * FROM " + QUEST_TABLE + " WHERE " + CATEGORY +"="+categoryChoice;
+        for(int i = 1; i < categories.size(); i++) {
+
+            choices +="OR" + " " +categories.get(i);
+        }
+
+        String selectQuery = "SELECT * FROM " + QUEST_TABLE + " WHERE " + CATEGORY +"="+ choices;
+
+
+
+        //for loop, kör igenom så många gånger som arrayen är stor. Lägg på "," + namn på kategori
         db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(selectQuery, null);
