@@ -17,15 +17,15 @@ import java.util.List;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    private final static String TAG = "PROFILE_ACTIVITY: ";
     List<Player> playersList;
     ArrayAdapter adapter;
     ArrayList<String> playerNames;
     DBHelper db;
     EditText et;
     Player player;
-    private final static String TAG = "PROFILE_ACTIVITY: ";
     int monkeyID;
-
+    String pName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +43,8 @@ public class ProfileActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> a, View v, int i, long l) {
                 String name = (String) a.getItemAtPosition(i);
                 Log.d(TAG, name);
+                pName = (String) a.getItemAtPosition(i);
+                Log.d("MESSAGE", pName);
 
                 sendToMain(v);
             }
@@ -96,6 +98,7 @@ public class ProfileActivity extends AppCompatActivity {
     public void sendToMain(View view) {
 
         Intent intent = new Intent(this, MainMenuActivity.class);
+        intent.putExtra("pName", pName);
         startActivity(intent);
     }
 

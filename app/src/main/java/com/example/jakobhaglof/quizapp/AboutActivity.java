@@ -9,6 +9,9 @@ import android.widget.Toast;
 
 public class AboutActivity extends AppCompatActivity {
 
+    private final static String TAG = "ABOUT_ACTIVITY: ";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -6,6 +6,9 @@ import android.view.View;
 
 public class AddQuestionActivity extends AppCompatActivity {
 
+    private final static String TAG = "ADD_QUESTION_ACTIVITY: ";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

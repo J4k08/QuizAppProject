@@ -8,6 +8,8 @@ import android.view.MenuItem;
 
 public class PostGameActivity extends AppCompatActivity {
 
+    private final static String TAG = "POST_GAME_ACTIVITY: ";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

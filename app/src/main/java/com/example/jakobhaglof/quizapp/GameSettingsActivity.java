@@ -3,6 +3,7 @@ package com.example.jakobhaglof.quizapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,19 +14,27 @@ import java.util.ArrayList;
 
 public class GameSettingsActivity extends AppCompatActivity {
 
+    private final static String TAG = "GAME_SETTINGS: ";
     CheckBox checkBox1;
     CheckBox checkBox2;
     CheckBox checkBox3;
     CheckBox checkBox4;
     CheckBox checkBox5;
     CheckBox checkBox6;
+    DBHelper db = new DBHelper(this);
     ArrayList<String> clicked = new ArrayList<>();
+    String pName = "";
+    Player player;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_settings);
+
+        Intent i = getIntent();
+        player = db.getPlayerFromDB(pName = i.getStringExtra("pName"));
+        Log.d(TAG, "onCreate: " + player.getName());
     }
 
     @Override
@@ -60,10 +69,11 @@ public class GameSettingsActivity extends AppCompatActivity {
 
             Intent intent = new Intent(this, GameActivity.class);
             intent.putExtra("clicked", clicked);
+            intent.putExtra("pName", pName);
             startActivity(intent);
 
         }else {
-            Toast.makeText(this, "Du måste välja kategori!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.you_need_to_choose_category, Toast.LENGTH_SHORT).show();
         }
 
     }
