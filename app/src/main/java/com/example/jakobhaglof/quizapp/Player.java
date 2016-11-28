@@ -9,12 +9,14 @@ public class Player {
     private int currentScore;
     private String name;
     private int highScore;
+    private int monkeyID;
 
     public Player() {
 
         currentScore = 0;
         name = "";
         highScore = 0;
+        monkeyID = 0;
     }
 
     public Player(int currentScore, String name, int highScore) {
@@ -22,6 +24,7 @@ public class Player {
         this.name = name;
         this.highScore = highScore;
     }
+
 
 
     public String getName() {
@@ -52,4 +55,11 @@ public class Player {
 
     }
 
+    public int getMonkeyID() {
+        return monkeyID;
+    }
+
+    public void setMonkeyID(int monkeyID) {
+        this.monkeyID = monkeyID;
+    }
 }

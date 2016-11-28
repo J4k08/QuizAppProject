@@ -1,6 +1,7 @@
 package com.example.jakobhaglof.quizapp;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,8 +22,10 @@ public class ProfileActivity extends AppCompatActivity {
     ArrayList<String> playerNames;
     DBHelper db;
     EditText et;
-    Button ib;
+    Player player;
     private final static String TAG = "PROFILE_ACTIVITY: ";
+    int monkeyID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> a, View v, int i, long l) {
                 String name = (String) a.getItemAtPosition(i);
-                Log.d("MESSAGE", name);
+                Log.d(TAG, name);
 
                 sendToMain(v);
             }
@@ -99,13 +102,19 @@ public class ProfileActivity extends AppCompatActivity {
     public void saveMonkey(View view) {
 
         if (view.equals(findViewById(R.id.monkey1))){
-            ib = (Button) findViewById(R.id.monkey1);
+            monkeyID = R.drawable.ziggymonkey;
+            player.setMonkeyID(monkeyID);
+            Log.d(TAG, "ziggy");
         }
         else if (view.equals(findViewById(R.id.monkey2))){
-            ib = (Button) findViewById(R.id.monkey2);
+            monkeyID = R.drawable.rupaulmonkey;
+            player.setMonkeyID(monkeyID);
+            Log.d(TAG, "rupaul");
         }
         else if (view.equals(findViewById(R.id.monkey3))){
-            ib = (Button) findViewById(R.id.monkey3);
+            monkeyID = R.drawable.monkey;
+            player.setMonkeyID(monkeyID);
+            Log.d(TAG, "standard");
         }
     }
 
