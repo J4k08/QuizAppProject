@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -50,4 +51,28 @@ public class SettingsActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void sendToAbout(View view) {
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
+    }
+
+    public void resetHighScore(View view) {
+        //Rensa alla High Scores
+    }
+
+    public void removeCurrentProfile(View view) {
+        //Ta bort aktuell profil
+    }
+
+    public void sendToAddQuestion(View view) {
+        Intent intent = new Intent(this, AddQuestionActivity.class);
+        startActivity(intent);
+    }
+
+    public void SendToRemoveQuestion(View view) {
+        Intent intent = new Intent(this, RemoveQuestionActivity.class);
+        startActivity(intent);
+    }
+    
 }

@@ -16,7 +16,7 @@
         android:id="@+id/categoryHead"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="50dp"
+        android:paddingTop="70dp"
         android:text="@string/chooseCategories"
         android:textColor="@color/textColorBlack"
         android:textSize="20sp"
@@ -34,21 +34,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_1"
-            android:textColor="@color/textColorBlack" />
+            android:textColor="@color/textColorBlack"
+            android:onClick="clicked" />
 
         <CheckBox
             android:id="@+id/category2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_2"
-            android:textColor="@color/textColorBlack" />
+            android:textColor="@color/textColorBlack"
+            android:onClick="clicked" />
 
         <CheckBox
             android:id="@+id/category3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_3"
-            android:textColor="@color/textColorBlack" />
+            android:textColor="@color/textColorBlack"
+            android:onClick="clicked" />
 
     </LinearLayout>
 
@@ -65,7 +68,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_4"
-            android:textColor="@color/textColorBlack" />
+            android:textColor="@color/textColorBlack"
+            android:onClick="clicked" />
 
     </LinearLayout>
 
@@ -83,7 +87,8 @@
             android:layout_height="wrap_content"
             android:text="@string/all_categories"
             android:textColor="@color/textColorBlack"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:onClick="checkAllBoxes"/>
 
         <CheckBox
             android:id="@+id/myCategory"

@@ -74,7 +74,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/monkey"
+                android:background="@drawable/ziggymonkey"
                 android:onClick="saveMonkey" />
 
             <Button
@@ -83,7 +83,7 @@
                 android:layout_height="60dp"
                 android:layout_below="@+id/monkey1"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/monkey"
+                android:background="@drawable/rupaulmonkey"
                 android:onClick="saveMonkey" />
 
             <Button

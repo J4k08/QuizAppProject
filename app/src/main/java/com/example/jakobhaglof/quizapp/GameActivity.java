@@ -3,16 +3,28 @@ package com.example.jakobhaglof.quizapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class GameActivity extends AppCompatActivity {
+
+    DBHelper db = new DBHelper(this);
+    Player player;
+    ArrayList<String> clicked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        Log.d("MESSAGE", "is this shit working??");
+        clicked = (ArrayList<String>) getIntent().getSerializableExtra("clicked");
+
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
