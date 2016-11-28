@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -33,12 +34,17 @@ public class ProfileActivity extends AppCompatActivity {
         playerNames = getNameOfPlayer();
         listProfiles(playerNames);
 
-    }
+        ListView list = (ListView) findViewById(R.id.item_list);
+        list.setOnItemClickListener(new ListView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> a, View v, int i, long l) {
+                String name = (String) a.getItemAtPosition(i);
+                Log.d("MESSAGE", name);
 
-    public void sendToGamesettings(View view) {
+                sendToMain(v);
+            }
+        });
 
-        Intent intent = new Intent(this,GameSettingsActivity.class);
-        startActivity(intent);
     }
 
     public ArrayList<String> getNameOfPlayer() {
