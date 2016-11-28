@@ -43,4 +43,5 @@
     <string name="choice_2">Svarsalternativ 2:</string>
     <string name="choice_3">Svarsalternativ 3:</string>
     <string name="right_answer">Rätt alternativ:</string>
+    <string name="quit_app">Avsluta app</string>
 </resources>

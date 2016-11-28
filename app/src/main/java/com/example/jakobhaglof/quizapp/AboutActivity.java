@@ -22,27 +22,16 @@ public class AboutActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
+    public boolean onOptionsItemSelected(MenuItem item){
 
-        if (id == R.id.play) {
-            Intent go2GameIntent = new Intent(this, GameActivity.class);
-            startActivity(go2GameIntent);
+        int id = item.getItemId();
+        if (id == R.id.back_to_menu) {
+            startActivity(new Intent(this, MainMenuActivity.class ));
             return true;
-        } else if (id == R.id.home) {
-            Toast.makeText(this, "Going home",Toast.LENGTH_SHORT).show();
-            Intent goHomeIntent = new Intent(this, MainMenuActivity.class);
-            startActivity(goHomeIntent);
-            return true;
-        } else if (id == R.id.highscores) {
-            Toast.makeText(this, "Going to highscores",Toast.LENGTH_SHORT).show();
-            Intent go2HighscoresIntent = new Intent(this, HighScoreActivity.class);
-            startActivity(go2HighscoresIntent);
-            return true;
-        } else if (id == R.id.settings) {
-            Toast.makeText(this, "Going to settings",Toast.LENGTH_SHORT).show();
-            Intent go2SettingsIntent = new Intent(this, SettingsActivity.class);
-            startActivity(go2SettingsIntent);
+        }
+        if (id == R.id.quitApp){
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(1);
             return true;
         }
 

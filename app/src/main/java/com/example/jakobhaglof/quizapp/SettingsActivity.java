@@ -1,6 +1,8 @@
 package com.example.jakobhaglof.quizapp;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -25,27 +27,12 @@ public class SettingsActivity extends AppCompatActivity {
 
         int id = item.getItemId();
         if (id == R.id.back_to_menu) {
-
             startActivity(new Intent(this, MainMenuActivity.class ));
             return true;
-        } else if (id == R.id.play) {
-            Intent go2GameIntent = new Intent(this, GameActivity.class);
-            startActivity(go2GameIntent);
-            return true;
-        } else if (id == R.id.home) {
-            Toast.makeText(this, "Going home",Toast.LENGTH_SHORT).show();
-            Intent goHomeIntent = new Intent(this, MainMenuActivity.class);
-            startActivity(goHomeIntent);
-            return true;
-        } else if (id == R.id.highscores) {
-            Toast.makeText(this, "Going to highscores",Toast.LENGTH_SHORT).show();
-            Intent go2HighscoresIntent = new Intent(this, HighScoreActivity.class);
-            startActivity(go2HighscoresIntent);
-            return true;
-        } else if (id == R.id.info) {
-            Toast.makeText(this, "Going to about",Toast.LENGTH_SHORT).show();
-            Intent go2AboutIntent = new Intent(this, AboutActivity.class);
-            startActivity(go2AboutIntent);
+        }
+        if (id == R.id.quitApp){
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(1);
             return true;
         }
 
