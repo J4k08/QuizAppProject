@@ -67,6 +67,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(sqlQuestions);
 
+        addQuestion();
+
     }
 
     @Override
@@ -76,12 +78,15 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public void addQuestion() {
 
-        Question q1 = new Question("Vem spelade Harry Potter i filmen Harry Potter?"
-                , "Kultur", 2, "Marlon Brando", "Daniel Radcliffe", "Sven Wolter", "Han ljudkillen från polisskolan");
-        this.addQuestion(q1);
-        Question q2 = new Question("Vem är inte en medlem i ABBA?", "Kultur", 3, "Björn Ulvaeus", "Anni-Frid Lyngstad",
+        Question q1K = new Question("Vem spelade Harry Potter i filmen Harry Potter?"
+                , "Culture", 2, "Marlon Brando", "Daniel Radcliffe", "Sven Wolter", "Han ljudkillen från polisskolan");
+        this.addQuestion(q1K);
+        Question q2K = new Question("Vem är inte en medlem i ABBA?", "Culture", 3, "Björn Ulvaeus", "Anni-Frid Lyngstad",
                 "Babben Larsson", "Agnetha Fältskog");
-        this.addQuestion(q2);
+        this.addQuestion(q2K);
+
+        Question q1H = new Question("När föll Berlinmuren?", "History", 3, "1986", "1992", "1989", "1995");
+        this.addQuestion(q1H);
 
     }
     public void addQuestion(Question quest) {
@@ -145,6 +150,80 @@ public class DBHelper extends SQLiteOpenHelper {
         return questionList;
 
 
+    }
+
+    public List<Question> getSpecificQuestions(ArrayList<String> categories) {
+
+        String choices = categories.get(0);
+        List<Question> questionList = new ArrayList<Question>();
+
+        for(int i = 1; i < categories.size(); i++) {
+
+            choices +="OR" + " " +categories.get(i);
+        }
+
+        String selectQuery = "SELECT * FROM " + QUEST_TABLE + " WHERE " + CATEGORY +"="+ choices;
+
+
+
+        //for loop, kör igenom så många gånger som arrayen är stor. Lägg på "," + namn på kategori
+        db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        //Cursor cursor = db.query(QUEST_TABLE, null, )
+        if(cursor.moveToFirst()) {
+            do {
+                Question quest = new Question();
+
+                quest.setQuestion(cursor.getString(cursor.getColumnIndex(QUEST)));
+                quest.setCategory(cursor.getString(cursor.getColumnIndex(CATEGORY)));
+                quest.setCorrectAnswerId(cursor.getInt(cursor.getColumnIndex(CORRECT)));
+                quest.setChoice1(cursor.getString(cursor.getColumnIndex(CHOICE1)));
+                quest.setChoice2(cursor.getString(cursor.getColumnIndex(CHOICE2)));
+                quest.setChoice3(cursor.getString(cursor.getColumnIndex(CHOICE3)));
+                quest.setChoice4(cursor.getString(cursor.getColumnIndex(CHOICE4)));
+
+                questionList.add(quest);
+            } while (cursor.moveToNext());
+
+        }
+        cursor.close();
+
+        Log.d(TAG,"questionList skapad!");
+
+        return questionList;
+
+    }
+
+    public List<Question> getHistoryQuestions() {
+
+        List<Question> questionList = new ArrayList<Question>();
+
+        String selectQuery = "SELECT * FROM " + QUEST_TABLE + " WHERE " + CATEGORY +"=History";
+        db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()) {
+            do {
+                Question quest = new Question();
+
+                quest.setQuestion(cursor.getString(cursor.getColumnIndex(QUEST)));
+                quest.setCategory(cursor.getString(cursor.getColumnIndex(CATEGORY)));
+                quest.setCorrectAnswerId(cursor.getInt(cursor.getColumnIndex(CORRECT)));
+                quest.setChoice1(cursor.getString(cursor.getColumnIndex(CHOICE1)));
+                quest.setChoice2(cursor.getString(cursor.getColumnIndex(CHOICE2)));
+                quest.setChoice3(cursor.getString(cursor.getColumnIndex(CHOICE3)));
+                quest.setChoice4(cursor.getString(cursor.getColumnIndex(CHOICE4)));
+
+                questionList.add(quest);
+            } while (cursor.moveToNext());
+
+        }
+        cursor.close();
+
+        Log.d(TAG,"questionList skapad!");
+
+        return questionList;
     }
 
     public List<Player> getAllPlayers() {
