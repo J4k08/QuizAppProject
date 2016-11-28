@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 public class HighScoreActivity extends AppCompatActivity {
 
+    private final static String TAG = "HIGH_SCORE_ACTIVITY: ";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

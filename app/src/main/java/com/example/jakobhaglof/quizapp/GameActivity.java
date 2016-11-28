@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class GameActivity extends AppCompatActivity {
 
+    private final static String TAG = "GAME_ACTIVITY: ";
     DBHelper db = new DBHelper(this);
     Player player;
     ArrayList<String> clicked;

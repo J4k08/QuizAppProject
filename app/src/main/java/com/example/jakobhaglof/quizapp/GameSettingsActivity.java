@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class GameSettingsActivity extends AppCompatActivity {
 
+    private final static String TAG = "GAME_SETTINGS_ACTIVITY: ";
     CheckBox checkBox1;
     CheckBox checkBox2;
     CheckBox checkBox3;
@@ -63,7 +64,7 @@ public class GameSettingsActivity extends AppCompatActivity {
             startActivity(intent);
 
         }else {
-            Toast.makeText(this, "Du måste välja kategori!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.you_need_to_choose_category, Toast.LENGTH_SHORT).show();
         }
 
     }
