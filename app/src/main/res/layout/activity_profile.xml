@@ -29,11 +29,11 @@
         android:paddingTop="40dp">
 
         <EditText
+            android:id="@+id/add_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/add_name"
-            android:layout_marginRight="10dp"
             android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
             android:hint="@string/add_name"
             android:textColor="@color/textColorBlack"
             android:textSize="17sp"
@@ -42,8 +42,8 @@
         <View
             android:layout_width="2dp"
             android:layout_height="35dp"
-            android:layout_marginRight="10dp"
             android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
             android:background="@color/textColorBlack" />
 
         <TextView
@@ -60,8 +60,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/addNameAndList"
-        android:orientation="horizontal"
-        android:baselineAligned="true">
+        android:baselineAligned="true"
+        android:orientation="horizontal">
 
 
         <RelativeLayout
@@ -114,15 +114,5 @@
             android:layout_weight="1" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/continue_main"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/backgroundrede"
-        android:onClick="sendToMain"
-        android:text="@string/continue_main" />
-
 
 </RelativeLayout>

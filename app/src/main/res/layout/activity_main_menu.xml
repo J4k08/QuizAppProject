@@ -51,23 +51,46 @@
         android:onClick="sendToGameSettings"
         />
 
+        <LinearLayout
+            android:id="@+id/main_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/playBtn"
+            android:layout_marginBottom="10dp">
+
     <Button
-        android:id="@+id/profiles"
+        android:id="@+id/profilesBtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@+id/playBtn"
+        android:layout_weight="1"
         android:text="@string/main_menu_profiles"
         android:background="@drawable/backgroundrede"
-        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
         android:onClick="sendToProfiles"
 
         />
 
-    <Button
-        android:id="@+id/settings"
+            <Button
+                android:id="@+id/highScoreBtn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="@string/highscore"
+                android:background="@drawable/backgroundrede"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:onClick="sendToHighScore"
+
+                />
+
+        </LinearLayout>
+
+        <Button
+        android:id="@+id/settingsBtn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_below="@+id/profiles"
+        android:layout_below="@+id/main_line"
         android:text="@string/main_menu_settings"
         android:background="@drawable/backgroundrede"
         android:layout_marginBottom="10dp"

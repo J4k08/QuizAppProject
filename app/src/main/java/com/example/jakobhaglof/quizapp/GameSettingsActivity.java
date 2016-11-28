@@ -69,6 +69,13 @@ public class GameSettingsActivity extends AppCompatActivity {
     }
 
     public void checkAllBoxes(View view) {
+        checkBox1 = (CheckBox) findViewById(R.id.category1);
+        checkBox2 = (CheckBox) findViewById(R.id.category2);
+        checkBox3 = (CheckBox) findViewById(R.id.category3);
+        checkBox4 = (CheckBox) findViewById(R.id.category4);
+        checkBox5 = (CheckBox) findViewById(R.id.categoryAll);
+        checkBox6 = (CheckBox) findViewById(R.id.myCategory);
+
         checkBox1.setChecked(true);
 
         checkBox2.setChecked(true);
@@ -79,6 +86,12 @@ public class GameSettingsActivity extends AppCompatActivity {
     }
 
     public void clicked(View view) {
+        checkBox1 = (CheckBox) findViewById(R.id.category1);
+        checkBox2 = (CheckBox) findViewById(R.id.category2);
+        checkBox3 = (CheckBox) findViewById(R.id.category3);
+        checkBox4 = (CheckBox) findViewById(R.id.category4);
+        checkBox5 = (CheckBox) findViewById(R.id.categoryAll);
+        checkBox6 = (CheckBox) findViewById(R.id.myCategory);
 
         if (checkBox1.isChecked()){
             clicked.add(checkBox1.getText().toString());

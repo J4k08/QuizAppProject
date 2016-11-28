@@ -73,4 +73,10 @@ public class MainMenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
+
+    public void sendToHighScore(View view) {
+
+        Intent intent = new Intent(this, HighScoreActivity.class);
+        startActivity(intent);
+    }
 }
