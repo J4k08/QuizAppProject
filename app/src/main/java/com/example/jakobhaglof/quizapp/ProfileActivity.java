@@ -16,13 +16,13 @@ import java.util.List;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    private final static String TAG = "PROFILE_ACTIVITY: ";
     List<Player> playersList;
     ArrayAdapter adapter;
     ArrayList<String> playerNames;
     DBHelper db;
     EditText et;
     Button ib;
-    private final static String TAG = "PROFILE_ACTIVITY: ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

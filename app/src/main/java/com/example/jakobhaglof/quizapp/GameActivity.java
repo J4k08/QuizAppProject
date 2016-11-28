@@ -12,6 +12,8 @@ import java.util.ArrayList;
 
 public class GameActivity extends AppCompatActivity {
 
+    private final static String TAG = "GAME_ACTIVITY: ";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

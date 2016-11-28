@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
 
+    private final static String TAG = "SETTINGS_ACTIVITY: ";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +26,9 @@ public class SettingsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
 
         int id = item.getItemId();
+
+
+
         if (id == R.id.back_to_menu) {
 
             startActivity(new Intent(this, MainMenuActivity.class ));

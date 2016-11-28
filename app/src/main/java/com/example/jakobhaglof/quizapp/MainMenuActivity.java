@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 public class MainMenuActivity extends AppCompatActivity {
 
+    private final static String TAG = "MAIN_MENU_ACTIVITY: ";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
