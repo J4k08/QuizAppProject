@@ -6,8 +6,21 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class GameSettingsActivity extends AppCompatActivity {
+
+    CheckBox checkBox1;
+    CheckBox checkBox2;
+    CheckBox checkBox3;
+    CheckBox checkBox4;
+    CheckBox checkBox5;
+    CheckBox checkBox6;
+    ArrayList<String> clicked = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +48,52 @@ public class GameSettingsActivity extends AppCompatActivity {
 
 
     public void sendToGame(View view) {
-        Intent intent = new Intent(this, GameActivity.class);
-        startActivity(intent);
+
+        checkBox1 = (CheckBox) findViewById(R.id.category1);
+        checkBox2 = (CheckBox) findViewById(R.id.category2);
+        checkBox3 = (CheckBox) findViewById(R.id.category3);
+        checkBox4 = (CheckBox) findViewById(R.id.category4);
+        checkBox5 = (CheckBox) findViewById(R.id.categoryAll);
+        checkBox6 = (CheckBox) findViewById(R.id.myCategory);
+
+        if (checkBox1.isChecked() || checkBox2.isChecked() || checkBox3.isChecked() || checkBox4.isChecked() || checkBox5.isChecked() || checkBox6.isChecked()){
+
+            Intent intent = new Intent(this, GameActivity.class);
+            intent.putExtra("clicked", clicked);
+            startActivity(intent);
+
+        }else {
+            Toast.makeText(this, "Du måste välja kategori!", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void checkAllBoxes(View view) {
+        checkBox1.setChecked(true);
+
+        checkBox2.setChecked(true);
+
+        checkBox3.setChecked(true);
+
+        checkBox4.setChecked(true);
+    }
+
+    public void clicked(View view) {
+
+        if (checkBox1.isChecked()){
+            clicked.add(checkBox1.getText().toString());
+        }
+        if (checkBox2.isChecked()){
+            clicked.add(checkBox2.getText().toString());
+        }
+        if (checkBox3.isChecked()){
+            clicked.add(checkBox3.getText().toString());
+        }
+        if (checkBox4.isChecked()){
+            clicked.add(checkBox4.getText().toString());
+        }
+        if (checkBox6.isChecked()){
+            clicked.add(checkBox6.getText().toString());
+        }
     }
 }
