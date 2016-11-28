@@ -12,12 +12,18 @@ import java.util.ArrayList;
 
 public class GameActivity extends AppCompatActivity {
 
+    DBHelper db = new DBHelper(this);
+    Player player;
+    ArrayList<String> clicked;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
         Log.d("MESSAGE", "is this shit working??");
-        ArrayList<String> clicked = (ArrayList<String>) getIntent().getSerializableExtra("clicked");
+        clicked = (ArrayList<String>) getIntent().getSerializableExtra("clicked");
+
 
     }
     @Override
