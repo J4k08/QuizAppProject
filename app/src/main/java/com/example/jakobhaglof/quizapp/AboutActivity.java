@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 public class AboutActivity extends AppCompatActivity {
 
@@ -28,16 +27,15 @@ public class AboutActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
 
         int id = item.getItemId();
-        if (id == R.id.back_to_menu) {
-            startActivity(new Intent(this, MainMenuActivity.class ));
+        if (id == R.id.settings) {
+            startActivity(new Intent(this, SettingsActivity.class ));
             return true;
         }
         if (id == R.id.quitApp){
-            android.os.Process.killProcess(android.os.Process.myPid());
-            System.exit(1);
-            return true;
+            this.finishAffinity();
         }
 
         return super.onOptionsItemSelected(item);
     }
+
 }

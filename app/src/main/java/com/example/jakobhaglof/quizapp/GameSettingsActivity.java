@@ -39,17 +39,20 @@ public class GameSettingsActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_settings, menu);
+        getMenuInflater().inflate(R.menu.menu_game_settings, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
 
         int id = item.getItemId();
-        if (id == R.id.back_to_menu) {
-
-            startActivity(new Intent(this, MainMenuActivity.class ));
+        if (id == R.id.settings) {
+            startActivity(new Intent(this, SettingsActivity.class ));
             return true;
+        }
+        if (id == R.id.quitApp){
+            this.finishAffinity();
         }
 
         return super.onOptionsItemSelected(item);

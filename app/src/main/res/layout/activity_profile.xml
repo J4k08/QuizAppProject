@@ -74,8 +74,7 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/ziggymonkey"
-                android:onClick="saveMonkey" />
+                android:background="@drawable/ziggymonkey" />
 
             <Button
                 android:id="@+id/monkey2"
@@ -83,8 +82,7 @@
                 android:layout_height="60dp"
                 android:layout_below="@+id/monkey1"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/rupaulmonkey"
-                android:onClick="saveMonkey" />
+                android:background="@drawable/rupaulmonkey" />
 
             <Button
                 android:id="@+id/monkey3"
@@ -92,8 +90,7 @@
                 android:layout_height="60dp"
                 android:layout_below="@+id/monkey2"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/standardmonkey"
-                android:onClick="saveMonkey" />
+                android:background="@drawable/standardmonkey" />
 
             <Button
                 android:layout_width="95dp"

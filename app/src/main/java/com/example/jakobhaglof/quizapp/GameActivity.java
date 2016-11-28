@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -39,16 +38,15 @@ public class GameActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
 
         int id = item.getItemId();
-        if (id == R.id.back_to_menu) {
-            startActivity(new Intent(this, MainMenuActivity.class ));
+        if (id == R.id.settings) {
+            startActivity(new Intent(this, SettingsActivity.class ));
             return true;
         }
         if (id == R.id.quitApp){
-            android.os.Process.killProcess(android.os.Process.myPid());
-            System.exit(1);
-            return true;
+            this.finishAffinity();
         }
 
         return super.onOptionsItemSelected(item);
     }
+
 }
