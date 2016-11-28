@@ -23,6 +23,7 @@ public class ProfileActivity extends AppCompatActivity {
     DBHelper db;
     EditText et;
     Button ib;
+    String pName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +39,8 @@ public class ProfileActivity extends AppCompatActivity {
         list.setOnItemClickListener(new ListView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> a, View v, int i, long l) {
-                String name = (String) a.getItemAtPosition(i);
-                Log.d("MESSAGE", name);
+                pName = (String) a.getItemAtPosition(i);
+                Log.d("MESSAGE", pName);
 
                 sendToMain(v);
             }
@@ -93,6 +94,7 @@ public class ProfileActivity extends AppCompatActivity {
     public void sendToMain(View view) {
 
         Intent intent = new Intent(this, MainMenuActivity.class);
+        intent.putExtra("pName", pName);
         startActivity(intent);
     }
 
