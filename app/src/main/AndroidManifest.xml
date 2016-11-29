@@ -9,17 +9,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ProfileActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.jakobhaglof.quizapp.ProfileActivity" />
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        ]
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +27,11 @@
         <activity android:name=".PostGameActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".HighScoreActivity" />
-        <activity android:name=".AboutActivity" />
+        <activity android:name=".AboutActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.jakobhaglof.quizapp.SettingsActivity" />
+        </activity>
         <activity android:name=".MainMenuActivity" />
         <activity android:name=".AddQuestionActivity" />
         <activity android:name=".RemoveQuestionActivity"></activity>

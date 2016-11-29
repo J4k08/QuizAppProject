@@ -29,7 +29,8 @@ public class SettingsActivity extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_settings, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
+        menu.getItem(0).setVisible(false);
         return true;
     }
 
@@ -38,8 +39,9 @@ public class SettingsActivity extends AppCompatActivity {
 
         int id = item.getItemId();
         if (id == R.id.settings) {
-            startActivity(new Intent(this, SettingsActivity.class ));
-            return true;
+            Intent intent = new Intent(this, SettingsActivity.class);
+            intent.putExtra("pName", pName);
+            startActivity(intent);
         }
         if (id == R.id.quitApp){
             this.finishAffinity();
@@ -50,6 +52,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void sendToAbout(View view) {
         Intent intent = new Intent(this, AboutActivity.class);
+        intent.putExtra("pName", pName);
         startActivity(intent);
     }
 
@@ -63,11 +66,13 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void sendToAddQuestion(View view) {
         Intent intent = new Intent(this, AddQuestionActivity.class);
+        intent.putExtra("pName", pName);
         startActivity(intent);
     }
 
     public void SendToRemoveQuestion(View view) {
         Intent intent = new Intent(this, RemoveQuestionActivity.class);
+        intent.putExtra("pName", pName);
         startActivity(intent);
     }
     

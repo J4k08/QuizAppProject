@@ -9,15 +9,21 @@ import android.view.MenuItem;
 public class PostGameActivity extends AppCompatActivity {
 
     private final static String TAG = "POST_GAME_ACTIVITY: ";
+    DBHelper db = new DBHelper(this);
+    Player player;
+    String pName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_game);
+
+        Intent i = getIntent();
+        player = db.getPlayerFromDB(pName = i.getExtras().getString("pName"));
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_post_game, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
@@ -26,8 +32,9 @@ public class PostGameActivity extends AppCompatActivity {
 
         int id = item.getItemId();
         if (id == R.id.settings) {
-            startActivity(new Intent(this, SettingsActivity.class ));
-            return true;
+            Intent intent = new Intent(this, SettingsActivity.class);
+            intent.putExtra("pName", pName);
+            startActivity(intent);
         }
         if (id == R.id.quitApp){
             this.finishAffinity();
