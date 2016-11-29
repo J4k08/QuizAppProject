@@ -14,20 +14,13 @@
     <string name="main_menu_profiles">Profiler</string>
     <string name="main_menu_settings">Inställningar</string>
     <string name="chooseCategories">Välj kategori(er)</string>
-    <string name="category_1">Kategori 1</string>
-    <string name="category_2">Kategori 2</string>
-    <string name="category_3">Kategori 3</string>
-    <string name="category_4">Kategori 4</string>
-    <string name="all_categories">Alla kategorier</string>
     <string name="start_game">Starta spel</string>
-    <string name="my_questions">Mina frågor</string>
     <string name="question_head">Fråga: </string>
     <string name="continue_main">Fortsätt</string>
     <string name="profiles">Profiler</string>
     <string name="add_name">Lägg till namn..</string>
     <string name="create_profile">Skapa profil!</string>
     <string name="highscore">Rekord</string>
-    <string name="chooseCategory">Välj kategori:</string>
     <string name="game_results">Resultat för rundan</string>
     <string name="player">Spelare:</string>
     <string name="played_category">Spelad kategori:</string>
@@ -45,4 +38,20 @@
     <string name="right_answer">Rätt alternativ:</string>
     <string name="quit_app">Avsluta app</string>
     <string name="you_need_to_choose_category">Du måste välja kategori!</string>
+    <string name="category_F"><![CDATA[Film & TV]]></string>
+    <string name="category_H">Historia</string>
+    <string name="category_M">Musik</string>
+    <string name="category_D">Diverse</string>
+    <string name="all_categories">Alla kategorier</string>
+    <string name="my_questions">Mina frågor</string>
+
+    <string name="chooseCategory">Välj kategori:</string>
+
+    <string-array name="categories">
+        <item>Film &amp; TV</item>
+        <item>Historia</item>
+        <item>Musik</item>
+        <item>Diverse</item>
+    </string-array>
+
 </resources>

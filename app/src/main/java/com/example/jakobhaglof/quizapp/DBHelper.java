@@ -76,15 +76,26 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public void addQuestion() {
 
-        Question q1K = new Question("Vem spelade Harry Potter i filmen Harry Potter?"
-                , "Culture", "Daniel Radcliffe", "Marlon Brando", "Daniel Radcliffe", "Sven Wolter", "Han ljudkillen från polisskolan");
-        this.addQuestion(q1K);
-        Question q2K = new Question("Vem är inte en medlem i ABBA?", "Culture", "Babben Larsson", "Björn Ulvaeus", "Anni-Frid Lyngstad",
-                "Babben Larsson", "Agnetha Fältskog");
-        this.addQuestion(q2K);
+        //Film & TV
+        //Historia
+        //Musik
+        //Diverse
 
-        Question q1H = new Question("När föll Berlinmuren?", "History", "1989", "1986", "1992", "1989", "1995");
+        Question q1F = new Question("Vem spelade Harry Potter i filmen Harry Potter?"
+                , "Film & TV", "Daniel Radcliffe", "Marlon Brando", "Daniel Radcliffe", "Sven Wolter", "Han ljudkillen från polisskolan");
+        this.addQuestion(q1F);
+
+        Question q1M = new Question("Vem är inte en medlem i ABBA?", "Musik", "Babben Larsson", "Björn Ulvaeus", "Anni-Frid Lyngstad",
+                "Babben Larsson", "Agnetha Fältskog");
+        this.addQuestion(q1M);
+
+        Question q1H = new Question("När föll Berlinmuren?", "Historia", "1989", "1986", "1992", "1989", "1995");
         this.addQuestion(q1H);
+
+        Question q1D = new Question("Vad står MSN för?", "Diverse", "Microsoft Network", "Microsoft Network", "Mass Sending Network",
+                "Multimedia Server Name", "Microsoft Social Network");
+        this.addQuestion(q1D);
+
 
     }
     public void addQuestion(Question quest) {

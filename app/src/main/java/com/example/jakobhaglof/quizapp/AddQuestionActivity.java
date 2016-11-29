@@ -6,6 +6,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddQuestionActivity extends AppCompatActivity {
 
@@ -13,6 +19,7 @@ public class AddQuestionActivity extends AppCompatActivity {
     DBHelper db = new DBHelper(this);
     Player player;
     String pName = "";
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +27,29 @@ public class AddQuestionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_question);
         Intent i = getIntent();
         player = db.getPlayerFromDB(pName = i.getExtras().getString("pName"));
+        addItemsOnSpinner();
+        addListenerOnSpinnerItemSelection();
     }
+
+    public void addItemsOnSpinner() {
+
+        spinner = (Spinner) findViewById(R.id.get_new_category);
+        List<String> list = new ArrayList<>();
+        list.add("Film & TV");
+        list.add("Historia");
+        list.add("Musik");
+        list.add("Diverse");
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, list);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(dataAdapter);
+    }
+
+    public void addListenerOnSpinnerItemSelection() {
+        spinner = (Spinner) findViewById(R.id.get_new_category);
+        spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -28,7 +57,7 @@ public class AddQuestionActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
         if (id == R.id.settings) {
@@ -36,7 +65,7 @@ public class AddQuestionActivity extends AppCompatActivity {
             intent.putExtra("pName", pName);
             startActivity(intent);
         }
-        if (id == R.id.quitApp){
+        if (id == R.id.quitApp) {
             this.finishAffinity();
         }
 

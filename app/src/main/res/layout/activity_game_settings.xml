@@ -33,7 +33,7 @@
             android:id="@+id/category1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category_1"
+            android:text="@string/category_F"
             android:textColor="@color/textColorBlack"
             android:onClick="clicked" />
 
@@ -41,7 +41,7 @@
             android:id="@+id/category2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category_2"
+            android:text="@string/category_H"
             android:textColor="@color/textColorBlack"
             android:onClick="clicked" />
 
@@ -49,7 +49,7 @@
             android:id="@+id/category3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category_3"
+            android:text="@string/category_M"
             android:textColor="@color/textColorBlack"
             android:onClick="clicked" />
 
@@ -67,7 +67,7 @@
             android:id="@+id/category4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/category_4"
+            android:text="@string/category_D"
             android:textColor="@color/textColorBlack"
             android:onClick="clicked" />
 

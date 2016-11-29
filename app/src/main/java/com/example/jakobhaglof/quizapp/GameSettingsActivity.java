@@ -109,18 +109,24 @@ public class GameSettingsActivity extends AppCompatActivity {
 
         if (checkBox1.isChecked()){
             clickedCat.add(checkBox1.getText().toString());
+            Log.d(TAG, "clicked: " + checkBox1.getText().toString());
         }
         if (checkBox2.isChecked()){
             clickedCat.add(checkBox2.getText().toString());
+            Log.d(TAG, "clicked: " + checkBox2.getText().toString());
         }
         if (checkBox3.isChecked()){
             clickedCat.add(checkBox3.getText().toString());
+            Log.d(TAG, "clicked: " + checkBox3.getText().toString());
         }
         if (checkBox4.isChecked()){
             clickedCat.add(checkBox4.getText().toString());
+            Log.d(TAG, "clicked: " + checkBox4.getText().toString());
         }
         if (checkBox6.isChecked()){
             clickedCat.add(checkBox6.getText().toString());
+            Log.d(TAG, "clicked: " + checkBox6.getText().toString());
         }
+
     }
 }
