@@ -54,7 +54,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_profile, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return true;
     }
 
@@ -63,8 +63,9 @@ public class ProfileActivity extends AppCompatActivity {
 
         int id = item.getItemId();
         if (id == R.id.settings) {
-            startActivity(new Intent(this, SettingsActivity.class ));
-            return true;
+            Intent intent = new Intent(this, SettingsActivity.class);
+            intent.putExtra("pName", pName);
+            startActivity(intent);
         }
         if (id == R.id.quitApp){
             this.finishAffinity();
