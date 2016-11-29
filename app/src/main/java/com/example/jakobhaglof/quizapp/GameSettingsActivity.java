@@ -108,18 +108,23 @@ public class GameSettingsActivity extends AppCompatActivity {
         checkBox6 = (CheckBox) findViewById(R.id.myCategory);
 
         if (checkBox1.isChecked()){
+            Log.d(TAG, "clicked: " + checkBox1.getText().toString());
             clicked.add(checkBox1.getText().toString());
         }
         if (checkBox2.isChecked()){
+            Log.d(TAG, "clicked: " + checkBox2.getText().toString());
             clicked.add(checkBox2.getText().toString());
         }
         if (checkBox3.isChecked()){
+            Log.d(TAG, "clicked: " + checkBox3.getText().toString());
             clicked.add(checkBox3.getText().toString());
         }
         if (checkBox4.isChecked()){
+            Log.d(TAG, "clicked: " + checkBox4.getText().toString());
             clicked.add(checkBox4.getText().toString());
         }
         if (checkBox6.isChecked()){
+            Log.d(TAG, "clicked: " + checkBox6.getText().toString());
             clicked.add(checkBox6.getText().toString());
         }
     }

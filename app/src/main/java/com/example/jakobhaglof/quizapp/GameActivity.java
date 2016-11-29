@@ -28,6 +28,7 @@ public class GameActivity extends AppCompatActivity {
         clicked = (ArrayList<String>) getIntent().getSerializableExtra("clicked");
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
@@ -35,7 +36,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
         if (id == R.id.settings) {
@@ -43,7 +44,7 @@ public class GameActivity extends AppCompatActivity {
             intent.putExtra("pName", pName);
             startActivity(intent);
         }
-        if (id == R.id.quitApp){
+        if (id == R.id.quitApp) {
             this.finishAffinity();
         }
 
