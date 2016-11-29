@@ -90,6 +90,7 @@ public class DBHelper extends SQLiteOpenHelper {
         this.addQuestion(q1M);
 
         Question q1H = new Question("När föll Berlinmuren?", "Historia", "1989", "1986", "1992", "1989", "1995");
+
         this.addQuestion(q1H);
 
         Question q1D = new Question("Vad står MSN för?", "Diverse", "Microsoft Network", "Microsoft Network", "Mass Sending Network",

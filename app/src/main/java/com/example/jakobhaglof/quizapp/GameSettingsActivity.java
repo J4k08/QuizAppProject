@@ -123,10 +123,9 @@ public class GameSettingsActivity extends AppCompatActivity {
             clickedCat.add(checkBox4.getText().toString());
             Log.d(TAG, "clicked: " + checkBox4.getText().toString());
         }
-        if (checkBox6.isChecked()){
+        if (checkBox6.isChecked()) {
             clickedCat.add(checkBox6.getText().toString());
             Log.d(TAG, "clicked: " + checkBox6.getText().toString());
         }
-
     }
 }
