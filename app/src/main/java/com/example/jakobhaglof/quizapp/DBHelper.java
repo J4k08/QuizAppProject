@@ -113,7 +113,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(P_HIGHSCORE, player.getHighScore());
 
         long id = db.insert(P_TABLE, null, values);
-        Log.d("lagt till player", "row id " + id);
+        Log.d("lagt till player", "row id " + P_ID);
         db.close();
     }
 
