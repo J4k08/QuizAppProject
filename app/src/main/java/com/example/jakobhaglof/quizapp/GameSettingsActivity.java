@@ -22,7 +22,7 @@ public class GameSettingsActivity extends AppCompatActivity {
     CheckBox checkBox5;
     CheckBox checkBox6;
     DBHelper db = new DBHelper(this);
-    ArrayList<String> clicked = new ArrayList<>();
+    ArrayList<String> clickedCat = new ArrayList<>();
     String pName = "";
     Player player;
 
@@ -72,7 +72,7 @@ public class GameSettingsActivity extends AppCompatActivity {
         if (checkBox1.isChecked() || checkBox2.isChecked() || checkBox3.isChecked() || checkBox4.isChecked() || checkBox5.isChecked() || checkBox6.isChecked()){
 
             Intent intent = new Intent(this, GameActivity.class);
-            intent.putExtra("clicked", clicked);
+            intent.putExtra("clickedCat", clickedCat);
             intent.putExtra("pName", pName);
             startActivity(intent);
 
@@ -108,24 +108,25 @@ public class GameSettingsActivity extends AppCompatActivity {
         checkBox6 = (CheckBox) findViewById(R.id.myCategory);
 
         if (checkBox1.isChecked()){
+            clickedCat.add(checkBox1.getText().toString());
             Log.d(TAG, "clicked: " + checkBox1.getText().toString());
-            clicked.add(checkBox1.getText().toString());
         }
         if (checkBox2.isChecked()){
+            clickedCat.add(checkBox2.getText().toString());
             Log.d(TAG, "clicked: " + checkBox2.getText().toString());
-            clicked.add(checkBox2.getText().toString());
         }
         if (checkBox3.isChecked()){
+            clickedCat.add(checkBox3.getText().toString());
             Log.d(TAG, "clicked: " + checkBox3.getText().toString());
-            clicked.add(checkBox3.getText().toString());
         }
         if (checkBox4.isChecked()){
+            clickedCat.add(checkBox4.getText().toString());
             Log.d(TAG, "clicked: " + checkBox4.getText().toString());
-            clicked.add(checkBox4.getText().toString());
         }
         if (checkBox6.isChecked()){
+            clickedCat.add(checkBox6.getText().toString());
             Log.d(TAG, "clicked: " + checkBox6.getText().toString());
-            clicked.add(checkBox6.getText().toString());
         }
+
     }
 }

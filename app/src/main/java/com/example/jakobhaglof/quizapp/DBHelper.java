@@ -59,7 +59,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 ID +"_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 QUEST +" VARCHAR(255) NOT NULL," +
                 CATEGORY +" VARCHAR(255) NOT NULL," +
-                CORRECT +" INTEGER," +
+                CORRECT +" VARCHAR(255) NOT NULL, " +
                 CHOICE1 +" VARCHAR(255) NOT NULL, " +
                 CHOICE2 +" VARCHAR(255) NOT NULL, " +
                 CHOICE3 +" VARCHAR(255) NOT NULL, " +
@@ -82,17 +82,17 @@ public class DBHelper extends SQLiteOpenHelper {
         //Diverse
 
         Question q1F = new Question("Vem spelade Harry Potter i filmen Harry Potter?"
-                , "Film & TV", 2, "Marlon Brando", "Daniel Radcliffe", "Sven Wolter", "Han ljudkillen från polisskolan");
+                , "Film & TV", "Daniel Radcliffe", "Marlon Brando", "Daniel Radcliffe", "Sven Wolter", "Han ljudkillen från polisskolan");
         this.addQuestion(q1F);
 
-        Question q1M = new Question("Vem är inte en medlem i ABBA?", "Musik", 3, "Björn Ulvaeus", "Anni-Frid Lyngstad",
+        Question q1M = new Question("Vem är inte en medlem i ABBA?", "Musik", "Babben Larsson", "Björn Ulvaeus", "Anni-Frid Lyngstad",
                 "Babben Larsson", "Agnetha Fältskog");
         this.addQuestion(q1M);
 
-        Question q1H = new Question("När föll Berlinmuren?", "Historia", 3, "1986", "1992", "1989", "1995");
+        Question q1H = new Question("När föll Berlinmuren?", "Historia", "1989", "1986", "1992", "1989", "1995");
         this.addQuestion(q1H);
 
-        Question q1D = new Question("Vad står MSN för?", "Diverse", 1, "Microsoft Network", "Mass Sending Network",
+        Question q1D = new Question("Vad står MSN för?", "Diverse", "Microsoft Network", "Microsoft Network", "Mass Sending Network",
                 "Multimedia Server Name", "Microsoft Social Network");
         this.addQuestion(q1D);
 
@@ -105,7 +105,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         values.put(QUEST, quest.getQuestion());
         values.put(CATEGORY, quest.getCategory());
-        values.put(CORRECT, quest.getCorrectAnswerId());
+        values.put(CORRECT, quest.getCorrectAnswer());
         values.put(CHOICE1, quest.getChoice1());
         values.put(CHOICE2, quest.getChoice2());
         values.put(CHOICE3, quest.getChoice3());
@@ -142,7 +142,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 quest.setQuestion(cursor.getString(cursor.getColumnIndex(QUEST)));
                 quest.setCategory(cursor.getString(cursor.getColumnIndex(CATEGORY)));
-                quest.setCorrectAnswerId(cursor.getInt(cursor.getColumnIndex(CORRECT)));
+                quest.setCorrectAnswer(cursor.getString(cursor.getColumnIndex(CORRECT)));
                 quest.setChoice1(cursor.getString(cursor.getColumnIndex(CHOICE1)));
                 quest.setChoice2(cursor.getString(cursor.getColumnIndex(CHOICE2)));
                 quest.setChoice3(cursor.getString(cursor.getColumnIndex(CHOICE3)));
@@ -183,7 +183,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 quest.setQuestion(cursor.getString(cursor.getColumnIndex(QUEST)));
                 quest.setCategory(cursor.getString(cursor.getColumnIndex(CATEGORY)));
-                quest.setCorrectAnswerId(cursor.getInt(cursor.getColumnIndex(CORRECT)));
+                quest.setCorrectAnswer(cursor.getString(cursor.getColumnIndex(CORRECT)));
                 quest.setChoice1(cursor.getString(cursor.getColumnIndex(CHOICE1)));
                 quest.setChoice2(cursor.getString(cursor.getColumnIndex(CHOICE2)));
                 quest.setChoice3(cursor.getString(cursor.getColumnIndex(CHOICE3)));
@@ -211,7 +211,6 @@ public class DBHelper extends SQLiteOpenHelper {
         Player player = new Player();
 
         if(cursor.moveToFirst()) {
-            cursor.moveToFirst();
             player.setName(cursor.getString(cursor.getColumnIndex((P_NAME))));
             player.setHighScore(cursor.getInt(cursor.getColumnIndex(P_HIGHSCORE)));
         } else {
