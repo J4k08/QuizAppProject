@@ -16,16 +16,24 @@ public class Game {
 
     private int timer = 0;
     private int gameScore = 0;
-    private ArrayList<Question> questions = new ArrayList<Question>();
+    private ArrayList<String> clickedCat;
     private Player player;
     private DBHelper db;
     private Context context;
+    private ArrayList<Question> questions;
 
-    public Game(int timer, int gameScore, ArrayList<Question> questions, Player player) {
+    public Game(int timer, ArrayList<String> clickedCat, Player player) {
         this.timer = timer;
-        this.gameScore = gameScore;
-        this.questions = questions;
+        this.clickedCat = clickedCat;
         this.player = player;
+
+    }
+
+    public void setQuestions(ArrayList<Question> questions) {
+        this.questions = questions;
+    }
+    public ArrayList<Question> getQuestions(ArrayList<Question> questions) {
+        return questions;
     }
 
     public Player getPlayer() {
@@ -35,11 +43,11 @@ public class Game {
         this.player = player;
     }
 
-    public ArrayList<Question> getQuestions() {
-        return questions;
+    public ArrayList<String> getClickedCat() {
+        return clickedCat;
     }
-    public void setQuestions(ArrayList<Question> questions) {
-        this.questions = questions;
+    public void setClickedCat(ArrayList<String> clickedCat) {
+        this.clickedCat = clickedCat;
     }
 
     public int getTimer() {
@@ -56,27 +64,28 @@ public class Game {
         this.gameScore = gameScore;
     }
 
-    public void prepGame(ArrayList<Question> questions, ArrayList<String> clicked) {
+    public ArrayList<Question> prepGame(ArrayList<String> clickedCat) {
 
         db = new DBHelper(context);
 
-        questions = getQuestionsFromDb(clicked);
+        questions = getQuestionsFromDb(clickedCat);
 
         shuffleQuestions(questions);
+
+        return questions;
 
     }
 
     public void playRound(Player player, ArrayList<Question> questions) {
 
-
     }
 
-    public ArrayList<Question> getQuestionsFromDb(ArrayList<String> clicked) {
+    public ArrayList<Question> getQuestionsFromDb(ArrayList<String> clickedCat) {
 
         List<Question> questionsList;
         ArrayList<Question> questions = new ArrayList<>();
 
-            questionsList = db.getSpecificQuestions(clicked);
+            questionsList = db.getSpecificQuestions(clickedCat);
             questions = ListToArrayList(questionsList, questions);
 
         return questions;
@@ -94,6 +103,18 @@ public class Game {
             questions.add(questionList.get(i));
         }
         return questions;
+
+    }
+
+    public void roundGuess(String guess, Question question, Player player) {
+
+        int score = 10;
+
+        if(guess.equals(question.getCorrectAnswer())) {
+
+            player.setCurrentScore(score += player.getCurrentScore());
+
+        }
 
     }
 
