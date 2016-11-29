@@ -99,7 +99,9 @@ public class ProfileActivity extends AppCompatActivity {
 
         Player p1 = new Player(0, name, 0);
 
-        saveMonkey(view, p1);
+        p1.setMonkeyID(monkeyID);
+
+        Log.d(TAG, "saveProfile: " + p1.getMonkeyID());
 
         db.addPlayer(p1);
         playerNames = getNameOfPlayer();
@@ -127,23 +129,23 @@ public class ProfileActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void saveMonkey(View view, Player player) {
+    public void saveMonkey(View view) {
         Log.d(TAG, "saveMonkey: kom in i metoden!");
 
         if (view.equals(findViewById(R.id.monkey1))){
             monkeyID = R.drawable.ziggymonkey;
-            player.setMonkeyID(monkeyID);
             Log.d(TAG, "ziggy");
+            //2130837599
         }
         else if (view.equals(findViewById(R.id.monkey2))){
             monkeyID = R.drawable.rupaulmonkey;
-            player.setMonkeyID(monkeyID);
             Log.d(TAG, "rupaul");
+            //2130837596
         }
         else if (view.equals(findViewById(R.id.monkey3))){
             monkeyID = R.drawable.standardmonkey;
-            player.setMonkeyID(monkeyID);
             Log.d(TAG, "standard");
+            //2130837598
         }
     }
 
