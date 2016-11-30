@@ -18,7 +18,9 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         DBHelper db = new DBHelper(this);
         setContentView(R.layout.splashh);
-        db.addQuestion();
+        if(db.getAllQuestions().size() < 1) {
+            db.addQuestion();
+        }
         final ImageView iv = (ImageView) findViewById(R.id.image);
         final TextView tv = (TextView) findViewById(R.id.introText);
         final Animation an = AnimationUtils.loadAnimation(getBaseContext(), R.anim.rotate);

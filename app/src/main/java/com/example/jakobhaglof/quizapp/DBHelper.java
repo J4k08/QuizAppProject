@@ -54,7 +54,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL(sqlPlayer);
 
-
         String sqlQuestions ="CREATE TABLE " + QUEST_TABLE + "("+
 
                 ID +"_id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -163,52 +162,68 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public List<Question> getSpecificQuestions(ArrayList<String> categories) {
+    public ArrayList<Question> getSpecificQuestions(ArrayList<String> categories) {
 
-        
+
         Log.d(TAG, "getSpecificQuestions: " + categories.get(0));
-        String choices = categories.get(0);
 
-        List<Question> questionList = new ArrayList<Question>();
+        String choices = CATEGORY+"=?";
+
+        ArrayList<Question> questionList = new ArrayList<Question>();
+
 
         if(categories.size() > 1) {
             Log.d(TAG, "getSpecificQuestions: GÅR IN I FORLOOPEN");
 
             for(int i = 1; i < categories.size(); i++) {
 
-                choices +=" OR " +categories.get(i);
+                choices +=" OR " + CATEGORY+"=?";
+                Log.d(TAG, "getSpecificQuestions: " + categories.get(i));
             }
 
         }
 
-        String selectQuery = "SELECT * FROM " + QUEST_TABLE + " WHERE " + CATEGORY + "=" + choices;
+        //String selectQuery = "SELECT * FROM " + QUEST_TABLE + " WHERE " + CATEGORY + "=\""+ choices +"\"";
+
         db = this.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        String[] categoriesArray = categories.toArray(new String[categories.size()]);
+
+        Cursor cursor = db.query(true, QUEST_TABLE, null, choices, categoriesArray, null, null, null, null);
+
+
+        //Cursor cursor = db.rawQuery(selectQuery, null);
+
+        Log.d(TAG, "getSpecificQuestions: Innan If-sats");
 
         if (cursor.moveToFirst()) {
             do {
 
+                Log.d(TAG, "getSpecificQuestions: Efter if-sats");
                 Question quest = new Question();
 
-                quest.setQuestion(cursor.getString(cursor.getColumnIndex(QUEST)));
-                quest.setCategory(cursor.getString(cursor.getColumnIndex(CATEGORY)));
-                quest.setCorrectAnswer(cursor.getString(cursor.getColumnIndex(CORRECT)));
-                quest.setChoice1(cursor.getString(cursor.getColumnIndex(CHOICE1)));
-                quest.setChoice2(cursor.getString(cursor.getColumnIndex(CHOICE2)));
-                quest.setChoice3(cursor.getString(cursor.getColumnIndex(CHOICE3)));
-                quest.setChoice4(cursor.getString(cursor.getColumnIndex(CHOICE4)));
+                quest.setQuestion(cursor.getString(cursor.getColumnIndex((QUEST))));
+                quest.setCategory(cursor.getString(cursor.getColumnIndex((CATEGORY))));
+                quest.setCorrectAnswer(cursor.getString(cursor.getColumnIndex((CORRECT))));
+                quest.setChoice1(cursor.getString(cursor.getColumnIndex((CHOICE1))));
+                quest.setChoice2(cursor.getString(cursor.getColumnIndex((CHOICE2))));
+                quest.setChoice3(cursor.getString(cursor.getColumnIndex((CHOICE3))));
+                quest.setChoice4(cursor.getString(cursor.getColumnIndex((CHOICE4))));
+
+
+                Log.d(TAG, "getSpecificQuestions: " + quest.getQuestion());
 
                 questionList.add(quest);
+
             } while (cursor.moveToNext());
 
         }
         cursor.close();
 
-        Log.d(TAG,"questionList skapad!");
-
         db.close();
 
+        Log.d(TAG, "getSpecificQuestions: Kommer till slutet");
         return questionList;
 
     }
@@ -216,6 +231,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public Player getPlayerFromDB(String name) {
 
         String selectQuery = "SELECT * FROM " + P_TABLE + " WHERE " + P_NAME + "=\""+ name +"\"";
+
         db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -223,7 +239,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Player player = new Player();
 
         if(cursor.moveToFirst()) {
-            player.setName(cursor.getString(cursor.getColumnIndex((P_NAME))));
+            player.setName(cursor.getString(cursor.getColumnIndex(P_NAME)));
             player.setHighScore(cursor.getInt(cursor.getColumnIndex(P_HIGHSCORE)));
         } else {
             player = null;
