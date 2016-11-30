@@ -15,7 +15,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     Player player;
     String pName = "";
-    DBHelper db = new DBHelper(this);
+    DBHelper db;
 
     private final static String TAG = "SETTINGS_ACTIVITY: ";
 
@@ -23,6 +23,8 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        db = new DBHelper(this);
+
         Intent i = getIntent();
         player = db.getPlayerFromDB(pName = i.getExtras().getString("pName"));
         Log.d(TAG, "onCreate: " + player.getName());

@@ -9,13 +9,14 @@ import android.view.MenuItem;
 public class AboutActivity extends AppCompatActivity {
 
     private final static String TAG = "ABOUT_ACTIVITY: ";
-    DBHelper db = new DBHelper(this);
+    DBHelper db;
     Player player;
     String pName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = new DBHelper(this);
 
         Intent i = getIntent();
         setContentView(R.layout.activity_about);

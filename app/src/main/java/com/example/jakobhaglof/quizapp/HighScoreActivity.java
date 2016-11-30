@@ -15,7 +15,7 @@ import java.util.List;
 public class HighScoreActivity extends AppCompatActivity {
 
     private final static String TAG = "HIGH_SCORE_ACTIVITY: ";
-    DBHelper db = new DBHelper(this);
+    DBHelper db;
     Player player;
     String pName = "";
     Spinner spinner;
@@ -24,6 +24,7 @@ public class HighScoreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_high_score);
+        db = new DBHelper(this);
 
         Intent i = getIntent();
         player = db.getPlayerFromDB(pName = i.getExtras().getString("pName"));

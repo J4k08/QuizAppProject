@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 
 public class MainMenuActivity extends AppCompatActivity {
-    DBHelper db = new DBHelper(this);
+    DBHelper db;
     private final static String TAG = "MAIN_MENU_ACTIVITY: ";
     Player player;
     String pName = "";
@@ -20,6 +20,7 @@ public class MainMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        db = new DBHelper(this);
         Intent i = getIntent();
 
         player = db.getPlayerFromDB(pName = i.getExtras().getString("pName"));

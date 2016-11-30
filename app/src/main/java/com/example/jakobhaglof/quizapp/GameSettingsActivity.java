@@ -21,7 +21,7 @@ public class GameSettingsActivity extends AppCompatActivity {
     CheckBox checkBox4;
     CheckBox checkBox5;
     CheckBox checkBox6;
-    DBHelper db = new DBHelper(this);
+    DBHelper db;
     ArrayList<String> clickedCat = new ArrayList<>();
     String pName = "";
     Player player;
@@ -31,7 +31,7 @@ public class GameSettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_settings);
-
+        db = new DBHelper(this);
         Intent i = getIntent();
         player = db.getPlayerFromDB(pName = i.getStringExtra("pName"));
         Log.d(TAG, "onCreate: " + player.getName());
@@ -108,7 +108,8 @@ public class GameSettingsActivity extends AppCompatActivity {
         checkBox6 = (CheckBox) findViewById(R.id.myCategory);
 
         if (checkBox1.isChecked()){
-            clickedCat.add(checkBox1.getText().toString());
+
+            clickedCat.add("TV");
             Log.d(TAG, "clicked: " + checkBox1.getText().toString());
         }
         if (checkBox2.isChecked()){

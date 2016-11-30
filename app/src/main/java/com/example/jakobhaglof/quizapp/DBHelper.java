@@ -18,9 +18,9 @@ import java.util.List;
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final String TAG = "Databas: ";
-
     private static final String db_name = "myDataBase";
     private SQLiteDatabase db;
+    public Context context;
 
 
     private static final String QUEST_TABLE = "questions";
@@ -40,6 +40,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public DBHelper(Context context) {
         super(context, db_name, null, 1);
+        this.context = context;
     }
 
 
@@ -81,9 +82,9 @@ public class DBHelper extends SQLiteOpenHelper {
         //Musik
         //Diverse
 
-        Question q1F = new Question("Vem spelade Harry Potter i filmen Harry Potter?"
-                , "Film & TV", "Daniel Radcliffe", "Marlon Brando", "Daniel Radcliffe", "Sven Wolter", "Han ljudkillen från polisskolan");
-        this.addQuestion(q1F);
+        Question q1T = new Question("Vem spelade Harry Potter i filmen Harry Potter?"
+                , "TV", "Daniel Radcliffe", "Marlon Brando", "Daniel Radcliffe", "Sven Wolter", "Han ljudkillen från polisskolan");
+        this.addQuestion(q1T);
 
         Question q1M = new Question("Vem är inte en medlem i ABBA?", "Musik", "Babben Larsson", "Björn Ulvaeus", "Anni-Frid Lyngstad",
                 "Babben Larsson", "Agnetha Fältskog");
@@ -164,13 +165,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public List<Question> getSpecificQuestions(ArrayList<String> categories) {
 
-
+        
         Log.d(TAG, "getSpecificQuestions: " + categories.get(0));
         String choices = categories.get(0);
 
         List<Question> questionList = new ArrayList<Question>();
 
         if(categories.size() > 1) {
+            Log.d(TAG, "getSpecificQuestions: GÅR IN I FORLOOPEN");
 
             for(int i = 1; i < categories.size(); i++) {
 
@@ -180,8 +182,8 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         String selectQuery = "SELECT * FROM " + QUEST_TABLE + " WHERE " + CATEGORY + "=" + choices;
-
         db = this.getReadableDatabase();
+
         Cursor cursor = db.rawQuery(selectQuery, null);
 
         if (cursor.moveToFirst()) {

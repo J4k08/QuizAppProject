@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class GameActivity extends AppCompatActivity {
 
     private final static String TAG = "GAME_ACTIVITY: ";
-    DBHelper db = new DBHelper(this);
+    DBHelper db;
     int clickCounter = 0;
     Player player;
     String pName = "";
@@ -33,6 +33,7 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        db = new DBHelper(this);
         Intent i = getIntent();
         player = db.getPlayerFromDB(pName = i.getStringExtra("pName"));
         startQuestion();
