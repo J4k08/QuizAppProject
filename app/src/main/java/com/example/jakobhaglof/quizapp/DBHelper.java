@@ -164,22 +164,29 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public List<Question> getSpecificQuestions(ArrayList<String> categories) {
 
+
+        Log.d(TAG, "getSpecificQuestions: " + categories.get(0));
         String choices = categories.get(0);
+
         List<Question> questionList = new ArrayList<Question>();
 
-        for(int i = 1; i < categories.size(); i++) {
+        if(categories.size() > 1) {
 
-            choices +=" OR " +categories.get(i);
+            for(int i = 1; i < categories.size(); i++) {
+
+                choices +=" OR " +categories.get(i);
+            }
+
         }
 
         String selectQuery = "SELECT * FROM " + QUEST_TABLE + " WHERE " + CATEGORY + "=" + choices;
 
         db = this.getReadableDatabase();
-
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        if(cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             do {
+
                 Question quest = new Question();
 
                 quest.setQuestion(cursor.getString(cursor.getColumnIndex(QUEST)));
@@ -197,6 +204,8 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
 
         Log.d(TAG,"questionList skapad!");
+
+        db.close();
 
         return questionList;
 
@@ -220,6 +229,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         cursor.close();
         Log.d(TAG, player.getName() + " " + player.getHighScore());
+
+        db.close();
 
         return player;
 

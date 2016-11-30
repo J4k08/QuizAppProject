@@ -21,11 +21,11 @@ public class GameActivity extends AppCompatActivity {
     String pName = "";
     ArrayList<String> clickedCat;
     ArrayList<Question> gameQuestions;
-    TextView que = (TextView)findViewById(R.id.setQuestion);
-    Button btn1 = (Button)findViewById(R.id.btnChoice1);
-    Button btn2 = (Button)findViewById(R.id.btnChoice2);
-    Button btn3 = (Button)findViewById(R.id.btnChoice3);
-    Button btn4 = (Button)findViewById(R.id.btnChoice4);
+    TextView que;
+    Button btn1;
+    Button btn2;
+    Button btn3;
+    Button btn4;
     Game game;
 
 
@@ -35,7 +35,7 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         Intent i = getIntent();
         player = db.getPlayerFromDB(pName = i.getStringExtra("pName"));
-
+        startQuestion();
         Log.d(TAG, player.getName());
         clickedCat = (ArrayList<String>)getIntent().getSerializableExtra("clickedCat");
         game = new Game(100, clickedCat , player);
@@ -86,13 +86,21 @@ public class GameActivity extends AppCompatActivity {
 
     public void categoryBoxes(View view) {
 
-        Question q = new Question();
+        Question q;
         q = gameQuestions.get(clickCounter);
         String guess = view.toString();
 
         game.roundGuess(guess, q, player);
 
         clickCounter ++;
+    }
+    public void startQuestion() {
+
+        que=(TextView) findViewById(R.id.setQuestion);
+        btn1 = (Button)findViewById(R.id.btnChoice1);
+        btn2 = (Button)findViewById(R.id.btnChoice2);
+        btn3 = (Button)findViewById(R.id.btnChoice3);
+        btn4 = (Button)findViewById(R.id.btnChoice4);
 
     }
 }
