@@ -45,11 +45,8 @@ public class GameActivity extends AppCompatActivity {
 
         gameQuestions = game.prepGame(clickedCat);
 
-        while(clickCounter < 5) {
 
             playGame(gameQuestions);
-
-        }
 
     }
 
