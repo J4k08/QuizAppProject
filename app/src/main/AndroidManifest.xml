@@ -34,7 +34,7 @@
         </activity>
         <activity android:name=".MainMenuActivity" />
         <activity android:name=".AddQuestionActivity" />
-        <activity android:name=".RemoveQuestionActivity"></activity>
+        <activity android:name=".RemoveQuestionActivity" />
     </application>
 
 </manifest>

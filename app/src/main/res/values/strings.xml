@@ -46,6 +46,7 @@
     <string name="my_questions">Mina frågor</string>
 
     <string name="chooseCategory">Välj kategori:</string>
+    <string name="bajs">BAJS</string>
 
     <string-array name="categories">
         <item>Film &amp; TV</item>
