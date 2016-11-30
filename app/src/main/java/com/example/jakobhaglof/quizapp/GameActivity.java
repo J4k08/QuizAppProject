@@ -41,25 +41,15 @@ public class GameActivity extends AppCompatActivity {
         Log.d(TAG, player.getName());
         clickedCat = i.getStringArrayListExtra("clickedCat");
 
-        if(clickedCat.size() == 0) {
-            Log.d(TAG, "onCreate: clickedCat är 0 stor");
-        }
         game = new Game(this, 100, clickedCat , player);
 
         gameQuestions = game.prepGame(clickedCat);
-
-
-        Log.d(TAG, "onCreate: "+ gameQuestions.get(clickCounter).getQuestion());;
-        Log.d(TAG, "onCreate: "+ gameQuestions.get(clickCounter).getCategory());;
-        Log.d(TAG, "onCreate: "+ gameQuestions.get(clickCounter).getChoice1());
 
         while(clickCounter < 5) {
 
             playGame(gameQuestions);
 
         }
-
-
 
     }
 
