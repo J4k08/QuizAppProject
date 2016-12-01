@@ -1,5 +1,7 @@
 package com.example.jakobhaglof.quizapp;
 
+import android.content.Context;
+
 /**
  * Created by jakobhaglof on 17/11/16.
  */
@@ -10,6 +12,7 @@ public class Player {
     private String name;
     private int highScore;
     private int monkeyID;
+
 
     public Player() {
 

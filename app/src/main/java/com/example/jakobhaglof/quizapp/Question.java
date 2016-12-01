@@ -1,5 +1,7 @@
 package com.example.jakobhaglof.quizapp;
 
+import android.content.Context;
+
 /**
  * Created by Curject on 17/11/16.
  */
@@ -13,6 +15,7 @@ public class Question {
     private String choice2;
     private String choice3;
     private String choice4;
+
 
     public Question() {
         category = "";

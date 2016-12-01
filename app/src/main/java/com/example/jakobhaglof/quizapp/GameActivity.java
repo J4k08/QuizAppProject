@@ -1,5 +1,6 @@
 package com.example.jakobhaglof.quizapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,17 +16,14 @@ import java.util.ArrayList;
 public class GameActivity extends AppCompatActivity {
 
     private final static String TAG = "GAME_ACTIVITY: ";
-    DBHelper db = new DBHelper(this);
-    int clickCounter = 0;
+    DBHelper db;
+    int clickCounter;
     Player player;
     String pName = "";
     ArrayList<String> clickedCat;
     ArrayList<Question> gameQuestions;
     TextView que;
-    Button btn1;
-    Button btn2;
-    Button btn3;
-    Button btn4;
+    Button btn1; Button btn2; Button btn3; Button btn4;
     Game game;
 
 
@@ -33,22 +31,22 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+        clickCounter = 0;
+        db = new DBHelper(this);
         Intent i = getIntent();
         player = db.getPlayerFromDB(pName = i.getStringExtra("pName"));
+
         startQuestion();
         Log.d(TAG, player.getName());
-        clickedCat = (ArrayList<String>)getIntent().getSerializableExtra("clickedCat");
-        game = new Game(100, clickedCat , player);
+        clickedCat = i.getStringArrayListExtra("clickedCat");
+
+        game = new Game(this, 100, clickedCat , player);
 
         gameQuestions = game.prepGame(clickedCat);
 
-        while(clickCounter < 11) {
 
             playGame(gameQuestions);
-
-        }
-
-
 
     }
 
@@ -86,8 +84,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void categoryBoxes(View view) {
 
-        Question q;
-        q = gameQuestions.get(clickCounter);
+        Question q = gameQuestions.get(clickCounter);
         String guess = view.toString();
 
         game.roundGuess(guess, q, player);

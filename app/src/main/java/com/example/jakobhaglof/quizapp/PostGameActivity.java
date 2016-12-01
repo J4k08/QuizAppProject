@@ -9,7 +9,7 @@ import android.view.MenuItem;
 public class PostGameActivity extends AppCompatActivity {
 
     private final static String TAG = "POST_GAME_ACTIVITY: ";
-    DBHelper db = new DBHelper(this);
+    DBHelper db;
     Player player;
     String pName = "";
 
@@ -17,7 +17,7 @@ public class PostGameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_game);
-
+        db = new DBHelper(this);
         Intent i = getIntent();
         player = db.getPlayerFromDB(pName = i.getExtras().getString("pName"));
     }

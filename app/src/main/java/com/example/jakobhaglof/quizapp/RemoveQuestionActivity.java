@@ -9,7 +9,7 @@ import android.view.MenuItem;
 public class RemoveQuestionActivity extends AppCompatActivity {
 
     private final static String TAG = "REMOVE_QUESTION_ACTIVITY: ";
-    DBHelper db = new DBHelper(this);
+    DBHelper db;
     Player player;
     String pName = "";
 
@@ -17,6 +17,7 @@ public class RemoveQuestionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_remove_question);
+        db = new DBHelper(this);
 
         Intent i = getIntent();
         player = db.getPlayerFromDB(pName = i.getExtras().getString("pName"));

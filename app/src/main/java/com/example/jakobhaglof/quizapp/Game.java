@@ -1,9 +1,8 @@
 package com.example.jakobhaglof.quizapp;
 
 import android.content.Context;
-import android.widget.Switch;
+import android.util.Log;
 
-import java.util.Collection;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,18 +13,21 @@ import java.util.List;
 
 public class Game {
 
+    private static final String TAG = "GAME";
     private int timer = 0;
     private int gameScore = 0;
     private ArrayList<String> clickedCat;
     private Player player;
     private DBHelper db;
-    private Context context;
     private ArrayList<Question> questions;
+    private Context context;
 
-    public Game(int timer, ArrayList<String> clickedCat, Player player) {
+    public Game(Context context, int timer, ArrayList<String> clickedCat, Player player) {
         this.timer = timer;
         this.clickedCat = clickedCat;
         this.player = player;
+        this.context = context;
+        db = new DBHelper(context);
 
     }
 
@@ -66,14 +68,11 @@ public class Game {
 
     public ArrayList<Question> prepGame(ArrayList<String> clickedCat) {
 
-        db = new DBHelper(context);
+            questions = getQuestionsFromDb(clickedCat);
 
-        questions = getQuestionsFromDb(clickedCat);
+            shuffleQuestions(questions);
 
-        shuffleQuestions(questions);
-
-        return questions;
-
+            return questions;
     }
 
     public void playRound(Player player, ArrayList<Question> questions) {
@@ -82,11 +81,10 @@ public class Game {
 
     public ArrayList<Question> getQuestionsFromDb(ArrayList<String> clickedCat) {
 
-        List<Question> questionsList;
         ArrayList<Question> questions = new ArrayList<>();
 
-            questionsList = db.getSpecificQuestions(clickedCat);
-            questions = ListToArrayList(questionsList, questions);
+            questions = db.getSpecificQuestions(clickedCat);
+            //questions = ListToArrayList(questionsList, questions);
 
         return questions;
     }
