@@ -77,14 +77,14 @@ public class Game {
 
     public void playRound(Player player, ArrayList<Question> questions) {
 
+
     }
 
     public ArrayList<Question> getQuestionsFromDb(ArrayList<String> clickedCat) {
 
-        ArrayList<Question> questions = new ArrayList<>();
+        ArrayList<Question> questions;
 
             questions = db.getSpecificQuestions(clickedCat);
-            //questions = ListToArrayList(questionsList, questions);
 
         return questions;
     }
