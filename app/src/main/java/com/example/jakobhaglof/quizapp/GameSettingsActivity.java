@@ -57,6 +57,11 @@ public class GameSettingsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
 
         int id = item.getItemId();
+
+        if (id == R.id.toolbarMonkey){
+            Intent intent = new Intent(this, ProfileActivity.class);
+            startActivity(intent);
+        }
         if (id == R.id.settings) {
             Intent intent = new Intent(this, SettingsActivity.class);
             intent.putExtra("pName", pName);
