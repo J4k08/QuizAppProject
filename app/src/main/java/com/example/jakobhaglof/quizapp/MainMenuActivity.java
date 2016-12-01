@@ -25,6 +25,8 @@ public class MainMenuActivity extends AppCompatActivity {
 
         player = db.getPlayerFromDB(pName = i.getExtras().getString("pName"));
 
+        Log.d(TAG, "MONKEY ID: " + player.getMonkeyID());
+
         Log.d(TAG, "onCreate: " + player.getName() + " " + player.getHighScore());
 
     }

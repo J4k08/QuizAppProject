@@ -37,6 +37,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String P_ID = "pId";
     private static final String P_NAME = "name";
     private static final String P_HIGHSCORE = "highscore";
+    private static final String P_MONKEY = "monkey";
 
     public DBHelper(Context context) {
         super(context, db_name, null, 1);
@@ -50,6 +51,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
          P_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
          P_NAME + " VARCHAR(255) NOT NULL," +
+         P_MONKEY + " INTEGER," +
          P_HIGHSCORE + " INTEGER)";
 
         sqLiteDatabase.execSQL(sqlPlayer);
@@ -123,6 +125,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         values.put(P_NAME, player.getName());
         values.put(P_HIGHSCORE, player.getHighScore());
+        values.put(P_MONKEY, player.getMonkeyID());
 
         long id = db.insert(P_TABLE, null, values);
         Log.d("lagt till player", "row id " + P_ID);
@@ -241,6 +244,7 @@ public class DBHelper extends SQLiteOpenHelper {
         if(cursor.moveToFirst()) {
             player.setName(cursor.getString(cursor.getColumnIndex(P_NAME)));
             player.setHighScore(cursor.getInt(cursor.getColumnIndex(P_HIGHSCORE)));
+            player.setMonkeyID(cursor.getInt(cursor.getColumnIndex(P_MONKEY)));
         } else {
             player = null;
         }
@@ -269,6 +273,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
                     p.setName(cursor.getString(cursor.getColumnIndex(P_NAME)));
                     p.setHighScore(cursor.getInt(cursor.getColumnIndex(P_HIGHSCORE)));
+                    p.setMonkeyID(cursor.getInt(cursor.getColumnIndex(P_MONKEY)));
 
 
                     playerList.add(p);
