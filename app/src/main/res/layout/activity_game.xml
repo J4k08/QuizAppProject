@@ -11,38 +11,70 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.jakobhaglof.quizapp.GameActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/pointsAndTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/points"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="POÄNG"
-        android:textColor="@color/textColorWhite"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-        <View
-            android:layout_width="3dp"
-            android:layout_height="20dp"
-            android:background="@android:color/white"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp" />
-
-        <TextView
-            android:id="@+id/questionTime"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TID"
-            android:textColor="@color/textColorWhite"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_toLeftOf="@+id/littleView"
+            android:layout_toStartOf="@+id/littleView">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/score"
+                android:textColor="@color/textColorWhite"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/setPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/textColorWhite"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/littleView"
+            android:layout_width="3dp"
+            android:layout_height="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:background="@android:color/white" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/littleView"
+            android:layout_toRightOf="@+id/littleView">
+
+            <TextView
+                android:id="@+id/setQuestionTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TID"
+                android:textColor="@color/textColorWhite"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:src="@drawable/ic_timer"
+                android:id="@+id/timer"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 
     <View
@@ -54,8 +86,9 @@
 
     <LinearLayout
         android:id="@+id/gameHead"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
 
         <TextView
             android:id="@+id/categoryHead"
@@ -64,65 +97,100 @@
             android:paddingTop="70dp"
             android:text="@string/question_head"
             android:textColor="@color/textColorBlack"
-            android:textSize="20sp"
+            android:textSize="25sp"
             android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gameHead"
+        android:layout_centerHorizontal="true">
 
         <TextView
             android:id="@+id/setQuestion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="70dp"
-            android:text="Vem är du?"
+            android:text=""
             android:textColor="@color/textColorBlack"
             android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/buttonLine1"
+
+    <RelativeLayout
+        android:id="@+id/buttonRel1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/gameHead">
+        android:layout_above="@+id/buttonRel2">
 
-        <Button
-            android:id="@+id/btnChoice1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="categoryBoxes"
-            android:text="Vem är jag?" />
+        <LinearLayout
+            android:id="@+id/buttonLine1"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
 
-        <Button
-            android:id="@+id/btnChoice2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="categoryBoxes"
-            android:text="Arja" />
-    </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/buttonLine2"
+            <Button
+                android:id="@+id/btnChoice1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn"
+                android:onClick="categoryBoxes"
+                android:text=""
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnChoice2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn"
+                android:onClick="categoryBoxes"
+                android:text=""
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/buttonRel2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonLine1">
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="50dp">
 
-        <Button
-            android:id="@+id/btnChoice3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="categoryBoxes"
-            android:text="Levande charader" />
+        <LinearLayout
+            android:id="@+id/buttonLine2"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
 
-        <Button
-            android:id="@+id/btnChoice4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="categoryBoxes"
-            android:text="hon där finska" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/btnChoice3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn"
+                android:onClick="categoryBoxes"
+                android:text=""
+                android:textStyle="bold" />
 
+            <Button
+                android:id="@+id/btnChoice4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn"
+                android:onClick="categoryBoxes"
+                android:text=""
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>
