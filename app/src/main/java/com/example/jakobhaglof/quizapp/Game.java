@@ -6,6 +6,8 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by jakobhaglof on 17/11/16.
@@ -14,8 +16,8 @@ import java.util.List;
 public class Game {
 
     private static final String TAG = "GAME";
-    private int timer = 0;
-    private int gameScore = 0;
+    private int timer = 10000;
+    private int gameScore;
     private ArrayList<String> clickedCat;
     private Player player;
     private DBHelper db;
@@ -104,16 +106,21 @@ public class Game {
 
     }
 
-    public void roundGuess(String guess, Question question, Player player) {
+    public int roundGuess(String guess, Question question, int timer) {
 
+        Log.d(TAG, "roundGuess: Klickade är: " + guess);
+
+        Log.d(TAG, "roundGuess: Rätt svar i metod: " + question.getCorrectAnswer());
         int score = 10;
+        score = timer/1000;
 
         if(guess.equals(question.getCorrectAnswer())) {
-
-            player.setCurrentScore(score += player.getCurrentScore());
-
+            Log.d(TAG, "roundGuess: Poäng efter rätt svar: " + score);
+            return score;
+        }
+        return score = 0;
         }
 
-    }
+
 
 }

@@ -196,8 +196,6 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.query(true, QUEST_TABLE, null, choices, categoriesArray, null, null, null, null);
 
 
-        //Cursor cursor = db.rawQuery(selectQuery, null);
-
         Log.d(TAG, "getSpecificQuestions: Innan If-sats");
 
         if (cursor.moveToFirst()) {
@@ -286,6 +284,18 @@ public class DBHelper extends SQLiteOpenHelper {
             Log.d(TAG, "PlayerList skapad!");
 
         return playerList;
+    }
+
+    public void updateHighScore(int highScore, String pName) {
+
+        db = this.getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(P_HIGHSCORE, highScore);
+        String[] selectionArgs = new String[]{pName};
+
+        db.update(P_TABLE, cv, P_NAME, selectionArgs);
+
     }
 
 }
