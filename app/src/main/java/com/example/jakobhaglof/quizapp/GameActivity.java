@@ -89,14 +89,6 @@ public class GameActivity extends AppCompatActivity {
 
     public void playGame(ArrayList<Question> questions, Game game) {
 
-        if(rndNumber == (questions.size()-1)) {
-
-            Intent i = new Intent(this, HighScoreActivity.class);
-            db.updateHighScore(playerScore, pName);
-            i.putExtra("pName", pName);
-            startActivity(i);
-        }
-
         timer = 11000;
         startTimer();
 
@@ -120,6 +112,20 @@ public class GameActivity extends AppCompatActivity {
         rndNumber++;
         Log.d(TAG, "categoryBoxes: Poäng:" + playerScore);
         countDownTimer.cancel();
+
+        if(rndNumber == gameQuestions.size()-1) {
+
+            Intent i = new Intent(this, HighScoreActivity.class);
+            db.updateHighScore(playerScore, pName);
+            i.putExtra("pName", pName);
+
+            Player test;
+            test = db.getPlayerFromDB(pName);
+
+            Log.d(TAG, "playGame: " + test.getHighScore());
+
+            startActivity(i);
+        }
         playGame(gameQuestions, game);
 
     }

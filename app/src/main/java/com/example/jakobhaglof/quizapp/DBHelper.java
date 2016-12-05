@@ -22,7 +22,6 @@ public class DBHelper extends SQLiteOpenHelper {
     private SQLiteDatabase db;
     public Context context;
 
-
     private static final String QUEST_TABLE = "questions";
     private static final String ID = "questionID";
     private static final String QUEST = "question";
@@ -253,7 +252,6 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
 
         return player;
-
     }
 
     public List<Player> getAllPlayers() {
@@ -294,8 +292,10 @@ public class DBHelper extends SQLiteOpenHelper {
         cv.put(P_HIGHSCORE, highScore);
         String[] selectionArgs = new String[]{pName};
 
-        db.update(P_TABLE, cv, P_NAME, selectionArgs);
+        db.update(P_TABLE, cv, P_NAME + "=?", selectionArgs);
 
     }
+
+    public
 
 }
