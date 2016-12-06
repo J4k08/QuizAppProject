@@ -135,13 +135,13 @@ public class GameActivity extends AppCompatActivity {
         if(rndNumber == gameQuestions.size()) {
 
             Intent i = new Intent(this, PostGameActivity.class);
-            db.updateHighScore(playerScore, pName);
-            i.putExtra("pName", pName);
 
-            Player test;
-            test = db.getPlayerFromDB(pName);
-
-            Log.d(TAG, "playGame: " + test.getHighScore());
+            if(playerScore > player.getHighScore()) {
+                db.updateHighScore(playerScore, pName);
+                Log.d(TAG, "Player highscore: är högre och sparas!");
+            }
+            i.putExtra("pName", pName); i.putExtra("playerScore", playerScore);
+            i.putStringArrayListExtra("clickedCat", clickedCat);
 
             startActivity(i);
         } else {
