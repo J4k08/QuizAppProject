@@ -134,7 +134,7 @@ public class GameActivity extends AppCompatActivity {
 
         if(rndNumber == gameQuestions.size()) {
 
-            Intent i = new Intent(this, HighScoreActivity.class);
+            Intent i = new Intent(this, PostGameActivity.class);
             db.updateHighScore(playerScore, pName);
             i.putExtra("pName", pName);
 
