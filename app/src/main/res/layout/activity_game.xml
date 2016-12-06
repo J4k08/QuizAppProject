@@ -50,7 +50,12 @@
             android:layout_marginStart="10dp"
             android:background="@android:color/white" />
 
+<<<<<<< HEAD
         <LinearLayout
+=======
+        <TextView
+            android:id="@+id/setQuestionTime"
+>>>>>>> gameLogic2.5
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/littleView"

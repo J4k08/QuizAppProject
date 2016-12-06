@@ -87,11 +87,11 @@ public class GameSettingsActivity extends AppCompatActivity {
         if (checkBox1.isChecked() || checkBox2.isChecked() || checkBox3.isChecked()
                 || checkBox4.isChecked() || checkBox5.isChecked() || checkBox6.isChecked()){
 
-            Intent intent = new Intent(this, GameActivity.class);
-            intent.putStringArrayListExtra("clickedCat", clickedCat);
-            intent.putExtra("pName", pName);
+            Intent i = new Intent(this, GameActivity.class);
+            i.putStringArrayListExtra("clickedCat", clickedCat);
+            i.putExtra("pName", pName);
 
-            startActivity(intent);
+            startActivity(i);
 
         }else {
             Toast.makeText(this, R.string.you_need_to_choose_category, Toast.LENGTH_SHORT).show();

@@ -31,7 +31,7 @@ public class Question {
 
         this.question = question;
         this.category = category;
-        this.correctAnswer = "";
+        this.correctAnswer = correctAnswer;
         this.choice1 = choice1;
         this.choice2 = choice2;
         this.choice3 = choice3;
