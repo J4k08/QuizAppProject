@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -16,10 +18,11 @@ import java.util.List;
 public class HighScoreActivity extends AppCompatActivity {
 
     private final static String TAG = "HIGH_SCORE_ACTIVITY: ";
-    DBHelper db;
-    Player player;
-    String pName = "";
-    Spinner spinner;
+    private DBHelper db;
+    private Player player;
+    private String pName = "";
+    private Spinner spinner;
+    private SimpleAdapter sA;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,5 +89,7 @@ public class HighScoreActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    //Metod för att lista highscore och sortera
 
 }
