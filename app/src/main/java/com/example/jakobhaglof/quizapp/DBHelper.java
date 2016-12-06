@@ -247,7 +247,6 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         cursor.close();
-        Log.d(TAG, player.getName() + " " + player.getHighScore());
 
         db.close();
 

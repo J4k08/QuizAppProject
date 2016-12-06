@@ -95,7 +95,7 @@ public class MainMenuActivity extends AppCompatActivity {
     public void sendToHighScore(View view) {
 
         Intent intent = new Intent(this, HighScoreActivity.class);
-        intent.putExtra("name", pName);
+        intent.putExtra("pName", pName);
         startActivity(intent);
     }
 }

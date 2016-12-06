@@ -3,6 +3,7 @@ package com.example.jakobhaglof.quizapp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,8 +25,6 @@ public class HighScoreActivity extends AppCompatActivity {
     private DBHelper db;
     private Player player;
     private String pName = "";
-    private Spinner spinner;
-    private SimpleAdapter sA;
     private GridView gv;
     private ArrayAdapter<Player> gridAdapter;
 
@@ -34,32 +33,12 @@ public class HighScoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_high_score);
 
+        Log.d(TAG, "onCreate: KOM IN PÅ AKTIVITETEN");
         db = new DBHelper(this);
         Intent i = getIntent();
         player = db.getPlayerFromDB(pName = i.getExtras().getString("pName"));
-        addItemsOnSpinner();
-        addListenerOnSpinnerItemSelection();
 
         writeHighScore();
-    }
-
-    public void addItemsOnSpinner() {
-
-        spinner = (Spinner) findViewById(R.id.get_new_category);
-        List<String> list = new ArrayList<>();
-        list.add("Film & TV");
-        list.add("Historia");
-        list.add("Musik");
-        list.add("Diverse");
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, list);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(dataAdapter);
-    }
-
-    public void addListenerOnSpinnerItemSelection() {
-        spinner = (Spinner) findViewById(R.id.get_new_category);
-        spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
     }
 
     @Override
