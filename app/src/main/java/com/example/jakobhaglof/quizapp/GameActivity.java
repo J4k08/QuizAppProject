@@ -109,11 +109,15 @@ public class GameActivity extends AppCompatActivity {
         Log.d(TAG, "categoryBoxes: " + guess);
 
         playerScore += game.roundGuess(guess, gameQuestions.get(rndNumber), timer);
+
         rndNumber++;
+        Log.d(TAG, "rnNumber: " + rndNumber);
+        Log.d(TAG, "Arraylist: " + gameQuestions.size());
         Log.d(TAG, "categoryBoxes: Poäng:" + playerScore);
+
         countDownTimer.cancel();
 
-        if(rndNumber == gameQuestions.size()-1) {
+        if(rndNumber == gameQuestions.size()) {
 
             Intent i = new Intent(this, HighScoreActivity.class);
             db.updateHighScore(playerScore, pName);
@@ -125,9 +129,9 @@ public class GameActivity extends AppCompatActivity {
             Log.d(TAG, "playGame: " + test.getHighScore());
 
             startActivity(i);
+        } else {
+            playGame(gameQuestions, game);
         }
-        playGame(gameQuestions, game);
-
     }
 
     public void showQuestions() {
