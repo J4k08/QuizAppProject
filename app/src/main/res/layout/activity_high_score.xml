@@ -37,7 +37,7 @@
             android:textSize="17sp"
             android:textStyle="bold" />
 
-        <Spinner
+        <!-- <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:entries="@array/categories"
@@ -45,7 +45,7 @@
 
 
         </Spinner>
-
+    -->
     </LinearLayout>
 
     <View
@@ -56,11 +56,20 @@
         android:layout_marginTop="10dp"
         android:background="@color/textColorBlack" />
 
-    <ListView
-        android:id="@+id/highScore_List"
-        android:layout_below="@+id/highScore_Line"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"/>
+    <GridView
+         android:id="@+id/listHighScore"
+         android:layout_below="@id/highScore_Line"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:columnWidth="90dp"
+         android:numColumns="3"
+         android:verticalSpacing="10dp"
+         android:horizontalSpacing="10dp"
+         android:stretchMode="columnWidth"
+         android:gravity="center">
+
+     </GridView>
+
+
 
 </RelativeLayout>

@@ -7,9 +7,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -23,6 +26,8 @@ public class HighScoreActivity extends AppCompatActivity {
     private String pName = "";
     private Spinner spinner;
     private SimpleAdapter sA;
+    private GridView gv;
+    private ArrayAdapter<Player> gridAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,8 @@ public class HighScoreActivity extends AppCompatActivity {
         player = db.getPlayerFromDB(pName = i.getExtras().getString("pName"));
         addItemsOnSpinner();
         addListenerOnSpinnerItemSelection();
+
+        writeHighScore();
     }
 
     public void addItemsOnSpinner() {
@@ -54,6 +61,7 @@ public class HighScoreActivity extends AppCompatActivity {
         spinner = (Spinner) findViewById(R.id.get_new_category);
         spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -70,11 +78,11 @@ public class HighScoreActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
 
-        if (id == R.id.toolbarMonkey){
+        if (id == R.id.toolbarMonkey) {
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
         }
@@ -83,13 +91,22 @@ public class HighScoreActivity extends AppCompatActivity {
             intent.putExtra("pName", pName);
             startActivity(intent);
         }
-        if (id == R.id.quitApp){
+        if (id == R.id.quitApp) {
             this.finishAffinity();
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    //Metod för att lista highscore och sortera
+    public void writeHighScore() {
 
+        ArrayList highList = db.getSortedPlayers();
+
+        gv = (GridView) findViewById(R.id.listHighScore);
+        gridAdapter = new ArrayAdapter<Player>(this, android.R.layout.simple_list_item_1, highList);
+        gv.setAdapter(gridAdapter);
+
+
+
+    }
 }
