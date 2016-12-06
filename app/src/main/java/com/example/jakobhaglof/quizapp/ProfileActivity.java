@@ -23,14 +23,14 @@ import static com.example.jakobhaglof.quizapp.R.string.player;
 public class ProfileActivity extends AppCompatActivity {
 
     private final static String TAG = "PROFILE_ACTIVITY: ";
-    List<Player> playersList;
-    ArrayAdapter adapter;
-    ArrayList<String> playerNames;
-    DBHelper db;
-    EditText et;
-    int monkeyID;
-    String pName = "";
-    Player player;
+    private List<Player> playersList;
+    private ArrayAdapter adapter;
+    private ArrayList<String> playerNames;
+    private DBHelper db;
+    private EditText et;
+    private int monkeyID;
+    private String pName = "";
+    private Player player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

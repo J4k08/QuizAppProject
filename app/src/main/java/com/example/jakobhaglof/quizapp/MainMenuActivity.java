@@ -12,10 +12,10 @@ import android.view.View;
 
 
 public class MainMenuActivity extends AppCompatActivity {
-    DBHelper db;
+    private DBHelper db;
     private final static String TAG = "MAIN_MENU_ACTIVITY: ";
-    Player player;
-    String pName = "";
+    private Player player;
+    private String pName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

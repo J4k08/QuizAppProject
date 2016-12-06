@@ -17,10 +17,10 @@ import java.util.List;
 public class AddQuestionActivity extends AppCompatActivity {
 
     private final static String TAG = "ADD_QUESTION_ACTIVITY: ";
-    DBHelper db;
-    Player player;
-    String pName = "";
-    Spinner spinner;
+    private DBHelper db;
+    private Player player;
+    private String pName = "";
+    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

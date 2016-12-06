@@ -10,9 +10,9 @@ import android.view.MenuItem;
 public class PostGameActivity extends AppCompatActivity {
 
     private final static String TAG = "POST_GAME_ACTIVITY: ";
-    DBHelper db;
-    Player player;
-    String pName = "";
+    private DBHelper db;
+    private Player player;
+    private String pName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

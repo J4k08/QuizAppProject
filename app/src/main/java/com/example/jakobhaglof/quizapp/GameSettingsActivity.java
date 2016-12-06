@@ -16,16 +16,12 @@ import java.util.ArrayList;
 public class GameSettingsActivity extends AppCompatActivity {
 
     private final static String TAG = "GAME_SETTINGS: ";
-    CheckBox checkBox1;
-    CheckBox checkBox2;
-    CheckBox checkBox3;
-    CheckBox checkBox4;
-    CheckBox checkBox5;
-    CheckBox checkBox6;
-    DBHelper db;
-    ArrayList<String> clickedCat = new ArrayList<>();
-    String pName = "";
-    Player player;
+    private CheckBox checkBox1, checkBox2, checkBox3, checkBox4,
+    checkBox5, checkBox6;
+    private DBHelper db;
+    private ArrayList<String> clickedCat = new ArrayList<>();
+    private String pName = "";
+    private Player player;
 
 
     @Override
