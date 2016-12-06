@@ -27,6 +27,7 @@ public class HighScoreActivity extends AppCompatActivity {
     private String pName = "";
     private GridView gv;
     private ArrayAdapter<Player> gridAdapter;
+    private ArrayList<Player> highList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +80,7 @@ public class HighScoreActivity extends AppCompatActivity {
 
     public void writeHighScore() {
 
-        ArrayList highList = db.getSortedPlayers();
+        highList = db.getSortedPlayers();
 
         gv = (GridView) findViewById(R.id.listHighScore);
         gridAdapter = new ArrayAdapter<Player>(this, android.R.layout.simple_list_item_1, highList);

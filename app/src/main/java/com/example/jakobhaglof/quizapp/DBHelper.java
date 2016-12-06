@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -291,8 +292,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(true, P_TABLE, null, null, null, null, null, null, P_HIGHSCORE +" DESC");
-        Log.d(TAG, "getSortedPlayers: HÄMTAT PLAYERS");
+        Cursor cursor = db.query(P_TABLE, null, null, null, null, null, P_HIGHSCORE + " DESC","10");
+        Log.d(TAG, "getSortedPlayers: HÄMTAT PLAYERS" + cursor);
 
         if (cursor.moveToFirst()) {
             do {
