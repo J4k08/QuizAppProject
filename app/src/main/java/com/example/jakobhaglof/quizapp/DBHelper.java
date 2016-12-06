@@ -284,6 +284,39 @@ public class DBHelper extends SQLiteOpenHelper {
         return playerList;
     }
 
+    public ArrayList<Player> getSortedPlayers(){
+
+        Log.d(TAG, "getSortedPlayers: KOMMER IN I SORTED");
+
+        ArrayList<Player> playerList = new ArrayList<Player>();
+
+        db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(true, P_TABLE, null, null, null, null, null, null, P_HIGHSCORE +" DESC");
+        Log.d(TAG, "getSortedPlayers: HÄMTAT PLAYERS");
+
+        if (cursor.moveToFirst()) {
+            do {
+                Player p = new Player();
+
+                p.setMonkeyID(cursor.getInt(cursor.getColumnIndex(P_MONKEY)));
+                p.setName(cursor.getString(cursor.getColumnIndex(P_NAME)));
+                p.setHighScore(cursor.getInt(cursor.getColumnIndex(P_HIGHSCORE)));
+
+
+                playerList.add(p);
+            } while (cursor.moveToNext());
+        }
+
+        Log.d(TAG, "getSortedPlayers: " + playerList.get(0).getHighScore());
+        cursor.close();
+        db.close();
+
+        Log.d(TAG, "PlayerList skapad!");
+
+        return playerList;
+    }
+
     public void updateHighScore(int highScore, String pName) {
 
         db = this.getWritableDatabase();
