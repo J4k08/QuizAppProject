@@ -21,11 +21,7 @@ public class PostGameActivity extends AppCompatActivity {
     private int lastRoundScore;
     private ArrayList<String> clickedCat;
     private String playedCat;
-
-    private TextView TVplayerName;
-    private TextView TVplayedCat;
-    private TextView TVroundScore;
-    private TextView TVplayerHighScore;
+    private TextView TVplayerName, TVplayedCat, TVroundScore, TVplayerHighScore;
 
 
     @Override

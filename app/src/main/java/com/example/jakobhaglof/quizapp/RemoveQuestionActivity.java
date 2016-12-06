@@ -10,9 +10,9 @@ import android.view.MenuItem;
 public class RemoveQuestionActivity extends AppCompatActivity {
 
     private final static String TAG = "REMOVE_QUESTION_ACTIVITY: ";
-    DBHelper db;
-    Player player;
-    String pName = "";
+    private DBHelper db;
+    private Player player;
+    private String pName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

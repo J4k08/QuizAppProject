@@ -14,10 +14,9 @@ import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    Player player;
-    String pName = "";
-    DBHelper db;
-
+    private Player player;
+    private String pName = "";
+    private DBHelper db;
     private final static String TAG = "SETTINGS_ACTIVITY: ";
 
     @Override
