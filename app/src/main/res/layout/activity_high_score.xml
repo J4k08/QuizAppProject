@@ -32,20 +32,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/chooseCategory"
+            android:text="@string/all_categories"
             android:textColor="@color/textColorBlack"
             android:textSize="17sp"
             android:textStyle="bold" />
 
-        <!-- <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:entries="@array/categories"
-            >
-
-
-        </Spinner>
-    -->
     </LinearLayout>
 
     <View
@@ -56,19 +47,14 @@
         android:layout_marginTop="10dp"
         android:background="@color/textColorBlack" />
 
-    <GridView
-         android:id="@+id/listHighScore"
-         android:layout_below="@id/highScore_Line"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:columnWidth="90dp"
-         android:numColumns="3"
-         android:verticalSpacing="10dp"
-         android:horizontalSpacing="10dp"
-         android:stretchMode="columnWidth"
-         android:gravity="center">
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/highScore_Line"
+        android:id="@+id/highscore_listview"
+        >
 
-     </GridView>
+    </ListView>
 
 
 
