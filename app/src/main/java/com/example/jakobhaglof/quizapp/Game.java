@@ -95,6 +95,21 @@ public class Game {
         Collections.shuffle(questions);
     }
 
+    public ArrayList<String> shuffleAnswers(ArrayList<Question> questions, int round) {
+
+        ArrayList<String> shuffledAnswers= new ArrayList<>();
+
+            shuffledAnswers.add(questions.get(round).getChoice1());
+            shuffledAnswers.add(questions.get(round).getChoice2());
+            shuffledAnswers.add(questions.get(round).getChoice3());
+            shuffledAnswers.add(questions.get(round).getChoice4());
+
+        Collections.shuffle(shuffledAnswers);
+
+        return shuffledAnswers;
+
+    }
+
     public ArrayList<Question> ListToArrayList (List<Question> questionList, ArrayList<Question> questions) {
 
 

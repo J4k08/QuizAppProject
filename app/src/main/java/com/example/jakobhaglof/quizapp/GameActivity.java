@@ -25,6 +25,7 @@ public class GameActivity extends AppCompatActivity {
     private String pName = "";
     private ArrayList<String> clickedCat;
     private ArrayList<Question> gameQuestions;
+    private ArrayList<String> answers;
     private TextView que;
     private Button btn1, btn2, btn3, btn4;
     private Game game;
@@ -46,23 +47,14 @@ public class GameActivity extends AppCompatActivity {
         clickedCat = i.getStringArrayListExtra("clickedCat");
 
         game = new Game(this, 10000, clickedCat, player);
-
         gameQuestions = game.prepGame(clickedCat);
 
         rndNumber = 0;
 
-        Log.d(TAG, "onCreate: " + gameQuestions.get(rndNumber).getQuestion());
-        Log.d(TAG, "onCreate: " + gameQuestions.get(rndNumber).getCategory());
-        Log.d(TAG, "onCreate: " + gameQuestions.get(rndNumber).getChoice1());
-        Log.d(TAG, "onCreate: " + gameQuestions.get(rndNumber).getChoice2());
-        Log.d(TAG, "onCreate: " + gameQuestions.get(rndNumber).getChoice3());
-        Log.d(TAG, "onCreate: " + gameQuestions.get(rndNumber).getChoice4());
-        Log.d(TAG, "onCreate: " + gameQuestions.get(rndNumber).getCorrectAnswer());
-
-        showQuestions();
+        setQuestions();
         timer = game.getTimer();
 
-        playGame(gameQuestions, game);
+        playGame(gameQuestions);
 
     }
 
@@ -102,16 +94,18 @@ public class GameActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void playGame(ArrayList<Question> questions, Game game) {
+    public void playGame(ArrayList<Question> questions) {
 
         timer = 11000;
         startTimer();
 
+        answers = game.shuffleAnswers(questions, rndNumber);
+
         que.setText(questions.get(rndNumber).getQuestion());
-        btn1.setText(questions.get(rndNumber).getChoice1());
-        btn2.setText(questions.get(rndNumber).getChoice2());
-        btn3.setText(questions.get(rndNumber).getChoice3());
-        btn4.setText(questions.get(rndNumber).getChoice4());
+        btn1.setText(answers.get(0));
+        btn2.setText(answers.get(1));
+        btn3.setText(answers.get(2));
+        btn4.setText(answers.get(3));
 
     }
 
@@ -145,18 +139,18 @@ public class GameActivity extends AppCompatActivity {
 
             startActivity(i);
         } else {
-            playGame(gameQuestions, game);
+            playGame(gameQuestions);
         }
     }
 
-    public void showQuestions() {
+    public void setQuestions() {
+
         que = (TextView) findViewById(R.id.setQuestion);
         btn1 = (Button) findViewById(R.id.btnChoice1);
         btn2 = (Button) findViewById(R.id.btnChoice2);
         btn3 = (Button) findViewById(R.id.btnChoice3);
         btn4 = (Button) findViewById(R.id.btnChoice4);
     }
-
     private void startTimer() {
 
         Log.d(TAG, "startTimer: " + timer);
@@ -176,21 +170,20 @@ public class GameActivity extends AppCompatActivity {
 
                 qTimer.setText("0");
                 timeOutMsg();
-                //Handler
+
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         Log.d(TAG, "onFinish: " + qTimer);
                         rndNumber++;
-                        playGame(gameQuestions, game);
+                        playGame(gameQuestions);
                     }
                 }, 2000);
             }
 
         }.start();
     }
-
     public void timeOutMsg() {
 
         Log.d(TAG, "timeOutMsg: Detta skrivs ut i onFinished");
