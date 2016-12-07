@@ -7,9 +7,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
@@ -81,12 +84,36 @@ public class HighScoreActivity extends AppCompatActivity {
     public void writeHighScore() {
 
         highList = db.getSortedPlayers();
+        ArrayList<String> names = new ArrayList<String>();
+        ArrayList<Integer> monkeys = new ArrayList<>();
+        ArrayList<Integer> scores = new ArrayList<>();
 
-        gv = (GridView) findViewById(R.id.listHighScore);
-        gridAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, highList);
-        gv.setAdapter(gridAdapter);
 
-//LISTVIEW ISTÄLLET?
+        for(int i = 0; i < highList.size(); i++){
+
+            names.add(highList.get(i).getName());
+            monkeys.add(highList.get(i).getMonkeyID());
+            scores.add(highList.get(i).getHighScore());
+
+        }
+
+        ListAdapter listList = new CustomAdapter(this, monkeys, names, scores);
+        ListView highscoreList = (ListView) findViewById(R.id.highscore_listview);
+
+        highscoreList.setAdapter(listList);
+
+
+       /** highscoreList.setOnItemClickListener(
+            new AdapterView.OnItemClickListener(){
+
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                }
+            }
+
+
+        );*/
 
     }
 }
