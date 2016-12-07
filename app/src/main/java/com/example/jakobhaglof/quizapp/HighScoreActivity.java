@@ -83,7 +83,7 @@ public class HighScoreActivity extends AppCompatActivity {
         highList = db.getSortedPlayers();
 
         gv = (GridView) findViewById(R.id.listHighScore);
-        gridAdapter = new ArrayAdapter<Player>(this, android.R.layout.simple_list_item_1, highList);
+        gridAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, highList);
         gv.setAdapter(gridAdapter);
 
 

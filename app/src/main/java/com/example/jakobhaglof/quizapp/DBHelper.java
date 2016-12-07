@@ -288,7 +288,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         Log.d(TAG, "getSortedPlayers: KOMMER IN I SORTED");
 
-        ArrayList<Player> playerList = new ArrayList<Player>();
+        ArrayList<Player> playerList = new ArrayList<>();
 
         db = this.getReadableDatabase();
 
@@ -307,8 +307,9 @@ public class DBHelper extends SQLiteOpenHelper {
                 playerList.add(p);
             } while (cursor.moveToNext());
         }
-
-        Log.d(TAG, "getSortedPlayers: " + playerList.get(0).getHighScore());
+        for(int i = 0; i < playerList.size(); i++){
+            Log.d(TAG, "getSortedPlayers: " + playerList.get(i).getName() + " " + playerList.get(i).getHighScore());
+        }
         cursor.close();
         db.close();
 
