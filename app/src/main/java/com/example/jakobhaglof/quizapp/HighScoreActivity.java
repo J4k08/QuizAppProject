@@ -84,20 +84,18 @@ public class HighScoreActivity extends AppCompatActivity {
     public void writeHighScore() {
 
         highList = db.getSortedPlayers();
-        ArrayList<String> names = new ArrayList<String>();
+        /**ArrayList<String> names = new ArrayList<String>();
         ArrayList<Integer> monkeys = new ArrayList<>();
         ArrayList<Integer> scores = new ArrayList<>();
 
-
         for(int i = 0; i < highList.size(); i++){
-
             names.add(highList.get(i).getName());
             monkeys.add(highList.get(i).getMonkeyID());
             scores.add(highList.get(i).getHighScore());
+        }*/
 
-        }
 
-        ListAdapter listList = new CustomAdapter(this, monkeys, names, scores);
+        ListAdapter listList = new CustomAdapter(this, highList);
         ListView highscoreList = (ListView) findViewById(R.id.highscore_listview);
 
         highscoreList.setAdapter(listList);

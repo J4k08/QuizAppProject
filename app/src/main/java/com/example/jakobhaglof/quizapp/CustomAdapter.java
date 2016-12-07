@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,10 +21,10 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends ArrayAdapter<Player> {
 
-    CustomAdapter(Context context, ArrayList<Integer> monkeys, ArrayList<String> names, ArrayList<Integer> scores){
-        super(context, R.layout.custom_row, monkeys, names, scores);
-    }
 
+    CustomAdapter(Context context, ArrayList<Player> players){
+        super(context, R.layout.custom_row, players);
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
@@ -30,10 +32,16 @@ public class CustomAdapter extends ArrayAdapter<Player> {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View customView = inflater.inflate(R.layout.custom_row, parent, false);
 
-        ImageView monkey = (ImageView) customView.findViewById(R.id.row_image_id);
-        TextView name = (TextView) customView.findViewById(R.id.row_name_id);
-        TextView score = (TextView) customView.findViewById(R.id.row_score_id);
+        Player player = getItem(position);
 
+        Button monkey = (Button) customView.findViewById(R.id.row_image_id);
+        monkey.setBackgroundResource(player.getMonkeyID());
+
+        TextView name = (TextView) customView.findViewById(R.id.row_name_id);
+        name.setText(player.getName());
+
+        TextView score = (TextView) customView.findViewById(R.id.row_score_id);
+        score.setText("" + player.getHighScore());
 
         return customView;
     }
