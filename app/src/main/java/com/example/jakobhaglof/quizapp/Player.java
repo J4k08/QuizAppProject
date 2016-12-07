@@ -65,4 +65,9 @@ public class Player {
     public void setMonkeyID(int monkeyID) {
         this.monkeyID = monkeyID;
     }
+
+    @Override
+    public String toString() {
+        return name + " HighScore: " + highScore;
+    }
 }

@@ -86,7 +86,7 @@ public class HighScoreActivity extends AppCompatActivity {
         gridAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, highList);
         gv.setAdapter(gridAdapter);
 
-
+//LISTVIEW ISTÄLLET?
 
     }
 }
