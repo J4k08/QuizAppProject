@@ -1,66 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
 
-
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/row_relative_1"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/row_linear"
-        >
+        android:layout_height="wrap_content">
 
-    <Button
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:id="@+id/row_image_id"
-        android:layout_weight="0"
-        android:background="@drawable/standardmonkey"
-        />
+        <LinearLayout
+            android:id="@+id/row_linear"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Namn"
-        android:id="@+id/row_name_id"
-        android:textSize="20sp"
-        android:textColor="@color/textColorBlack"
-        android:textStyle="bold"
-        android:layout_weight="1"
-        android:layout_marginTop="10dp"
-        />
+            <Button
+                android:id="@+id/row_image_id"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_weight="0"
+                android:background="@drawable/standardmonkey" />
+
+            <TextView
+                android:id="@+id/row_name_id"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="@color/textColorBlack"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
         <View
+            android:id="@+id/little_view"
             android:layout_width="4dp"
             android:layout_height="30dp"
-            android:background="@color/textColorBlack"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginEnd="10dp"/>
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/textColorBlack" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="poäng"
-        android:id="@+id/row_score_id"
-        android:textSize="20sp"
-        android:textColor="@color/textColorBlack"
-        android:textStyle="bold"
-        android:layout_weight="0.3"
-        android:layout_marginTop="10dp"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_toEndOf="@+id/little_view"
+            android:layout_toRightOf="@+id/little_view">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/row_score_id"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:layout_weight="1"
+                android:text=""
+                android:textColor="@color/textColorBlack"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="4dp"
-        android:background="@color/textColorBlack"
-        android:layout_below="@+id/row_linear"
-        android:layout_marginTop="2.5dp"
+        android:layout_below="@+id/row_relative_1"
         android:layout_marginBottom="2.5dp"
-        />
+        android:layout_marginTop="2.5dp"
+        android:background="@color/textColorBlack" />
 
 </RelativeLayout>
