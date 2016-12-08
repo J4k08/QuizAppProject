@@ -20,6 +20,7 @@ public class AddQuestionActivity extends AppCompatActivity {
     private DBHelper db;
     private Player player;
     private String pName = "";
+    private String isFromMenu = "Yes";
     private Spinner spinner;
 
     @Override
@@ -73,6 +74,7 @@ public class AddQuestionActivity extends AppCompatActivity {
         if (id == R.id.toolbarpName) {
             Intent intent = new Intent(this, PersonalProfileActivity.class);
             intent.putExtra("pName", pName);
+            intent.putExtra("isFromMenu", isFromMenu);
             startActivity(intent);
         }
         if (id == R.id.settings) {

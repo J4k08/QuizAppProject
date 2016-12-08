@@ -27,11 +27,7 @@
         <activity android:name=".PostGameActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".HighScoreActivity" />
-        <activity android:name=".AboutActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.jakobhaglof.quizapp.SettingsActivity" />
-        </activity>
+        <activity android:name=".AboutActivity" />
         <activity android:name=".MainMenuActivity" />
         <activity android:name=".AddQuestionActivity" />
         <activity android:name=".RemoveQuestionActivity" />

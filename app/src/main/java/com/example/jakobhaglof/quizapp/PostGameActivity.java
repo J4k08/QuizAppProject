@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import java.security.acl.LastOwnerException;
@@ -18,6 +19,7 @@ public class PostGameActivity extends AppCompatActivity {
     private DBHelper db;
     private Player player;
     private String pName = "";
+    private String isFromMenu = "Yes";
     private int lastRoundScore;
     private ArrayList<String> clickedCat;
     private String playedCat;
@@ -67,6 +69,7 @@ public class PostGameActivity extends AppCompatActivity {
         if (id == R.id.toolbarpName) {
             Intent intent = new Intent(this, PersonalProfileActivity.class);
             intent.putExtra("pName", pName);
+            intent.putExtra("isFromMenu", isFromMenu);
             startActivity(intent);
         }
         if (id == R.id.settings) {
@@ -114,5 +117,26 @@ public class PostGameActivity extends AppCompatActivity {
         TVplayerHighScore = (TextView)findViewById(R.id.writePlayerHighScore);
         TVplayerHighScore.setText("" + player.getHighScore());
 
+    }
+
+    public void sendToGameSettings(View view) {
+
+        Intent intent = new Intent(this, GameSettingsActivity.class);
+        intent.putExtra("pName", pName);
+        startActivity(intent);
+    }
+
+    public void sendToMain(View view) {
+
+        Intent intent = new Intent(this, MainMenuActivity.class);
+        intent.putExtra("pName", pName);
+        startActivity(intent);
+    }
+
+    public void sendToHighScore(View view) {
+
+        Intent intent = new Intent(this, HighScoreActivity.class);
+        intent.putExtra("pName", pName);
+        startActivity(intent);
     }
 }

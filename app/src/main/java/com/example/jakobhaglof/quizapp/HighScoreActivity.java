@@ -27,6 +27,7 @@ public class HighScoreActivity extends AppCompatActivity implements Serializable
     private Player player;
     private String clickedPlayer = "";
     private String pName = "";
+    private String isFromMenu = "Yes";
     private ArrayList<Player> highList;
 
     @Override
@@ -79,9 +80,10 @@ public class HighScoreActivity extends AppCompatActivity implements Serializable
         }
 
         if (id == R.id.toolbarpName) {
-            Intent i = new Intent(this, PersonalProfileActivity.class);
-            i.putExtra("pName", pName);
-            startActivity(i);
+            Intent intent = new Intent(this, PersonalProfileActivity.class);
+            intent.putExtra("pName", pName);
+            intent.putExtra("isFromMenu", isFromMenu);
+            startActivity(intent);
         }
         if (id == R.id.settings) {
             Intent intent = new Intent(this, SettingsActivity.class);

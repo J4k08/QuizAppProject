@@ -47,6 +47,9 @@
 
     <string name="chooseCategory">Välj kategori:</string>
     <string name="score">POÄNG: </string>
+    <string name="play_again">Spela Igen</string>
+    <string name="to_menu">Till Meny</string>
+    <string name="to_highscore">Till Rekord</string>
 
     <string-array name="categories">
         <item>Film &amp; TV</item>

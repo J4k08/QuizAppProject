@@ -12,6 +12,7 @@ public class RemoveQuestionActivity extends AppCompatActivity {
     private final static String TAG = "REMOVE_QUESTION_ACTIVITY: ";
     private DBHelper db;
     private Player player;
+    private String isFromMenu = "Yes";
     private String pName = "";
 
     @Override
@@ -50,6 +51,7 @@ public class RemoveQuestionActivity extends AppCompatActivity {
         if (id == R.id.toolbarpName) {
             Intent intent = new Intent(this, PersonalProfileActivity.class);
             intent.putExtra("pName", pName);
+            intent.putExtra("isFromMenu", isFromMenu);
             startActivity(intent);
         }
         if (id == R.id.settings) {

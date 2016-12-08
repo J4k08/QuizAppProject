@@ -16,6 +16,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private Player player;
     private String pName = "";
+    private String isFromMenu = "Yes";
     private DBHelper db;
     private final static String TAG = "SETTINGS_ACTIVITY: ";
 
@@ -56,6 +57,7 @@ public class SettingsActivity extends AppCompatActivity {
         if (id == R.id.toolbarpName) {
             Intent intent = new Intent(this, PersonalProfileActivity.class);
             intent.putExtra("pName", pName);
+            intent.putExtra("isFromMenu", isFromMenu);
             startActivity(intent);
         }
         if (id == R.id.settings) {
