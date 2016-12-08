@@ -77,6 +77,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void resetHighScore(View view) {
+        Toast.makeText(this, "Ditt Highscore är 0!", Toast.LENGTH_SHORT).show();
         db.updateHighScore(0, pName);
     }
 
