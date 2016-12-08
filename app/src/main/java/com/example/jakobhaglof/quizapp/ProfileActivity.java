@@ -46,10 +46,8 @@ public class ProfileActivity extends AppCompatActivity {
         list.setOnItemClickListener(new ListView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> a, View v, int i, long l) {
-                String name = (String) a.getItemAtPosition(i);
-                Log.d(TAG, name);
+
                 pName = (String) a.getItemAtPosition(i);
-                Log.d("MESSAGE", pName);
 
                 sendToMain(v);
             }
@@ -102,21 +100,13 @@ public class ProfileActivity extends AppCompatActivity {
         String name = et.getText().toString();
         db = new DBHelper(getApplicationContext());
 
-        Log.d(TAG, name);
+        player = new Player(0, name, 0);
+        player.setMonkeyID(monkeyID);
 
-        Player p1 = new Player(0, name, 0);
-
-        p1.setMonkeyID(monkeyID);
-
-        Log.d(TAG, "saveProfile: " + p1.getMonkeyID());
-
-        db.addPlayer(p1);
+        db.addPlayer(player);
         playerNames = getNameOfPlayer();
 
-
         listProfiles(playerNames);
-
-
     }
 
     public void listProfiles(ArrayList<String> playerNames) {
@@ -137,24 +127,16 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void saveMonkey(View view) {
-        Log.d(TAG, "saveMonkey: kom in i metoden!");
 
         if (view.equals(findViewById(R.id.monkey1))){
             monkeyID = R.drawable.ziggymonkey;
-            Log.d(TAG, "ziggy");
-            //2130837599
         }
         else if (view.equals(findViewById(R.id.monkey2))){
             monkeyID = R.drawable.rupaulmonkey;
-            Log.d(TAG, "rupaul");
-            //2130837596
         }
         else if (view.equals(findViewById(R.id.monkey3))){
             monkeyID = R.drawable.standardmonkey;
-            Log.d(TAG, "standard");
-            //2130837598
         }
     }
-
 
 }

@@ -34,7 +34,6 @@ public class HighScoreActivity extends AppCompatActivity implements Serializable
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_high_score);
 
-        Log.d(TAG, "onCreate: KOM IN PÅ AKTIVITETEN");
         db = new DBHelper(this);
         Intent i = getIntent();
         player = db.getPlayerFromDB(pName = i.getExtras().getString("pName"));
@@ -62,11 +61,9 @@ public class HighScoreActivity extends AppCompatActivity implements Serializable
         inflater.inflate(R.menu.menu, menu);
 
         MenuItem M1 = menu.getItem(0);
-
         M1.setTitle(player.getName());
 
         MenuItem M2 = menu.getItem(1);
-
         M2.setIcon(player.getMonkeyID());
         return true;
     }
@@ -115,7 +112,6 @@ public class HighScoreActivity extends AppCompatActivity implements Serializable
        intent.putExtra("pName", pName);
        intent.putExtra("clickedPlayer", clickedPlayer);
 
-       Log.d(TAG, "sendToPersonal: "+ clickedPlayer);
        startActivity(intent);
     }
 }

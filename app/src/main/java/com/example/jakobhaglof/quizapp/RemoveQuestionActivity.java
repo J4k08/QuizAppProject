@@ -30,12 +30,11 @@ public class RemoveQuestionActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu, menu);
 
         MenuItem M1 = menu.getItem(0);
-
         M1.setTitle(player.getName());
 
         MenuItem M2 = menu.getItem(1);
-
         M2.setIcon(player.getMonkeyID());
+
         return true;
     }
 

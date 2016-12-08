@@ -43,10 +43,7 @@ public class PersonalProfileActivity extends AppCompatActivity implements Serial
             displayProfile(loggedInPlayer);
         }
 
-
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

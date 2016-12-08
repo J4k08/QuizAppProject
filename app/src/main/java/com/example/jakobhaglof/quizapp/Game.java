@@ -17,7 +17,6 @@ public class Game {
 
     private static final String TAG = "GAME";
     private int timer = 10000;
-    private int gameScore;
     private ArrayList<String> clickedCat;
     private Player player;
     private DBHelper db;
@@ -61,13 +60,6 @@ public class Game {
         this.timer = timer;
     }
 
-    public int getGameScore() {
-        return gameScore;
-    }
-    public void setGameScore(int gameScore) {
-        this.gameScore = gameScore;
-    }
-
     public ArrayList<Question> prepGame(ArrayList<String> clickedCat) {
 
             questions = getQuestionsFromDb(clickedCat);
@@ -75,11 +67,6 @@ public class Game {
             shuffleQuestions(questions);
 
             return questions;
-    }
-
-    public void playRound(Player player, ArrayList<Question> questions) {
-
-
     }
 
     public ArrayList<Question> getQuestionsFromDb(ArrayList<String> clickedCat) {
@@ -93,17 +80,6 @@ public class Game {
     public void shuffleQuestions(ArrayList<Question> questions) {
 
         Collections.shuffle(questions);
-    }
-
-    public ArrayList<Question> ListToArrayList (List<Question> questionList, ArrayList<Question> questions) {
-
-
-        for(int i = 0; i < questionList.size(); i++){
-
-            questions.add(questionList.get(i));
-        }
-        return questions;
-
     }
 
     public int roundGuess(String guess, Question question, int timer) {
@@ -120,7 +96,6 @@ public class Game {
         }
         return score = 0;
         }
-
 
 
 }

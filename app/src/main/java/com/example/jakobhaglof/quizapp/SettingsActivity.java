@@ -27,7 +27,6 @@ public class SettingsActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         player = db.getPlayerFromDB(pName = i.getExtras().getString("pName"));
-        Log.d(TAG, "onCreate: " + player.getName());
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -36,11 +35,9 @@ public class SettingsActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu, menu);
 
         MenuItem M1 = menu.getItem(0);
-
         M1.setTitle(player.getName());
 
         MenuItem M2 = menu.getItem(1);
-
         M2.setIcon(player.getMonkeyID());
 
         menu.getItem(2).setVisible(false);
@@ -80,7 +77,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void resetHighScore(View view) {
-        //Rensa alla High Scores
+        db.updateHighScore(0, pName);
     }
 
     public void removeCurrentProfile(View view) {

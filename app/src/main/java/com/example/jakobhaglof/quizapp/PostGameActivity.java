@@ -32,9 +32,9 @@ public class PostGameActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         lastRoundScore = i.getExtras().getInt("playerScore");
-        Log.d(TAG, "onCreate: " + lastRoundScore);
         clickedCat = i.getStringArrayListExtra("clickedCat");
         player = db.getPlayerFromDB(pName = i.getExtras().getString("pName"));
+
         playedCat = displayCategories(clickedCat);
 
         displayResult();
@@ -94,9 +94,7 @@ public class PostGameActivity extends AppCompatActivity {
             playedCat = clickedCat.get(0);
             for (int i = 1; i < clickedCat.size(); i++) {
 
-
                 playedCat = playedCat + " & " + clickedCat.get(i);
-
             }
         }
         return playedCat;

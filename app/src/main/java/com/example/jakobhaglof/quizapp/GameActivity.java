@@ -46,22 +46,12 @@ public class GameActivity extends AppCompatActivity {
         clickedCat = i.getStringArrayListExtra("clickedCat");
 
         game = new Game(this, 10000, clickedCat, player);
-
         gameQuestions = game.prepGame(clickedCat);
-
         rndNumber = 0;
 
-        Log.d(TAG, "onCreate: " + gameQuestions.get(rndNumber).getQuestion());
-        Log.d(TAG, "onCreate: " + gameQuestions.get(rndNumber).getCategory());
-        Log.d(TAG, "onCreate: " + gameQuestions.get(rndNumber).getChoice1());
-        Log.d(TAG, "onCreate: " + gameQuestions.get(rndNumber).getChoice2());
-        Log.d(TAG, "onCreate: " + gameQuestions.get(rndNumber).getChoice3());
-        Log.d(TAG, "onCreate: " + gameQuestions.get(rndNumber).getChoice4());
-        Log.d(TAG, "onCreate: " + gameQuestions.get(rndNumber).getCorrectAnswer());
 
         showQuestions();
         timer = game.getTimer();
-
         playGame(gameQuestions, game);
 
     }
@@ -126,15 +116,8 @@ public class GameActivity extends AppCompatActivity {
         Button btn = (Button) view;
         guess = btn.getText().toString();
 
-        Log.d(TAG, "categoryBoxes: " + guess);
-
         playerScore += game.roundGuess(guess, gameQuestions.get(rndNumber), timer);
-
         rndNumber++;
-        Log.d(TAG, "rnNumber: " + rndNumber);
-        Log.d(TAG, "Arraylist: " + gameQuestions.size());
-        Log.d(TAG, "categoryBoxes: Poäng:" + playerScore);
-
         countDownTimer.cancel();
 
         if(rndNumber == 10) {
