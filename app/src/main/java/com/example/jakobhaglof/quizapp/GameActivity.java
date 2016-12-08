@@ -132,7 +132,7 @@ public class GameActivity extends AppCompatActivity {
 
         countDownTimer.cancel();
 
-        if(rndNumber == gameQuestions.size()) {
+        if(rndNumber == 10) {
 
             Intent i = new Intent(this, PostGameActivity.class);
 
