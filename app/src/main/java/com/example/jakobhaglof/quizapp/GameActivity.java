@@ -23,6 +23,7 @@ public class GameActivity extends AppCompatActivity {
     private int playerScore = 0;
     private Player player;
     private String pName = "";
+    private String isFromMenu = "Yes";
     private ArrayList<String> clickedCat;
     private ArrayList<Question> gameQuestions;
     private TextView que;
@@ -92,6 +93,7 @@ public class GameActivity extends AppCompatActivity {
         }
         if (id == R.id.toolbarpName) {
             Intent intent = new Intent(this, PersonalProfileActivity.class);
+            intent.putExtra("isFromMenu", isFromMenu);
             intent.putExtra("pName", pName);
             startActivity(intent);
         }

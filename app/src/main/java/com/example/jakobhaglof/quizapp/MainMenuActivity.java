@@ -82,7 +82,6 @@ public class MainMenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, GameSettingsActivity.class);
         intent.putExtra("pName", pName);
         startActivity(intent);
-
     }
 
     public void sendToProfiles(View view) {

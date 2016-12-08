@@ -21,6 +21,7 @@ public class GameSettingsActivity extends AppCompatActivity {
     private DBHelper db;
     private ArrayList<String> clickedCat = new ArrayList<>();
     private String pName = "";
+    private String isFromMenu = "Yes";
     private Player player;
 
 
@@ -61,6 +62,7 @@ public class GameSettingsActivity extends AppCompatActivity {
         if (id == R.id.toolbarpName) {
             Intent intent = new Intent(this, PersonalProfileActivity.class);
             intent.putExtra("pName", pName);
+            intent.putExtra("isFromMenu", isFromMenu);
             startActivity(intent);
         }
         if (id == R.id.settings) {
