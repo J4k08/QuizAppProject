@@ -9,9 +9,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -19,17 +16,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HighScoreActivity extends AppCompatActivity {
+public class HighScoreActivity extends AppCompatActivity implements Serializable {
 
     private final static String TAG = "HIGH_SCORE_ACTIVITY: ";
     private DBHelper db;
     private Player player;
+    private String clickedPlayer = "";
     private String pName = "";
-    private GridView gv;
-    private ArrayAdapter<Player> gridAdapter;
     private ArrayList<Player> highList;
 
     @Override
@@ -42,7 +39,21 @@ public class HighScoreActivity extends AppCompatActivity {
         Intent i = getIntent();
         player = db.getPlayerFromDB(pName = i.getExtras().getString("pName"));
 
+        ListView highScoreList = (ListView) findViewById(R.id.highscore_listview);
+
+        highScoreList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> a, View v, int i, long l) {
+
+                Object item = a.getItemAtPosition(i);
+                clickedPlayer = item.toString();
+
+                sendToPersonal(v);
+            }
+        });
+
         writeHighScore();
+
     }
 
     @Override
@@ -69,6 +80,12 @@ public class HighScoreActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
         }
+
+        if (id == R.id.toolbarpName) {
+            Intent i = new Intent(this, PersonalProfileActivity.class);
+            i.putExtra("pName", pName);
+            startActivity(i);
+        }
         if (id == R.id.settings) {
             Intent intent = new Intent(this, SettingsActivity.class);
             intent.putExtra("pName", pName);
@@ -83,35 +100,22 @@ public class HighScoreActivity extends AppCompatActivity {
 
     public void writeHighScore() {
 
+        ListView highscoreList = (ListView) findViewById(R.id.highscore_listview);
+
         highList = db.getSortedPlayers();
-        /**ArrayList<String> names = new ArrayList<String>();
-        ArrayList<Integer> monkeys = new ArrayList<>();
-        ArrayList<Integer> scores = new ArrayList<>();
-
-        for(int i = 0; i < highList.size(); i++){
-            names.add(highList.get(i).getName());
-            monkeys.add(highList.get(i).getMonkeyID());
-            scores.add(highList.get(i).getHighScore());
-        }*/
-
 
         ListAdapter listList = new CustomAdapter(this, highList);
-        ListView highscoreList = (ListView) findViewById(R.id.highscore_listview);
 
         highscoreList.setAdapter(listList);
 
+    }
 
-       /** highscoreList.setOnItemClickListener(
-            new AdapterView.OnItemClickListener(){
+   public void sendToPersonal(View view) {
+       Intent intent = new Intent(HighScoreActivity.this, PersonalProfileActivity.class);
+       intent.putExtra("pName", pName);
+       intent.putExtra("clickedPlayer", clickedPlayer);
 
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                }
-            }
-
-
-        );*/
-
+       Log.d(TAG, "sendToPersonal: "+ clickedPlayer);
+       startActivity(intent);
     }
 }
