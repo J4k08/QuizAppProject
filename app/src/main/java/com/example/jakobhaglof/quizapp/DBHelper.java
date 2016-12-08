@@ -393,6 +393,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return playerList;
     }
+
     public void updateHighScore(int highScore, String pName) {
 
         db = this.getWritableDatabase();
@@ -402,6 +403,11 @@ public class DBHelper extends SQLiteOpenHelper {
         String[] selectionArgs = new String[]{pName};
 
         db.update(P_TABLE, cv, P_NAME + "=?", selectionArgs);
+
+    }
+
+    public void removePlayer(String pName) {
+
 
     }
 

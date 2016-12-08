@@ -28,10 +28,10 @@ public class GameSettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_settings);
+
         db = new DBHelper(this);
         Intent i = getIntent();
         player = db.getPlayerFromDB(pName = i.getStringExtra("pName"));
-        Log.d(TAG, "onCreate: " + player.getName());
     }
 
     @Override
@@ -96,7 +96,6 @@ public class GameSettingsActivity extends AppCompatActivity {
 
         }else {
             Toast.makeText(this, R.string.you_need_to_choose_category, Toast.LENGTH_SHORT).show();
-            Log.d(TAG, "sendToGame: Funkar inte!");
         }
 
     }
@@ -113,7 +112,6 @@ public class GameSettingsActivity extends AppCompatActivity {
         checkIfChecked();
 
     }
-
     public void clicked(View view) {
         checkBox1 = (CheckBox) findViewById(R.id.category1);
         checkBox2 = (CheckBox) findViewById(R.id.category2);
