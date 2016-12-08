@@ -30,7 +30,6 @@ public class AddQuestionActivity extends AppCompatActivity {
         Intent i = getIntent();
         player = db.getPlayerFromDB(pName = i.getExtras().getString("pName"));
         addItemsOnSpinner();
-        addListenerOnSpinnerItemSelection();
     }
 
     public void addItemsOnSpinner() {
@@ -45,11 +44,6 @@ public class AddQuestionActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
-    }
-
-    public void addListenerOnSpinnerItemSelection() {
-        spinner = (Spinner) findViewById(R.id.get_new_category);
-        spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
     }
 
     @Override
@@ -74,6 +68,11 @@ public class AddQuestionActivity extends AppCompatActivity {
 
         if (id == R.id.toolbarMonkey){
             Intent intent = new Intent(this, ProfileActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.toolbarpName) {
+            Intent intent = new Intent(this, PersonalProfileActivity.class);
+            intent.putExtra("pName", pName);
             startActivity(intent);
         }
         if (id == R.id.settings) {

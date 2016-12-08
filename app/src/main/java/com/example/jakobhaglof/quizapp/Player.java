@@ -68,6 +68,6 @@ public class Player {
 
     @Override
     public String toString() {
-        return name + " HighScore: " + highScore;
+        return name;
     }
 }

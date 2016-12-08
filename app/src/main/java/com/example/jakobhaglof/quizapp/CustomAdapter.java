@@ -34,7 +34,7 @@ public class CustomAdapter extends ArrayAdapter<Player> {
 
         Player player = getItem(position);
 
-        Button monkey = (Button) customView.findViewById(R.id.row_image_id);
+        ImageView monkey = (ImageView)customView.findViewById(R.id.row_image_id);
         monkey.setBackgroundResource(player.getMonkeyID());
 
         TextView name = (TextView) customView.findViewById(R.id.row_name_id);

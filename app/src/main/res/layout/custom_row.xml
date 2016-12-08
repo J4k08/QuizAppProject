@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp">
 
-            <Button
+            <ImageView
                 android:id="@+id/row_image_id"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -30,7 +30,8 @@
                 android:text=""
                 android:textColor="@color/textColorBlack"
                 android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
 
         </LinearLayout>
 
