@@ -35,6 +35,7 @@
         <activity android:name=".MainMenuActivity" />
         <activity android:name=".AddQuestionActivity" />
         <activity android:name=".RemoveQuestionActivity" />
+        <activity android:name=".PersonalProfileActivity"/>
     </application>
 
 </manifest>
