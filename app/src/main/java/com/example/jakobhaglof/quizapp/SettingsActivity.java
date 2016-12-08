@@ -82,7 +82,9 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void removeCurrentProfile(View view) {
-        //Ta bort aktuell profil
+        Toast.makeText(this, "Din profil är borttagen!", Toast.LENGTH_SHORT).show();
+        db.removePlayer(pName);
+        startActivity(new Intent(this, ProfileActivity.class));
     }
 
     public void sendToAddQuestion(View view) {

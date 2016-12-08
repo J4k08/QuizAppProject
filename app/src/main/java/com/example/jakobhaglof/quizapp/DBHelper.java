@@ -408,7 +408,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public void removePlayer(String pName) {
 
+    db = getWritableDatabase();
 
+        String[] selectionArgs = new String[]{pName};
+        db.delete(P_TABLE, P_NAME + "=?", selectionArgs);
     }
 
 }
