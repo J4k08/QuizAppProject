@@ -16,10 +16,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="BAJSA"
+        android:text=""
         android:textColor="@color/textColorWhite"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textAllCaps="true"/>
 
     <View
         android:id="@+id/personal_view"

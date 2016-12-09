@@ -19,7 +19,8 @@
         android:text="@string/settings"
         android:textColor="@color/textColorWhite"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textAllCaps="true" />
 
     <LinearLayout
         android:id="@+id/image"
@@ -47,6 +48,8 @@
         android:layout_height="50dp"
         android:background="@drawable/backgroundrede"
         android:text="@string/about"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:layout_marginBottom="10dp"
         android:onClick="sendToAbout"/>
 
@@ -57,6 +60,8 @@
         android:layout_below="@+id/settings_about"
         android:background="@drawable/backgroundrede"
         android:text="@string/reset_all_high_score"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:layout_marginBottom="10dp"
         android:onClick="resetHighScore"/>
 
@@ -67,6 +72,8 @@
         android:layout_below="@+id/settings_reset_high_score"
         android:background="@drawable/backgroundrede"
         android:text="@string/remove_current_profile"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:layout_marginBottom="10dp"
         android:onClick="removeCurrentProfile"
         />
@@ -78,6 +85,8 @@
         android:layout_below="@+id/settings_remove_current_profile"
         android:background="@drawable/backgroundrede"
         android:text="@string/add_question"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:layout_marginBottom="10dp"
         android:onClick="sendToAddQuestion"/>
 
@@ -88,6 +97,8 @@
         android:layout_below="@+id/settings_add_question"
         android:background="@drawable/backgroundrede"
         android:text="@string/remove_question"
+        android:textStyle="bold"
+        android:textSize="20sp"
         android:layout_marginBottom="10dp"
         android:onClick="SendToRemoveQuestion"/>
 

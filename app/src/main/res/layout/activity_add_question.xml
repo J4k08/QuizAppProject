@@ -19,7 +19,8 @@
         android:text="@string/add_question"
         android:textColor="@color/textColorWhite"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textAllCaps="true" />
 
     <View
         android:id="@+id/add_question_line"

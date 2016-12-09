@@ -19,7 +19,8 @@
         android:text="@string/game_results"
         android:textColor="@color/textColorWhite"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textAllCaps="true" />
 
     <View
         android:id="@+id/post_game_line"
@@ -142,6 +143,7 @@
             android:layout_height="50dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
+            android:textStyle="bold"
             android:background="@drawable/backgroundrede"
             android:onClick="sendToGameSettings"
             android:text="@string/play_again" />
@@ -152,6 +154,7 @@
             android:layout_height="50dp"
             android:layout_marginBottom="10dp"
             android:layout_weight="1"
+            android:textStyle="bold"
             android:background="@drawable/backgroundrede"
             android:onClick="sendToMain"
             android:text="@string/to_menu" />
@@ -161,6 +164,7 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:textStyle="bold"
             android:background="@drawable/backgroundrede"
             android:onClick="sendToHighScore"
             android:text="@string/to_highscore" />

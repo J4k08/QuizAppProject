@@ -33,6 +33,8 @@ public class GameActivity extends AppCompatActivity {
     private int timer;
     private TextView qTimer;
     private CountDownTimer countDownTimer;
+    private Button btn;
+    String guess = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,29 +117,20 @@ public class GameActivity extends AppCompatActivity {
 
     public void categoryBoxes(View view) {
 
-        String guess = "";
-        Button btn = (Button) view;
+        btn = (Button) view;
         guess = btn.getText().toString();
 
         playerScore += game.roundGuess(guess, gameQuestions.get(rndNumber), timer);
-        rndNumber++;
-        countDownTimer.cancel();
+        btn.setEnabled(false);
 
-        if(rndNumber == 10) {
-
-            Intent i = new Intent(this, PostGameActivity.class);
-
-            if(playerScore > player.getHighScore()) {
-                db.updateHighScore(playerScore, pName);
-                Log.d(TAG, "Player highscore: är högre och sparas!");
-            }
-            i.putExtra("pName", pName); i.putExtra("playerScore", playerScore);
-            i.putStringArrayListExtra("clickedCat", clickedCat);
-
-            startActivity(i);
-        } else {
-            playGame(gameQuestions, game);
+        if(guess.equals(gameQuestions.get(rndNumber).getCorrectAnswer())) {
+            btn.setBackgroundResource(R.drawable.btngreen);
         }
+        else{
+            btn.setBackgroundResource(R.drawable.btnred);
+        }
+        guessColor();
+
     }
 
     public void showQuestions() {
@@ -198,4 +191,34 @@ public class GameActivity extends AppCompatActivity {
         intent.putExtra("pName", pName);
         startActivity(intent);
     }
+    public void guessColor(){
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                btn.setBackgroundResource(R.drawable.btn);
+                rndNumber++;
+                countDownTimer.cancel();
+                btn.setEnabled(true);
+
+                if(rndNumber == 10) {
+
+                    Intent i = new Intent(GameActivity.this, PostGameActivity.class);
+
+                    if(playerScore > player.getHighScore()) {
+                        db.updateHighScore(playerScore, pName);
+                        Log.d(TAG, "Player highscore: är högre och sparas!");
+                    }
+                    i.putExtra("pName", pName); i.putExtra("playerScore", playerScore);
+                    i.putStringArrayListExtra("clickedCat", clickedCat);
+
+                    startActivity(i);
+                } else {
+                    playGame(gameQuestions, game);
+                }
+            }
+        },2000);
+    }
+
 }
