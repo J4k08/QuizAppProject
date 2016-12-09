@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Quiz Monkey</string>
-    <string name="actionbar_back_btn">Back To Menu</string>
     <string name="production">Monkey Crew Production</string>
     <string name="name_id">Name</string>
     <string name="home">Hem</string>
