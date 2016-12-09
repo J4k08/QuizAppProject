@@ -22,19 +22,19 @@ public class GameActivity extends AppCompatActivity {
     private DBHelper db;
     private int rndNumber;
     private int playerScore = 0;
+    private int timer;
     private Player player;
     private String pName = "";
     private String isFromMenu = "Yes";
+    private String guess = "";
     private ArrayList<String> clickedCat;
     private ArrayList<Question> gameQuestions;
-    private TextView que;
-    private Button btn1, btn2, btn3, btn4;
+    private Button btn, btn1, btn2, btn3, btn4;
     private Game game;
-    private int timer;
+    private TextView que;
     private TextView qTimer;
     private CountDownTimer countDownTimer;
-    private Button btn;
-    String guess = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
