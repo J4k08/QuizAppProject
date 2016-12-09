@@ -1,7 +1,6 @@
 package com.example.jakobhaglof.quizapp;
 
 import android.content.Intent;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +20,7 @@ public class PersonalProfileActivity extends AppCompatActivity implements Serial
     private String pName = "";
     private String clickedName = "";
     private String isFromMenu = "";
+    private int highscore = 0;
 
 
     @Override
@@ -84,10 +84,13 @@ public class PersonalProfileActivity extends AppCompatActivity implements Serial
 
     private void displayProfile(Player player) {
 
-        TextView name = (TextView) findViewById(R.id.Personal_profile);
+        TextView name = (TextView) findViewById(R.id.personal_profile);
         name.setText(player.getName());
 
         ImageView monkey = (ImageView) findViewById(R.id.monkey_personal);
         monkey.setBackgroundResource(player.getMonkeyID());
+
+        TextView highscore = (TextView) findViewById(R.id.personal_highscore);
+        highscore.setText("Högsta Poäng: " + player.getHighScore() + " poäng!");
     }
 }
