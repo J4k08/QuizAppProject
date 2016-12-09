@@ -4,24 +4,24 @@
     android:id="@+id/activity_main_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.jakobhaglof.quizapp.MainMenuActivity"
-    android:background="@drawable/background">
+    tools:context="com.example.jakobhaglof.quizapp.MainMenuActivity">
 
     <TextView
+        android:id="@+id/head"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:paddingTop="50dp"
         android:text="@string/head"
-        android:textSize="20sp"
         android:textColor="@android:color/black"
-        android:id="@+id/head"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        />
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
     <LinearLayout
         android:id="@+id/image"
         android:layout_width="wrap_content"
@@ -38,18 +38,18 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        >
+        android:layout_alignParentBottom="true">
 
-    <Button
-        android:id="@+id/playBtn"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="@string/main_menu_play"
-        android:background="@drawable/backgroundrede"
-        android:layout_marginBottom="10dp"
-        android:onClick="sendToGameSettings"
-        />
+        <Button
+            android:id="@+id/playBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/backgroundrede"
+            android:onClick="sendToGameSettings"
+            android:text="@string/main_menu_play"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/main_line"
@@ -58,45 +58,51 @@
             android:layout_below="@+id/playBtn"
             android:layout_marginBottom="10dp">
 
-    <Button
-        android:id="@+id/profilesBtn"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_weight="1"
-        android:text="@string/main_menu_profiles"
-        android:background="@drawable/backgroundrede"
-        android:layout_marginEnd="5dp"
-        android:layout_marginRight="5dp"
-        android:onClick="sendToProfiles"
+            <Button
+                android:id="@+id/profilesBtn"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/backgroundrede"
+                android:onClick="sendToProfiles"
+                android:text="@string/main_menu_profiles"
+                android:textSize="20sp"
+                android:textStyle="bold"
 
-        />
+                />
 
             <Button
                 android:id="@+id/highScoreBtn"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_weight="1"
-                android:text="@string/highscore"
-                android:background="@drawable/backgroundrede"
-                android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/backgroundrede"
                 android:onClick="sendToHighScore"
+                android:text="@string/highscore"
+                android:textSize="20sp"
+                android:textStyle="bold"
 
                 />
 
         </LinearLayout>
 
         <Button
-        android:id="@+id/settingsBtn"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/main_line"
-        android:text="@string/main_menu_settings"
-        android:background="@drawable/backgroundrede"
-        android:layout_marginBottom="10dp"
-        android:onClick="sendToSettings"
+            android:id="@+id/settingsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/main_line"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/backgroundrede"
+            android:onClick="sendToSettings"
+            android:text="@string/main_menu_settings"
+            android:textSize="20sp"
+            android:textStyle="bold"
 
-        />
+            />
 
     </RelativeLayout>
 

@@ -19,7 +19,7 @@
         android:paddingTop="70dp"
         android:text="@string/chooseCategories"
         android:textColor="@color/textColorBlack"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -34,6 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_F"
+            android:textSize="20sp"
             android:textColor="@color/textColorBlack"
             android:onClick="clicked" />
 
@@ -42,16 +43,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_H"
+            android:textSize="20sp"
             android:textColor="@color/textColorBlack"
             android:onClick="clicked" />
 
-        <CheckBox
-            android:id="@+id/category3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/category_M"
-            android:textColor="@color/textColorBlack"
-            android:onClick="clicked" />
+
 
     </LinearLayout>
 
@@ -62,14 +58,31 @@
         android:layout_below="@+id/categoryLine1"
         android:paddingTop="5dp">
 
+        <CheckBox
+            android:id="@+id/category3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/category_M"
+            android:textSize="20sp"
+            android:textColor="@color/textColorBlack"
+            android:onClick="clicked" />
 
         <CheckBox
             android:id="@+id/category4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/category_D"
+            android:textSize="20sp"
             android:textColor="@color/textColorBlack"
             android:onClick="clicked" />
+
+        <CheckBox
+            android:id="@+id/myCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/my_questions"
+            android:textSize="20sp"
+            android:textColor="@color/textColorGrey" />
 
     </LinearLayout>
 
@@ -88,15 +101,10 @@
             android:text="@string/all_categories"
             android:textColor="@color/textColorBlack"
             android:textStyle="bold"
+            android:textSize="22sp"
             android:onClick="checkAllBoxes"/>
 
-        <CheckBox
-            android:id="@+id/myCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/my_questions"
-            android:textColor="@color/textColorBlack"
-            android:textStyle="bold" />
+
 
     </LinearLayout>
 
@@ -109,7 +117,7 @@
         android:onClick="sendToGame"
         android:text="@string/start_game"
         android:textColor="@color/textColorBlack"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

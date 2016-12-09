@@ -21,7 +21,8 @@
         android:text="@string/highscore"
         android:textColor="@color/textColorWhite"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textAllCaps="true" />
 
     <LinearLayout
         android:id="@+id/showHighScore"
