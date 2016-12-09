@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="@string/cool_production"
+        android:text="@string/production"
         android:textSize="30dp"
         android:textColor="@android:color/black"
         android:textStyle="bold"

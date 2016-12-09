@@ -40,7 +40,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String P_MONKEY = "monkey";
 
     public DBHelper(Context context) {
-        super(context, db_name, null, 1);
+        super(context, db_name, null, 2);
         this.context = context;
     }
 
@@ -110,7 +110,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         Question q1M = new Question("Vem är inte en medlem i ABBA?","Musik","Babben Larsson","Björn Ulvaeus","Anni-Frid Lyngstad","Babben Larsson","Agnetha Fältskog");
         this.addQuestion(q1M);
-        Question q2M = new Question("I vilket band har Ozzy Osbourne sjungit i?","Musik","Black Sabbath","Grateful Dead","Rainbow","Black sabbath","The Osmonds");
+        Question q2M = new Question("I vilket band har Ozzy Osbourne sjungit i?","Musik","Black Sabbath","Grateful Dead","Rainbow","Black Sabbath","The Osmonds");
         this.addQuestion(q2M);
         Question q3M = new Question("Vilket band skrev låten 'Hold the line'?","Musik","Toto","Meatloaf","Patti Smith","David Bowie","Toto");
         this.addQuestion(q3M);

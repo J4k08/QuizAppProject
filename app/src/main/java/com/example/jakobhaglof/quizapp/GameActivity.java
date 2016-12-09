@@ -119,9 +119,13 @@ public class GameActivity extends AppCompatActivity {
 
         btn = (Button) view;
         guess = btn.getText().toString();
+        countDownTimer.cancel();
 
         playerScore += game.roundGuess(guess, gameQuestions.get(rndNumber), timer);
-        btn.setEnabled(false);
+        btn1.setEnabled(false);
+        btn2.setEnabled(false);
+        btn3.setEnabled(false);
+        btn4.setEnabled(false);
 
         if(guess.equals(gameQuestions.get(rndNumber).getCorrectAnswer())) {
             btn.setBackgroundResource(R.drawable.btngreen);
@@ -199,8 +203,7 @@ public class GameActivity extends AppCompatActivity {
             public void run() {
                 btn.setBackgroundResource(R.drawable.btn);
                 rndNumber++;
-                countDownTimer.cancel();
-                btn.setEnabled(true);
+                btn1.setEnabled(true); btn2.setEnabled(true); btn3.setEnabled(true); btn4.setEnabled(true);
 
                 if(rndNumber == 10) {
 

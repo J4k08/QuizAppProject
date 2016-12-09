@@ -140,6 +140,7 @@
                 android:background="@drawable/btn"
                 android:onClick="categoryBoxes"
                 android:text=""
+                android:textColor="@color/textColorBlack"
                 android:textStyle="bold" />
 
             <Button
@@ -149,6 +150,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/btn"
                 android:onClick="categoryBoxes"
+                android:textColor="@color/textColorBlack"
                 android:text=""
                 android:textStyle="bold" />
 
@@ -176,6 +178,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/btn"
                 android:onClick="categoryBoxes"
+                android:textColor="@color/textColorBlack"
                 android:text=""
                 android:textStyle="bold" />
 
@@ -185,6 +188,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/btn"
+                android:textColor="@color/textColorBlack"
                 android:onClick="categoryBoxes"
                 android:text=""
                 android:textStyle="bold" />

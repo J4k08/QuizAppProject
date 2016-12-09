@@ -9,6 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ProfileActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,16 +24,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GameSettingsActivity" />
-        <activity android:name=".GameActivity" />
-        <activity android:name=".PostGameActivity" />
-        <activity android:name=".SettingsActivity" />
-        <activity android:name=".HighScoreActivity" />
-        <activity android:name=".AboutActivity" />
-        <activity android:name=".MainMenuActivity" />
-        <activity android:name=".AddQuestionActivity" />
-        <activity android:name=".RemoveQuestionActivity" />
-        <activity android:name=".PersonalProfileActivity"/>
+        <activity android:name=".GameSettingsActivity"
+        android:screenOrientation="portrait"/>
+        <activity android:name=".GameActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".PostGameActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".SettingsActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".HighScoreActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".AboutActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".MainMenuActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".AddQuestionActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".RemoveQuestionActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".PersonalProfileActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">QuizApp</string>
+    <string name="app_name">Quiz Monkey</string>
     <string name="actionbar_back_btn">Back To Menu</string>
-    <string name="cool_production">COOL PRODUCTION</string>
+    <string name="production">Monkey Crew Production</string>
     <string name="name_id">Name</string>
     <string name="home">Hem</string>
     <string name="play">Spela</string>
