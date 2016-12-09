@@ -97,7 +97,7 @@ public class HighScoreActivity extends AppCompatActivity implements Serializable
         return super.onOptionsItemSelected(item);
     }
 
-    public void writeHighScore() {
+    private void writeHighScore() {
 
         ListView highscoreList = (ListView) findViewById(R.id.highscore_listview);
 

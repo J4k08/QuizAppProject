@@ -79,7 +79,7 @@ public class ProfileActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public ArrayList<String> getNameOfPlayer() {
+    private ArrayList<String> getNameOfPlayer() {
 
         playersList = db.getAllPlayers();
 

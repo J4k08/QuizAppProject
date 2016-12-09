@@ -12,7 +12,7 @@
     android:background="@drawable/background">
 
     <TextView
-        android:id="@+id/Personal_profile"
+        android:id="@+id/personal_profile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -29,7 +29,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/Personal_profile"
+        android:layout_below="@id/personal_profile"
         android:background="@color/textColorBlack"/>
 
     <ImageView
@@ -38,6 +38,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/personal_view" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/personal_highscore"
+        android:layout_below="@id/monkey_personal"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@color/textColorBlack"
+        android:layout_centerInParent="true"
+        android:id="@+id/personal_highscore"/>
 
 
 </RelativeLayout>

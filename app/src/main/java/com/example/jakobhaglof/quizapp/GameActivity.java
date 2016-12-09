@@ -3,7 +3,6 @@ package com.example.jakobhaglof.quizapp;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.sax.StartElementListener;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -102,7 +101,7 @@ public class GameActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void playGame(ArrayList<Question> questions, Game game) {
+    private void playGame(ArrayList<Question> questions, Game game) {
 
         timer = 11000;
         startTimer();
@@ -117,15 +116,17 @@ public class GameActivity extends AppCompatActivity {
 
     public void categoryBoxes(View view) {
 
+        btn1.setEnabled(false);
+        btn2.setEnabled(false);
+        btn3.setEnabled(false);
+        btn4.setEnabled(false);
+
         btn = (Button) view;
         guess = btn.getText().toString();
         countDownTimer.cancel();
 
         playerScore += game.roundGuess(guess, gameQuestions.get(rndNumber), timer);
-        btn1.setEnabled(false);
-        btn2.setEnabled(false);
-        btn3.setEnabled(false);
-        btn4.setEnabled(false);
+
 
         if(guess.equals(gameQuestions.get(rndNumber).getCorrectAnswer())) {
             btn.setBackgroundResource(R.drawable.btngreen);
@@ -133,11 +134,11 @@ public class GameActivity extends AppCompatActivity {
         else{
             btn.setBackgroundResource(R.drawable.btnred);
         }
-        guessColor();
+        guessDelay();
 
     }
 
-    public void showQuestions() {
+    private void showQuestions() {
 
         que = (TextView) findViewById(R.id.setQuestion);
         btn1 = (Button) findViewById(R.id.btnChoice1);
@@ -146,7 +147,7 @@ public class GameActivity extends AppCompatActivity {
         btn4 = (Button) findViewById(R.id.btnChoice4);
     }
 
-    private void startTimer() {
+    public void startTimer() {
 
         Log.d(TAG, "startTimer: " + timer);
 
@@ -179,7 +180,7 @@ public class GameActivity extends AppCompatActivity {
         }.start();
     }
 
-    public void timeOutMsg() {
+    private void timeOutMsg() {
 
         Log.d(TAG, "timeOutMsg: Detta skrivs ut i onFinished");
         Toast.makeText(this, "Tiden tog slut!", Toast.LENGTH_SHORT).show();
@@ -195,7 +196,7 @@ public class GameActivity extends AppCompatActivity {
         intent.putExtra("pName", pName);
         startActivity(intent);
     }
-    public void guessColor(){
+    public void guessDelay(){
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
