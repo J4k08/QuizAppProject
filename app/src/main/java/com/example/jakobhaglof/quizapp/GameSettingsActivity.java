@@ -30,6 +30,13 @@ public class GameSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_settings);
 
+        checkBox1 = (CheckBox) findViewById(R.id.category1);
+        checkBox2 = (CheckBox) findViewById(R.id.category2);
+        checkBox3 = (CheckBox) findViewById(R.id.category3);
+        checkBox4 = (CheckBox) findViewById(R.id.category4);
+        checkBox5 = (CheckBox) findViewById(R.id.categoryAll);
+        checkBox6 = (CheckBox) findViewById(R.id.myCategory);
+
         db = new DBHelper(this);
         Intent i = getIntent();
         player = db.getPlayerFromDB(pName = i.getStringExtra("pName"));
@@ -80,12 +87,6 @@ public class GameSettingsActivity extends AppCompatActivity {
 
     public void sendToGame(View view) {
 
-        checkBox1 = (CheckBox) findViewById(R.id.category1);
-        checkBox2 = (CheckBox) findViewById(R.id.category2);
-        checkBox3 = (CheckBox) findViewById(R.id.category3);
-        checkBox4 = (CheckBox) findViewById(R.id.category4);
-        checkBox5 = (CheckBox) findViewById(R.id.categoryAll);
-        checkBox6 = (CheckBox) findViewById(R.id.myCategory);
 
         if (checkBox1.isChecked() || checkBox2.isChecked() || checkBox3.isChecked()
                 || checkBox4.isChecked() || checkBox5.isChecked() || checkBox6.isChecked()){
@@ -100,32 +101,9 @@ public class GameSettingsActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.you_need_to_choose_category, Toast.LENGTH_SHORT).show();
         }
 
-    }
-
-    public void checkAllBoxes(View view) {
-
-        checkBox1 = (CheckBox) findViewById(R.id.category1);
-        checkBox2 = (CheckBox) findViewById(R.id.category2);
-        checkBox3 = (CheckBox) findViewById(R.id.category3);
-        checkBox4 = (CheckBox) findViewById(R.id.category4);
-        checkBox5 = (CheckBox) findViewById(R.id.categoryAll);
-        checkBox6 = (CheckBox) findViewById(R.id.myCategory);
-
-        checkIfChecked();
 
     }
-    public void clicked(View view) {
-        checkBox1 = (CheckBox) findViewById(R.id.category1);
-        checkBox2 = (CheckBox) findViewById(R.id.category2);
-        checkBox3 = (CheckBox) findViewById(R.id.category3);
-        checkBox4 = (CheckBox) findViewById(R.id.category4);
-        checkBox5 = (CheckBox) findViewById(R.id.categoryAll);
-        checkBox6 = (CheckBox) findViewById(R.id.myCategory);
-
-        addOrRemoveChecked();
-
-    }
-    public void addOrRemoveChecked() {
+    public void addOrRemoveChecked(View view) {
 
         if (checkBox1.isChecked() && (!clickedCat.contains("TV"))){
             clickedCat.add("TV");
@@ -147,8 +125,15 @@ public class GameSettingsActivity extends AppCompatActivity {
         } else if (!checkBox4.isChecked()){
             clickedCat.remove("Diverse");
         }
+
+        if (checkBox6.isChecked()) {
+
+            Toast.makeText(this, "Detta val kommer vara möjligt inom kort!", Toast.LENGTH_SHORT).show();
+            checkBox6.setChecked(false);
+
+        }
     }
-    public void checkIfChecked() {
+    public void checkIfAllChecked(View view) {
 
         if(checkBox5.isChecked()) {
             checkBox1.setChecked(true);
@@ -161,7 +146,9 @@ public class GameSettingsActivity extends AppCompatActivity {
             checkBox3.setChecked(false);
             checkBox4.setChecked(false);
         }
-        addOrRemoveChecked();
+
+        addOrRemoveChecked(view);
 
     }
+
 }
