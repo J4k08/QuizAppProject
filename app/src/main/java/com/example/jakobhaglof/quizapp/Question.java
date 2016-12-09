@@ -88,17 +88,4 @@ public class Question {
         this.choice4 = choice4;
     }
 
-    public Question addQuestion(Question question) {
-
-        return question;
-        //Överflödig metod?
-    }
-
-    public void removeQuestion(){
-        //ctrl+alt+del
-    }
-
-    public void shuffleQuestion(){
-        //Blanda ordningen som svars alternativen kommer fram i spelet
-    }
 }

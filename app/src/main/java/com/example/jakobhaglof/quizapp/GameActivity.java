@@ -21,17 +21,21 @@ public class GameActivity extends AppCompatActivity {
     private DBHelper db;
     private int rndNumber;
     private int playerScore = 0;
+    private int timer;
     private Player player;
     private String pName = "";
+    private String isFromMenu = "Yes";
+    private String guess = "";
     private ArrayList<String> clickedCat;
     private ArrayList<Question> gameQuestions;
     private ArrayList<String> answers;
-    private TextView que;
-    private Button btn1, btn2, btn3, btn4;
+    private Button btn, btn1, btn2, btn3, btn4;
     private Game game;
-    private int timer;
+    private TextView que;
     private TextView qTimer;
     private CountDownTimer countDownTimer;
+    private boolean isBackPressed = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +52,6 @@ public class GameActivity extends AppCompatActivity {
 
         game = new Game(this, 10000, clickedCat, player);
         gameQuestions = game.prepGame(clickedCat);
-
         rndNumber = 0;
 
         setQuestions();
@@ -82,6 +85,12 @@ public class GameActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
         }
+        if (id == R.id.toolbarpName) {
+            Intent intent = new Intent(this, PersonalProfileActivity.class);
+            intent.putExtra("isFromMenu", isFromMenu);
+            intent.putExtra("pName", pName);
+            startActivity(intent);
+        }
         if (id == R.id.settings) {
             Intent intent = new Intent(this, SettingsActivity.class);
             intent.putExtra("pName", pName);
@@ -111,36 +120,25 @@ public class GameActivity extends AppCompatActivity {
 
     public void categoryBoxes(View view) {
 
-        String guess = "";
-        Button btn = (Button) view;
+        btn1.setEnabled(false);
+        btn2.setEnabled(false);
+        btn3.setEnabled(false);
+        btn4.setEnabled(false);
+
+        btn = (Button)view;
         guess = btn.getText().toString();
-
-        Log.d(TAG, "categoryBoxes: " + guess);
-
         playerScore += game.roundGuess(guess, gameQuestions.get(rndNumber), timer);
-
-        rndNumber++;
-        Log.d(TAG, "rnNumber: " + rndNumber);
-        Log.d(TAG, "Arraylist: " + gameQuestions.size());
-        Log.d(TAG, "categoryBoxes: Poäng:" + playerScore);
 
         countDownTimer.cancel();
 
-        if(rndNumber == gameQuestions.size()) {
-
-            Intent i = new Intent(this, PostGameActivity.class);
-
-            if(playerScore > player.getHighScore()) {
-                db.updateHighScore(playerScore, pName);
-                Log.d(TAG, "Player highscore: är högre och sparas!");
-            }
-            i.putExtra("pName", pName); i.putExtra("playerScore", playerScore);
-            i.putStringArrayListExtra("clickedCat", clickedCat);
-
-            startActivity(i);
-        } else {
-            playGame(gameQuestions);
+        if(guess.equals(gameQuestions.get(rndNumber).getCorrectAnswer())) {
+            btn.setBackgroundResource(R.drawable.btngreen);
         }
+        else{
+            btn.setBackgroundResource(R.drawable.btnred);
+        }
+        guessDelay();
+
     }
 
     public void setQuestions() {
@@ -151,6 +149,7 @@ public class GameActivity extends AppCompatActivity {
         btn3 = (Button) findViewById(R.id.btnChoice3);
         btn4 = (Button) findViewById(R.id.btnChoice4);
     }
+
     private void startTimer() {
 
         Log.d(TAG, "startTimer: " + timer);
@@ -175,7 +174,6 @@ public class GameActivity extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Log.d(TAG, "onFinish: " + qTimer);
                         rndNumber++;
                         playGame(gameQuestions);
                     }
@@ -184,10 +182,53 @@ public class GameActivity extends AppCompatActivity {
 
         }.start();
     }
+
     public void timeOutMsg() {
 
         Log.d(TAG, "timeOutMsg: Detta skrivs ut i onFinished");
         Toast.makeText(this, "Tiden tog slut!", Toast.LENGTH_SHORT).show();
 
     }
+
+    @Override
+    public void onBackPressed() {
+
+        countDownTimer.cancel();
+        isBackPressed = true;
+
+        Intent intent = new Intent(this, GameSettingsActivity.class);
+        intent.putExtra("pName", pName);
+        startActivity(intent);
+    }
+    public void guessDelay(){
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+
+                btn.setBackgroundResource(R.drawable.btn);
+                rndNumber++;
+                btn1.setEnabled(true); btn2.setEnabled(true); btn3.setEnabled(true); btn4.setEnabled(true);
+
+                if(rndNumber == 10) {
+
+                    Intent i = new Intent(GameActivity.this, PostGameActivity.class);
+
+                    if(playerScore > player.getHighScore()) {
+                        db.updateHighScore(playerScore, pName);
+                    }
+
+                    i.putExtra("pName", pName); i.putExtra("playerScore", playerScore);
+                    i.putStringArrayListExtra("clickedCat", clickedCat);
+
+                    startActivity(i);
+                } else if(!isBackPressed) {
+                        playGame(gameQuestions);
+                    }
+            }
+        },2000);
+    }
+
 }

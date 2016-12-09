@@ -13,6 +13,7 @@ public class AboutActivity extends AppCompatActivity {
     private DBHelper db;
     private Player player;
     private String pName = "";
+    private String isFromMenu = "Yes";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,12 @@ public class AboutActivity extends AppCompatActivity {
 
         if (id == R.id.toolbarMonkey){
             Intent intent = new Intent(this, ProfileActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.toolbarpName) {
+            Intent intent = new Intent(this, PersonalProfileActivity.class);
+            intent.putExtra("pName", pName);
+            intent.putExtra("isFromMenu", isFromMenu);
             startActivity(intent);
         }
         if (id == R.id.settings) {

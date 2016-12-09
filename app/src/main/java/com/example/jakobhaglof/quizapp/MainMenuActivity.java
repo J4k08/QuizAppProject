@@ -16,6 +16,7 @@ public class MainMenuActivity extends AppCompatActivity {
     private final static String TAG = "MAIN_MENU_ACTIVITY: ";
     private Player player;
     private String pName = "";
+    private String isFromMenu = "Yes";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,12 @@ public class MainMenuActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
         }
+        if (id == R.id.toolbarpName) {
+            Intent intent = new Intent(this, PersonalProfileActivity.class);
+            intent.putExtra("pName", pName);
+            intent.putExtra("isFromMenu", isFromMenu);
+            startActivity(intent);
+        }
         if (id == R.id.settings) {
             Intent intent = new Intent(this, SettingsActivity.class);
             intent.putExtra("pName", pName);
@@ -75,7 +82,6 @@ public class MainMenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, GameSettingsActivity.class);
         intent.putExtra("pName", pName);
         startActivity(intent);
-
     }
 
     public void sendToProfiles(View view) {

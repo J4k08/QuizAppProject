@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import java.security.acl.LastOwnerException;
@@ -18,6 +19,7 @@ public class PostGameActivity extends AppCompatActivity {
     private DBHelper db;
     private Player player;
     private String pName = "";
+    private String isFromMenu = "Yes";
     private int lastRoundScore;
     private ArrayList<String> clickedCat;
     private String playedCat;
@@ -32,9 +34,9 @@ public class PostGameActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         lastRoundScore = i.getExtras().getInt("playerScore");
-        Log.d(TAG, "onCreate: " + lastRoundScore);
         clickedCat = i.getStringArrayListExtra("clickedCat");
         player = db.getPlayerFromDB(pName = i.getExtras().getString("pName"));
+
         playedCat = displayCategories(clickedCat);
 
         displayResult();
@@ -64,6 +66,12 @@ public class PostGameActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
         }
+        if (id == R.id.toolbarpName) {
+            Intent intent = new Intent(this, PersonalProfileActivity.class);
+            intent.putExtra("pName", pName);
+            intent.putExtra("isFromMenu", isFromMenu);
+            startActivity(intent);
+        }
         if (id == R.id.settings) {
             Intent intent = new Intent(this, SettingsActivity.class);
             intent.putExtra("pName", pName);
@@ -76,7 +84,7 @@ public class PostGameActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public String displayCategories(ArrayList<String> clickedCat) {
+    private String displayCategories(ArrayList<String> clickedCat) {
 
         playedCat = "";
 
@@ -89,15 +97,13 @@ public class PostGameActivity extends AppCompatActivity {
             playedCat = clickedCat.get(0);
             for (int i = 1; i < clickedCat.size(); i++) {
 
-
                 playedCat = playedCat + " & " + clickedCat.get(i);
-
             }
         }
         return playedCat;
     }
 
-    public void displayResult() {
+    private void displayResult() {
 
         TVplayerName = (TextView)findViewById(R.id.writePlayerName);
         TVplayerName.setText(player.getName());
@@ -111,5 +117,26 @@ public class PostGameActivity extends AppCompatActivity {
         TVplayerHighScore = (TextView)findViewById(R.id.writePlayerHighScore);
         TVplayerHighScore.setText("" + player.getHighScore());
 
+    }
+
+    public void sendToGameSettings(View view) {
+
+        Intent intent = new Intent(this, GameSettingsActivity.class);
+        intent.putExtra("pName", pName);
+        startActivity(intent);
+    }
+
+    public void sendToMain(View view) {
+
+        Intent intent = new Intent(this, MainMenuActivity.class);
+        intent.putExtra("pName", pName);
+        startActivity(intent);
+    }
+
+    public void sendToHighScore(View view) {
+
+        Intent intent = new Intent(this, HighScoreActivity.class);
+        intent.putExtra("pName", pName);
+        startActivity(intent);
     }
 }

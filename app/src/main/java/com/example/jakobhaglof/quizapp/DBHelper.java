@@ -40,7 +40,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String P_MONKEY = "monkey";
 
     public DBHelper(Context context) {
-        super(context, db_name, null, 1);
+        super(context, db_name, null, 2);
         this.context = context;
     }
 
@@ -78,28 +78,106 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public void addQuestion() {
 
-        //Film & TV
-        //Historia
-        //Musik
-        //Diverse
+        //TV
 
         Question q1T = new Question("Vem spelade Harry Potter i filmen Harry Potter?"
-                , "TV", "Daniel Radcliffe", "Marlon Brando", "Daniel Radcliffe", "Sven Wolter", "Han ljudkillen från polisskolan");
+                ,"TV","Daniel Radcliffe","Marlon Brando","Daniel Radcliffe","Sven Wolter","Han ljudkillen från polisskolan");
         this.addQuestion(q1T);
+        Question q2T = new Question("Vad heter den gröna figuren som dör i Star Wars - Return of the Jedi?","TV","Yoda","Yoda","Jar Jar Binks",
+                "Chewbacca","Hans");
+        this.addQuestion(q2T);
+        Question q3T = new Question("Vem i serien Friends har stort intresse för Dinosaurier?","TV","Ross","Ross","Joey","Monica","Rachel");
+        this.addQuestion(q3T);
+        Question q4T = new Question("Vem i familjen Macahan är äldst?","TV","Zeb","Zeb","Kate","Luke","Jessie");
+        this.addQuestion(q4T);
+        Question q5T = new Question("I vilken serie förekommer den talande bilen 'Kitt'?","TV","Knight Rider","Knight Rider",
+                "Miami Vice","The Car","Cars");
+        this.addQuestion(q5T);
+        Question q6T = new Question("Vad är orignaltiteln på TV-serien 'Våra bästa år'?","TV","Days of our Lives",
+                "Days of your Lives","Running Sand","DiMera","The Eternal Story");
+        this.addQuestion(q6T);
+        Question q7T = new Question("Under vilket krig utspelar sig TV-serien 'M*A*S*H'?","TV","Koreakriget","Koreakriget"
+                ,"Första Världskriget","Andra Världskriget","Vietnamkriget");
+        this.addQuestion(q7T);
+        Question q8T = new Question("Vem är äldst av 'Sex & the City'-tjejerna?","TV","Samantha","Samantha","Miranda","Carrie","Charlotte");
+        this.addQuestion(q8T);
+        Question q9T = new Question("Under vilket årtioende utspelar sig 'Stranger Things'?","TV","80-tal","80-tal","70-tal","90-tal","00-tal");
+        this.addQuestion(q9T);
+        Question q10T = new Question("Vilket år började 'Game Of Thrones' sändas?","TV","2011","2011","2012","2013","2010");
+        this.addQuestion(q10T);
 
-        Question q1M = new Question("Vem är inte en medlem i ABBA?", "Musik", "Babben Larsson", "Björn Ulvaeus", "Anni-Frid Lyngstad",
-                "Babben Larsson", "Agnetha Fältskog");
+        //Musik
+
+        Question q1M = new Question("Vem är inte en medlem i ABBA?","Musik","Babben Larsson","Björn Ulvaeus","Anni-Frid Lyngstad","Babben Larsson","Agnetha Fältskog");
         this.addQuestion(q1M);
+        Question q2M = new Question("I vilket band har Ozzy Osbourne sjungit i?","Musik","Black Sabbath","Grateful Dead","Rainbow","Black Sabbath","The Osmonds");
+        this.addQuestion(q2M);
+        Question q3M = new Question("Vilket band skrev låten 'Hold the line'?","Musik","Toto","Meatloaf","Patti Smith","David Bowie","Toto");
+        this.addQuestion(q3M);
+        Question q4M = new Question("Vilket år bildades One Direction?","Musik","2012","2012","2013","2011","2010");
+        this.addQuestion(q4M);
+        Question q5M = new Question("Vem är Martin Eriksson också känd som?","Musik","E-Type","Ziggy Stardust","Starchild","E-Type","Batman");
+        this.addQuestion((q5M));
+        Question q6M = new Question("Vilket rockband förknippas med Kim Larsen?","Musik","Gasolin'","Gasolin'","Larsen Brothers","Volbeat","Suspekt");
+        this.addQuestion(q6M);
+        Question q7M = new Question("Vem är född 1947 och grundade bandet 'The Stooges'","Musik","Iggy Pop","Iggy Pop","String","Eric Clapton","Bryan Ferry");
+        this.addQuestion(q7M);
+        Question q8M = new Question("Jimmy Page och Robert Plant är två medlemmar i vilket band?","Musik","Led Zeppelin","Led Zeppelin","Cream","Dire Straits","Deep purple");
+        this.addQuestion(q8M);
+        Question q9M = new Question("Vilken artist hade en hit med låten 'Do you really want me'?","Musik","Robyn","Robyn","Molly Sandén","Justin Bieber","Beyonce");
+        this.addQuestion(q9M);
+        Question q10M = new Question("Vem sa 'vi är populärare än Jesus'?","Musik","John Lennon","John Lennon","Michael Jacksson","Harry Styles","Justin Timberlake");
+        this.addQuestion(q10M);
 
-        Question q1H = new Question("När föll Berlinmuren?", "Historia", "1989", "1986", "1992", "1989", "1995");
+        //historia
 
+        Question q1H = new Question("När föll Berlinmuren?","Historia","1989","1986","1992","1989","1995");
         this.addQuestion(q1H);
+        Question q2H = new Question("När dog John F Kennedy?","Historia","1963","1971","1963","1982","1967");
+        this.addQuestion(q2H);
+        Question q3H = new Question("Vad sägs vara en startande orsak till första världs kriget?","Historia","Skotten i Sarajevo","Finnen i Hamburg",
+                "Skotten i Sarajevo","Japanen i Warzawa","Ryssen i Alingsås");
+        this.addQuestion(q3H);
+        Question q4H = new Question("Vad hette bombplanet som släppte den första atombomben?","Historia","Enola Gay","Princess","Fat Boy"
+                ,"Enola Gay","Kingfisher");
+        this.addQuestion(q4H);
+        Question q5H = new Question("Noas tredje son, lillebror till Sem och Ham hette vad?","Historia","Jafet","Set","Jafet","Bosse","Laban");
+        this.addQuestion(q5H);
+        Question q6H = new Question("I vilket nutida land ligger ruinerna av Babylon?","Historia","Irak","Irak","Iran","Syrien","Israel");
+        this.addQuestion(q6H);
+        Question q7H = new Question("Vilket århundrade uppfanns blixtlåset?","Historia","1900-talet","1900-talet","1800-talet","2000-talet","1700-talet");
+        this.addQuestion(q7H);
+        Question q8H = new Question("Hugin & Munin är två korpar. Vem äger dem?","Historia","Oden","Oden","Tor","Hjalmar","Simon Cowell");
+        this.addQuestion(q8H);
+        Question q9H = new Question("I vilken svensk stad uppfanns tändstickan?","Historia","Jönköping","Jönköping","Linköping","Göteborg","Skara");
+        this.addQuestion(q9H);
+        Question q10H = new Question("Vilket år var det sista som svenska folket röstade till en tvåkammarriksdag?","Historia","1968","1968","1932","1956","1984");
+        this.addQuestion(q10H);
 
-        Question q1D = new Question("Vad står MSN för?", "Diverse", "Microsoft Network", "Microsoft Network", "Mass Sending Network",
-                "Multimedia Server Name", "Microsoft Social Network");
+        //Diverse
+
+        Question q1D = new Question("Vad står MSN för?","Diverse","Microsoft Network","Microsoft Network","Mass Sending Network",
+                "Multimedia Server Name","Microsoft Social Network");
         this.addQuestion(q1D);
-
-
+        Question q2D = new Question("Vad står förkortningen FAQ för?","Diverse","Frequently Asked Questions","Forward A Questions","Frequently Asked Questions",
+                "Far And Quick","Fast Answer Quality");
+        this.addQuestion(q2D);
+        Question q3D = new Question("Vilken spritsort utgör grunden i en äkta Dry Martini?","Diverse","Gin","Gin","Vodka","Dry Vermouth","Rom");
+        this.addQuestion(q3D);
+        Question q4D = new Question("Vilken komet syntes 1997 och beräknas återkomma om ca 2500 år?","Diverse","Hale Bop","Hale Bop","Swift Tuttle","Halley","Shoemaker");
+        this.addQuestion(q4D);
+        Question q5D = new Question("Vem skrev den klassiska boken 'Liftarens guide till galaxen'?","Diverse","Douglas Adams","Douglas Adams","George Orwell","Stephen King","Lisa Marklund");
+        this.addQuestion(q5D);
+        Question q6D = new Question("Vad heter Donal Trumps fru?","Diverse","Melania Trump","Melania Trump","Svetlana Trump","Marina Trump","Melka Trump");
+        this.addQuestion(q6D);
+        Question q7D = new Question("Vad heter stad på Danska?","Diverse","By","By","Town","Stad","Stat");
+        this.addQuestion(q7D);
+        Question q8D = new Question("Ungefär hur mycket av vår atmsofär är syre?","Diverse","20%","20%","50%","30%","60%");
+        this.addQuestion(q8D);
+        Question q9D = new Question("Vilken religion har flest anhängare i världen?","Diverse","Kristemdomen","Kristendomen","Islam","Hinduismen","Buddhismen");
+        this.addQuestion(q9D);
+        Question q10D = new Question("Vilket sädesslag har kortast ax?","Diverse","Vete","Vete","Råg","Korn","Havre");
+        this.addQuestion(q10D);
     }
     public void addQuestion(Question quest) {
 
@@ -164,7 +242,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
 
     }
-
     public ArrayList<Question> getSpecificQuestions(ArrayList<String> categories) {
 
 
@@ -253,7 +330,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return player;
     }
-
     public List<Player> getAllPlayers() {
 
 
@@ -328,6 +404,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.update(P_TABLE, cv, P_NAME + "=?", selectionArgs);
 
+    }
+
+    public void removePlayer(String pName) {
+
+    db = getWritableDatabase();
+
+        String[] selectionArgs = new String[]{pName};
+        db.delete(P_TABLE, P_NAME + "=?", selectionArgs);
     }
 
 }

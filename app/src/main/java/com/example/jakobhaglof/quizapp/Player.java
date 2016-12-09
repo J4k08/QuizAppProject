@@ -8,40 +8,28 @@ import android.content.Context;
 
 public class Player {
 
-    private int currentScore;
     private String name;
     private int highScore;
     private int monkeyID;
 
 
     public Player() {
-
-        currentScore = 0;
         name = "";
         highScore = 0;
         monkeyID = 0;
     }
 
-    public Player(int currentScore, String name, int highScore) {
-        this.currentScore = currentScore;
+    public Player(int monkeyID, String name, int highScore) {
+        this.monkeyID = monkeyID;
         this.name = name;
         this.highScore = highScore;
     }
-
-
 
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getCurrentScore() {
-        return currentScore;
-    }
-    public void setCurrentScore(int currentScore) {
-        this.currentScore = currentScore;
     }
 
     public int getHighScore() {
@@ -51,23 +39,15 @@ public class Player {
         this.highScore = highScore;
     }
 
-
-    public void sendScore(int currentScore) {
-
-        //episk kod här
-
-    }
-
     public int getMonkeyID() {
         return monkeyID;
     }
-
     public void setMonkeyID(int monkeyID) {
         this.monkeyID = monkeyID;
     }
 
     @Override
     public String toString() {
-        return name + " HighScore: " + highScore;
+        return name;
     }
 }

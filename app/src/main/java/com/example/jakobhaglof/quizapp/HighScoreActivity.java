@@ -9,9 +9,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -19,17 +16,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HighScoreActivity extends AppCompatActivity {
+public class HighScoreActivity extends AppCompatActivity implements Serializable {
 
     private final static String TAG = "HIGH_SCORE_ACTIVITY: ";
     private DBHelper db;
     private Player player;
+    private String clickedPlayer = "";
     private String pName = "";
-    private GridView gv;
-    private ArrayAdapter<Player> gridAdapter;
+    private String isFromMenu = "Yes";
     private ArrayList<Player> highList;
 
     @Override
@@ -37,12 +35,25 @@ public class HighScoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_high_score);
 
-        Log.d(TAG, "onCreate: KOM IN PÅ AKTIVITETEN");
         db = new DBHelper(this);
         Intent i = getIntent();
         player = db.getPlayerFromDB(pName = i.getExtras().getString("pName"));
 
+        ListView highScoreList = (ListView) findViewById(R.id.highscore_listview);
+
+        highScoreList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> a, View v, int i, long l) {
+
+                Object item = a.getItemAtPosition(i);
+                clickedPlayer = item.toString();
+
+                sendToPersonal(v);
+            }
+        });
+
         writeHighScore();
+
     }
 
     @Override
@@ -51,11 +62,9 @@ public class HighScoreActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu, menu);
 
         MenuItem M1 = menu.getItem(0);
-
         M1.setTitle(player.getName());
 
         MenuItem M2 = menu.getItem(1);
-
         M2.setIcon(player.getMonkeyID());
         return true;
     }
@@ -67,6 +76,13 @@ public class HighScoreActivity extends AppCompatActivity {
 
         if (id == R.id.toolbarMonkey) {
             Intent intent = new Intent(this, ProfileActivity.class);
+            startActivity(intent);
+        }
+
+        if (id == R.id.toolbarpName) {
+            Intent intent = new Intent(this, PersonalProfileActivity.class);
+            intent.putExtra("pName", pName);
+            intent.putExtra("isFromMenu", isFromMenu);
             startActivity(intent);
         }
         if (id == R.id.settings) {
@@ -81,37 +97,23 @@ public class HighScoreActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void writeHighScore() {
+    private void writeHighScore() {
+
+        ListView highscoreList = (ListView) findViewById(R.id.highscore_listview);
 
         highList = db.getSortedPlayers();
-        /**ArrayList<String> names = new ArrayList<String>();
-        ArrayList<Integer> monkeys = new ArrayList<>();
-        ArrayList<Integer> scores = new ArrayList<>();
-
-        for(int i = 0; i < highList.size(); i++){
-            names.add(highList.get(i).getName());
-            monkeys.add(highList.get(i).getMonkeyID());
-            scores.add(highList.get(i).getHighScore());
-        }*/
-
 
         ListAdapter listList = new CustomAdapter(this, highList);
-        ListView highscoreList = (ListView) findViewById(R.id.highscore_listview);
 
         highscoreList.setAdapter(listList);
 
+    }
 
-       /** highscoreList.setOnItemClickListener(
-            new AdapterView.OnItemClickListener(){
+   public void sendToPersonal(View view) {
+       Intent intent = new Intent(HighScoreActivity.this, PersonalProfileActivity.class);
+       intent.putExtra("pName", pName);
+       intent.putExtra("clickedPlayer", clickedPlayer);
 
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                }
-            }
-
-
-        );*/
-
+       startActivity(intent);
     }
 }

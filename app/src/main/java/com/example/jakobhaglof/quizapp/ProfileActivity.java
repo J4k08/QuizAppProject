@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,10 +47,8 @@ public class ProfileActivity extends AppCompatActivity {
         list.setOnItemClickListener(new ListView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> a, View v, int i, long l) {
-                String name = (String) a.getItemAtPosition(i);
-                Log.d(TAG, name);
+
                 pName = (String) a.getItemAtPosition(i);
-                Log.d("MESSAGE", pName);
 
                 sendToMain(v);
             }
@@ -80,7 +79,7 @@ public class ProfileActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public ArrayList<String> getNameOfPlayer() {
+    private ArrayList<String> getNameOfPlayer() {
 
         playersList = db.getAllPlayers();
 
@@ -99,24 +98,25 @@ public class ProfileActivity extends AppCompatActivity {
 
         et = (EditText)findViewById(R.id.add_name);
 
-        String name = et.getText().toString();
-        db = new DBHelper(getApplicationContext());
+        pName = et.getText().toString();
 
-        Log.d(TAG, name);
+        if(playerNames.contains(pName)){
 
-        Player p1 = new Player(0, name, 0);
+            Toast.makeText(this, "Profilnamn taget, försök igen!", Toast.LENGTH_SHORT).show();
 
-        p1.setMonkeyID(monkeyID);
+        } else if(!pName.matches("^[a-zåäöA-ZÅÄÖ]{3,20}$")){
+            Toast.makeText(this, "Profilnamn får endast innehålla a-ö och vara mellan 3-20 tecken långt", Toast.LENGTH_SHORT).show();
+        } else {
+            db = new DBHelper(getApplicationContext());
 
-        Log.d(TAG, "saveProfile: " + p1.getMonkeyID());
+            player = new Player(0, pName, 0);
+            player.setMonkeyID(monkeyID);
 
-        db.addPlayer(p1);
-        playerNames = getNameOfPlayer();
+            db.addPlayer(player);
+            playerNames = getNameOfPlayer();
 
-
-        listProfiles(playerNames);
-
-
+            listProfiles(playerNames);
+        }
     }
 
     public void listProfiles(ArrayList<String> playerNames) {
@@ -137,24 +137,16 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void saveMonkey(View view) {
-        Log.d(TAG, "saveMonkey: kom in i metoden!");
 
         if (view.equals(findViewById(R.id.monkey1))){
             monkeyID = R.drawable.ziggymonkey;
-            Log.d(TAG, "ziggy");
-            //2130837599
         }
         else if (view.equals(findViewById(R.id.monkey2))){
             monkeyID = R.drawable.rupaulmonkey;
-            Log.d(TAG, "rupaul");
-            //2130837596
         }
         else if (view.equals(findViewById(R.id.monkey3))){
             monkeyID = R.drawable.standardmonkey;
-            Log.d(TAG, "standard");
-            //2130837598
         }
     }
-
 
 }

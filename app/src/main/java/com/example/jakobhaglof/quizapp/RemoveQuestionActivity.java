@@ -12,6 +12,7 @@ public class RemoveQuestionActivity extends AppCompatActivity {
     private final static String TAG = "REMOVE_QUESTION_ACTIVITY: ";
     private DBHelper db;
     private Player player;
+    private String isFromMenu = "Yes";
     private String pName = "";
 
     @Override
@@ -30,12 +31,11 @@ public class RemoveQuestionActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu, menu);
 
         MenuItem M1 = menu.getItem(0);
-
         M1.setTitle(player.getName());
 
         MenuItem M2 = menu.getItem(1);
-
         M2.setIcon(player.getMonkeyID());
+
         return true;
     }
 
@@ -46,6 +46,12 @@ public class RemoveQuestionActivity extends AppCompatActivity {
 
         if (id == R.id.toolbarMonkey){
             Intent intent = new Intent(this, ProfileActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.toolbarpName) {
+            Intent intent = new Intent(this, PersonalProfileActivity.class);
+            intent.putExtra("pName", pName);
+            intent.putExtra("isFromMenu", isFromMenu);
             startActivity(intent);
         }
         if (id == R.id.settings) {
