@@ -36,7 +36,7 @@
             android:text="@string/category_F"
             android:textSize="20sp"
             android:textColor="@color/textColorBlack"
-            android:onClick="clicked" />
+            android:onClick="addOrRemoveChecked" />
 
         <CheckBox
             android:id="@+id/category2"
@@ -45,9 +45,7 @@
             android:text="@string/category_H"
             android:textSize="20sp"
             android:textColor="@color/textColorBlack"
-            android:onClick="clicked" />
-
-
+            android:onClick="addOrRemoveChecked" />
 
     </LinearLayout>
 
@@ -65,7 +63,7 @@
             android:text="@string/category_M"
             android:textSize="20sp"
             android:textColor="@color/textColorBlack"
-            android:onClick="clicked" />
+            android:onClick="addOrRemoveChecked" />
 
         <CheckBox
             android:id="@+id/category4"
@@ -74,7 +72,7 @@
             android:text="@string/category_D"
             android:textSize="20sp"
             android:textColor="@color/textColorBlack"
-            android:onClick="clicked" />
+            android:onClick="addOrRemoveChecked" />
 
         <CheckBox
             android:id="@+id/myCategory"
@@ -102,9 +100,7 @@
             android:textColor="@color/textColorBlack"
             android:textStyle="bold"
             android:textSize="22sp"
-            android:onClick="checkAllBoxes"/>
-
-
+            android:onClick="checkIfAllChecked"/>
 
     </LinearLayout>
 
