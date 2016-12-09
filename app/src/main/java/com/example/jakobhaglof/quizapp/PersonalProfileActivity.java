@@ -82,7 +82,7 @@ public class PersonalProfileActivity extends AppCompatActivity implements Serial
         return super.onOptionsItemSelected(item);
     }
 
-    public void displayProfile(Player player) {
+    private void displayProfile(Player player) {
 
         TextView name = (TextView) findViewById(R.id.Personal_profile);
         name.setText(player.getName());

@@ -84,7 +84,7 @@ public class PostGameActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public String displayCategories(ArrayList<String> clickedCat) {
+    private String displayCategories(ArrayList<String> clickedCat) {
 
         playedCat = "";
 
@@ -103,7 +103,7 @@ public class PostGameActivity extends AppCompatActivity {
         return playedCat;
     }
 
-    public void displayResult() {
+    private void displayResult() {
 
         TVplayerName = (TextView)findViewById(R.id.writePlayerName);
         TVplayerName.setText(player.getName());
