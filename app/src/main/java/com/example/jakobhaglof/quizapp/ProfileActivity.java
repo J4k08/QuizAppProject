@@ -100,15 +100,13 @@ public class ProfileActivity extends AppCompatActivity {
 
         pName = et.getText().toString();
 
-        pName.matches(("^[a-zåäöA-ZÅÄÖ]{3,20}$"));
-
         if(playerNames.contains(pName)){
 
-
-
             Toast.makeText(this, "Profilnamn taget, försök igen!", Toast.LENGTH_SHORT).show();
-        } else {
 
+        } else if(!pName.matches("^[a-zåäöA-ZÅÄÖ]{3,20}$")){
+            Toast.makeText(this, "Profilnamn får endast innehålla a-ö och vara mellan 3-20 tecken långt", Toast.LENGTH_SHORT).show();
+        } else {
             db = new DBHelper(getApplicationContext());
 
             player = new Player(0, pName, 0);
