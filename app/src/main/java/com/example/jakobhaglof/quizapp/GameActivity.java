@@ -33,6 +33,7 @@ public class GameActivity extends AppCompatActivity {
     private TextView que;
     private TextView qTimer;
     private CountDownTimer countDownTimer;
+    private boolean isBackPressed = false;
 
 
     @Override
@@ -191,6 +192,7 @@ public class GameActivity extends AppCompatActivity {
     public void onBackPressed() {
 
         countDownTimer.cancel();
+        isBackPressed = true;
 
         Intent intent = new Intent(this, GameSettingsActivity.class);
         intent.putExtra("pName", pName);
@@ -219,7 +221,9 @@ public class GameActivity extends AppCompatActivity {
 
                     startActivity(i);
                 } else {
-                    playGame(gameQuestions, game);
+                    if(!isBackPressed) {
+                        playGame(gameQuestions, game);
+                    }
                 }
             }
         },2000);
