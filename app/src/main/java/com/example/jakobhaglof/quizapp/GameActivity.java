@@ -28,6 +28,7 @@ public class GameActivity extends AppCompatActivity {
     private String guess = "";
     private ArrayList<String> clickedCat;
     private ArrayList<Question> gameQuestions;
+    private ArrayList<String> answers;
     private Button btn, btn1, btn2, btn3, btn4;
     private Game game;
     private TextView que;
@@ -53,10 +54,10 @@ public class GameActivity extends AppCompatActivity {
         gameQuestions = game.prepGame(clickedCat);
         rndNumber = 0;
 
-
-        showQuestions();
+        setQuestions();
         timer = game.getTimer();
-        playGame(gameQuestions, game);
+
+        playGame(gameQuestions);
 
     }
 
@@ -102,16 +103,18 @@ public class GameActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void playGame(ArrayList<Question> questions, Game game) {
+    public void playGame(ArrayList<Question> questions) {
 
         timer = 11000;
         startTimer();
 
+        answers = game.shuffleAnswers(questions, rndNumber);
+
         que.setText(questions.get(rndNumber).getQuestion());
-        btn1.setText(questions.get(rndNumber).getChoice1());
-        btn2.setText(questions.get(rndNumber).getChoice2());
-        btn3.setText(questions.get(rndNumber).getChoice3());
-        btn4.setText(questions.get(rndNumber).getChoice4());
+        btn1.setText(answers.get(0));
+        btn2.setText(answers.get(1));
+        btn3.setText(answers.get(2));
+        btn4.setText(answers.get(3));
 
     }
 
@@ -122,12 +125,11 @@ public class GameActivity extends AppCompatActivity {
         btn3.setEnabled(false);
         btn4.setEnabled(false);
 
-        btn = (Button) view;
+        btn = (Button)view;
         guess = btn.getText().toString();
-        countDownTimer.cancel();
-
         playerScore += game.roundGuess(guess, gameQuestions.get(rndNumber), timer);
 
+        countDownTimer.cancel();
 
         if(guess.equals(gameQuestions.get(rndNumber).getCorrectAnswer())) {
             btn.setBackgroundResource(R.drawable.btngreen);
@@ -139,7 +141,7 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    private void showQuestions() {
+    public void setQuestions() {
 
         que = (TextView) findViewById(R.id.setQuestion);
         btn1 = (Button) findViewById(R.id.btnChoice1);
@@ -148,7 +150,7 @@ public class GameActivity extends AppCompatActivity {
         btn4 = (Button) findViewById(R.id.btnChoice4);
     }
 
-    public void startTimer() {
+    private void startTimer() {
 
         Log.d(TAG, "startTimer: " + timer);
 
@@ -167,13 +169,13 @@ public class GameActivity extends AppCompatActivity {
 
                 qTimer.setText("0");
                 timeOutMsg();
-                //Handler
+
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         rndNumber++;
-                        playGame(gameQuestions, game);
+                        playGame(gameQuestions);
                     }
                 }, 2000);
             }
@@ -181,7 +183,7 @@ public class GameActivity extends AppCompatActivity {
         }.start();
     }
 
-    private void timeOutMsg() {
+    public void timeOutMsg() {
 
         Log.d(TAG, "timeOutMsg: Detta skrivs ut i onFinished");
         Toast.makeText(this, "Tiden tog slut!", Toast.LENGTH_SHORT).show();
@@ -202,8 +204,10 @@ public class GameActivity extends AppCompatActivity {
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
+
             @Override
             public void run() {
+
                 btn.setBackgroundResource(R.drawable.btn);
                 rndNumber++;
                 btn1.setEnabled(true); btn2.setEnabled(true); btn3.setEnabled(true); btn4.setEnabled(true);
@@ -214,17 +218,15 @@ public class GameActivity extends AppCompatActivity {
 
                     if(playerScore > player.getHighScore()) {
                         db.updateHighScore(playerScore, pName);
-                        Log.d(TAG, "Player highscore: är högre och sparas!");
                     }
+
                     i.putExtra("pName", pName); i.putExtra("playerScore", playerScore);
                     i.putStringArrayListExtra("clickedCat", clickedCat);
 
                     startActivity(i);
-                } else {
-                    if(!isBackPressed) {
-                        playGame(gameQuestions, game);
+                } else if(!isBackPressed) {
+                        playGame(gameQuestions);
                     }
-                }
             }
         },2000);
     }

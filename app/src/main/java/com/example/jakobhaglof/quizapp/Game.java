@@ -82,20 +82,35 @@ public class Game {
         Collections.shuffle(questions);
     }
 
+    public ArrayList<String> shuffleAnswers(ArrayList<Question> questions, int round) {
+
+        ArrayList<String> shuffledAnswers= new ArrayList<>();
+
+            shuffledAnswers.add(questions.get(round).getChoice1());
+            shuffledAnswers.add(questions.get(round).getChoice2());
+            shuffledAnswers.add(questions.get(round).getChoice3());
+            shuffledAnswers.add(questions.get(round).getChoice4());
+
+        Collections.shuffle(shuffledAnswers);
+
+        return shuffledAnswers;
+
+    }
+
     public int roundGuess(String guess, Question question, int timer) {
 
         Log.d(TAG, "roundGuess: Klickade är: " + guess);
 
         Log.d(TAG, "roundGuess: Rätt svar i metod: " + question.getCorrectAnswer());
-        int score = 10;
-        score = timer/1000;
+        int score;
+        score = timer / 1000;
 
-        if(guess.equals(question.getCorrectAnswer())) {
+        if (guess.equals(question.getCorrectAnswer())) {
             Log.d(TAG, "roundGuess: Poäng efter rätt svar: " + score);
             return score;
-        }
-        return score = 0;
+        } else {
+            return score = 0;
         }
 
-
+    }
 }
