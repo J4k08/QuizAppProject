@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,16 +98,25 @@ public class ProfileActivity extends AppCompatActivity {
 
         et = (EditText)findViewById(R.id.add_name);
 
-        String name = et.getText().toString();
-        db = new DBHelper(getApplicationContext());
+        pName = et.getText().toString();
 
-        player = new Player(0, name, 0);
-        player.setMonkeyID(monkeyID);
+        if(playerNames.contains(pName)){
 
-        db.addPlayer(player);
-        playerNames = getNameOfPlayer();
+            Toast.makeText(this, "Profilnamn taget, försök igen!", Toast.LENGTH_SHORT).show();
 
-        listProfiles(playerNames);
+        } else if(!pName.matches("^[a-zåäöA-ZÅÄÖ]{3,20}$")){
+            Toast.makeText(this, "Profilnamn får endast innehålla a-ö och vara mellan 3-20 tecken långt", Toast.LENGTH_SHORT).show();
+        } else {
+            db = new DBHelper(getApplicationContext());
+
+            player = new Player(0, pName, 0);
+            player.setMonkeyID(monkeyID);
+
+            db.addPlayer(player);
+            playerNames = getNameOfPlayer();
+
+            listProfiles(playerNames);
+        }
     }
 
     public void listProfiles(ArrayList<String> playerNames) {
