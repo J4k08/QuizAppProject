@@ -47,6 +47,9 @@ public class GameSettingsActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
 
+        Intent i = getIntent();
+        player = db.getPlayerFromDB(pName = i.getStringExtra("pName"));
+
         MenuItem M1 = menu.getItem(0);
 
         M1.setTitle(player.getName());

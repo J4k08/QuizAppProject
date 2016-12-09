@@ -3,6 +3,7 @@ package com.example.jakobhaglof.quizapp;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.sax.StartElementListener;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -140,6 +141,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void showQuestions() {
+
         que = (TextView) findViewById(R.id.setQuestion);
         btn1 = (Button) findViewById(R.id.btnChoice1);
         btn2 = (Button) findViewById(R.id.btnChoice2);
@@ -171,7 +173,6 @@ public class GameActivity extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Log.d(TAG, "onFinish: " + qTimer);
                         rndNumber++;
                         playGame(gameQuestions, game);
                     }
@@ -186,5 +187,15 @@ public class GameActivity extends AppCompatActivity {
         Log.d(TAG, "timeOutMsg: Detta skrivs ut i onFinished");
         Toast.makeText(this, "Tiden tog slut!", Toast.LENGTH_SHORT).show();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        countDownTimer.cancel();
+
+        Intent intent = new Intent(this, GameSettingsActivity.class);
+        intent.putExtra("pName", pName);
+        startActivity(intent);
     }
 }
