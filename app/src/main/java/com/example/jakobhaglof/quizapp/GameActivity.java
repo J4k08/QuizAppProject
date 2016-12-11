@@ -120,10 +120,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void categoryBoxes(View view) {
 
-        btn1.setEnabled(false);
-        btn2.setEnabled(false);
-        btn3.setEnabled(false);
-        btn4.setEnabled(false);
+        disableButtons();
 
         btn = (Button)view;
         guess = btn.getText().toString();
@@ -140,6 +137,7 @@ public class GameActivity extends AppCompatActivity {
         guessDelay();
 
     }
+
 
     public void setQuestions() {
 
@@ -169,12 +167,7 @@ public class GameActivity extends AppCompatActivity {
 
                 qTimer.setText("0");
                 timeOutMsg();
-
-                btn1.setEnabled(false);
-                btn2.setEnabled(false);
-                btn3.setEnabled(false);
-                btn4.setEnabled(false);
-
+                disableButtons();
 
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
@@ -235,6 +228,12 @@ public class GameActivity extends AppCompatActivity {
                     }
             }
         },2000);
+    }
+    private void disableButtons() {
+        btn1.setEnabled(false);
+        btn2.setEnabled(false);
+        btn3.setEnabled(false);
+        btn4.setEnabled(false);
     }
 
 
