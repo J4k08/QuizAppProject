@@ -170,6 +170,12 @@ public class GameActivity extends AppCompatActivity {
                 qTimer.setText("0");
                 timeOutMsg();
 
+                btn1.setEnabled(false);
+                btn2.setEnabled(false);
+                btn3.setEnabled(false);
+                btn4.setEnabled(false);
+
+
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -230,5 +236,6 @@ public class GameActivity extends AppCompatActivity {
             }
         },2000);
     }
+
 
 }
