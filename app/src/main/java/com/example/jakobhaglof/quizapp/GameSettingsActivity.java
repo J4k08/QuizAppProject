@@ -153,4 +153,12 @@ public class GameSettingsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+
+        Intent intent = new Intent(this, MainMenuActivity.class);
+        intent.putExtra("pName", pName);
+        startActivity(intent);
+    }
+
 }
