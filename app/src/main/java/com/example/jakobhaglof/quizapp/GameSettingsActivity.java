@@ -130,7 +130,7 @@ public class GameSettingsActivity extends AppCompatActivity {
 
         if (checkBox6.isChecked()) {
 
-            Toast.makeText(this, "Detta val kommer vara möjligt inom kort!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Detta val kommer vara möjligt först inom kort! :(", Toast.LENGTH_SHORT).show();
             checkBox6.setChecked(false);
 
         }

@@ -91,5 +91,7 @@ public class AddQuestionActivity extends AppCompatActivity {
 
     public void addQuestion(View view) {
 
+        Toast.makeText(this, "Detta komma vara möjligt först efter nästa uppdatering! :(", Toast.LENGTH_SHORT).show();
+
     }
 }
