@@ -32,6 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
     private int monkeyID;
     private String pName = "";
     private Player player;
+    private Button monkey1, monkey2, monkey3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,13 +139,26 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void saveMonkey(View view) {
 
+        monkey1 = (Button) findViewById(R.id.monkey1);
+        monkey2 = (Button) findViewById(R.id.monkey2);
+        monkey3 = (Button) findViewById(R.id.monkey3);
+
         if (view.equals(findViewById(R.id.monkey1))){
+            monkey1.setBackgroundResource(R.drawable.frameziggymonkey);
+            monkey2.setBackgroundResource(R.drawable.rupaulmonkey);
+            monkey3.setBackgroundResource(R.drawable.standardmonkey);
             monkeyID = R.drawable.ziggymonkey;
         }
         else if (view.equals(findViewById(R.id.monkey2))){
+            monkey1.setBackgroundResource(R.drawable.ziggymonkey);
+            monkey2.setBackgroundResource(R.drawable.framerupaulmonkey);
+            monkey3.setBackgroundResource(R.drawable.standardmonkey);
             monkeyID = R.drawable.rupaulmonkey;
         }
         else if (view.equals(findViewById(R.id.monkey3))){
+            monkey1.setBackgroundResource(R.drawable.ziggymonkey);
+            monkey2.setBackgroundResource(R.drawable.rupaulmonkey);
+            monkey3.setBackgroundResource(R.drawable.framestandardmonkey);
             monkeyID = R.drawable.standardmonkey;
         }
     }

@@ -51,13 +51,13 @@ public class SettingsActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.toolbarMonkey){
-            Intent intent = new Intent(this, ProfileActivity.class);
-            startActivity(intent);
-        }
-        if (id == R.id.toolbarpName) {
             Intent intent = new Intent(this, PersonalProfileActivity.class);
             intent.putExtra("pName", pName);
             intent.putExtra("isFromMenu", isFromMenu);
+            startActivity(intent);
+        }
+        if (id == R.id.toolbarpName) {
+            Intent intent = new Intent(this, ProfileActivity.class);
             startActivity(intent);
         }
         if (id == R.id.settings) {
