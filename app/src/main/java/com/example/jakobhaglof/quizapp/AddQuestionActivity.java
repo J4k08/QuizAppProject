@@ -33,7 +33,7 @@ public class AddQuestionActivity extends AppCompatActivity {
         addItemsOnSpinner();
     }
 
-    public void addItemsOnSpinner() {
+    private void addItemsOnSpinner() {
 
         spinner = (Spinner) findViewById(R.id.get_new_category);
         List<String> list = new ArrayList<>();
@@ -89,6 +89,11 @@ public class AddQuestionActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * somewhat redundant method since this button press have no real effect as of now.
+     * Was going to handle code for adding a question, but right now only displays a Toast.
+     * @param view
+     */
     public void addQuestion(View view) {
 
         Toast.makeText(this, "Detta komma vara möjligt först efter nästa uppdatering! :(", Toast.LENGTH_SHORT).show();

@@ -102,7 +102,7 @@ public class GameActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void playGame(ArrayList<Question> questions) {
+    private void playGame(ArrayList<Question> questions) {
 
         timer = 11000;
         startTimer();
@@ -117,6 +117,12 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * handles a button click, when a button is clicked the method will call Game.roundGuess() and
+     * cancel the timer. If the user gets the answer right it will colour that button green, otherwise
+     * it will color it red. After it will call the guessDelay() method
+     * @param view
+     */
     public void btnGuess(View view) {
 
         disableButtons();
@@ -139,8 +145,7 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-
-    public void setQuestions() {
+    private void setQuestions() {
 
         que = (TextView) findViewById(R.id.setQuestion);
         btn1 = (Button) findViewById(R.id.btnChoice1);
@@ -183,7 +188,7 @@ public class GameActivity extends AppCompatActivity {
         }.start();
     }
 
-    public void timeOutMsg() {
+    private void timeOutMsg() {
 
         Log.d(TAG, "timeOutMsg: Detta skrivs ut i onFinished");
         Toast.makeText(this, "Tiden tog slut!", Toast.LENGTH_SHORT).show();
@@ -200,6 +205,12 @@ public class GameActivity extends AppCompatActivity {
         intent.putExtra("pName", pName);
         startActivity(intent);
     }
+
+    /**
+     * Method for a delay, it gives a 2 second delay, after the delay the buttons are enabled again
+     * and if the rndNumber variable is 10, it will update the Player object's Highscore and start
+     * PostGameActivity.
+     */
     public void guessDelay(){
 
         Handler handler = new Handler();
@@ -230,6 +241,7 @@ public class GameActivity extends AppCompatActivity {
             }
         },2000);
     }
+
     private void disableButtons() {
         btn1.setEnabled(false);
         btn2.setEnabled(false);

@@ -19,6 +19,9 @@ import java.util.ArrayList;
  * Created by samuelalundborg on 07/12/16.
  */
 
+/**
+ * Constructor for a CustomAdapter
+ */
 public class CustomAdapter extends ArrayAdapter<Player> {
 
 

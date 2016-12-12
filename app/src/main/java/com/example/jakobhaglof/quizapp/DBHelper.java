@@ -39,12 +39,19 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String P_HIGHSCORE = "highscore";
     private static final String P_MONKEY = "monkey";
 
+    /**
+     * Constructor for database
+     * @param context
+     */
     public DBHelper(Context context) {
-        super(context, db_name, null, 2);
+        super(context, db_name, null, 3);
         this.context = context;
     }
 
-
+    /**
+     * Upon creation of the database, these tables are created.
+     * @param sqLiteDatabase
+     */
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String sqlPlayer = "CREATE TABLE IF NOT EXISTS " + P_TABLE + "(" +
@@ -71,11 +78,21 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    /**
+     *
+     * @param db
+     * @param oldVersion
+     * @param newVersion
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
 
+    /**
+     * Method for adding questions into the database. Create a Question object and calls addQuestion(Question)
+     * to add it in the database.
+     */
     public void addQuestion() {
 
         //TV
@@ -94,7 +111,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "Miami Vice","The Car","Cars");
         this.addQuestion(q5T);
         Question q6T = new Question("Vad är orignaltiteln på TV-serien 'Våra bästa år'?","TV","Days of our Lives",
-                "Days of your Lives","Running Sand","DiMera","The Eternal Story");
+                "Days of our Lives","Running Sand","DiMera","The Eternal Story");
         this.addQuestion(q6T);
         Question q7T = new Question("Under vilket krig utspelar sig TV-serien 'M*A*S*H'?","TV","Koreakriget","Koreakriget"
                 ,"Första Världskriget","Andra Världskriget","Vietnamkriget");
@@ -174,11 +191,17 @@ public class DBHelper extends SQLiteOpenHelper {
         this.addQuestion(q7D);
         Question q8D = new Question("Ungefär hur mycket av vår atmsofär är syre?","Diverse","20%","20%","50%","30%","60%");
         this.addQuestion(q8D);
-        Question q9D = new Question("Vilken religion har flest anhängare i världen?","Diverse","Kristemdomen","Kristendomen","Islam","Hinduismen","Buddhismen");
+        Question q9D = new Question("Vilken religion har flest anhängare i världen?","Diverse","Kristendomen","Kristendomen","Islam","Hinduismen","Buddhismen");
         this.addQuestion(q9D);
         Question q10D = new Question("Vilket sädesslag har kortast ax?","Diverse","Vete","Vete","Råg","Korn","Havre");
         this.addQuestion(q10D);
     }
+
+    /**
+     * Method for adding Question object into the database. The method puts variables in the correct
+     * columns.
+     * @param quest
+     */
     public void addQuestion(Question quest) {
 
         db = this.getWritableDatabase();
@@ -196,6 +219,12 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.d("lagt till question", "row id " + id);
         db.close();
     }
+
+    /**
+     * Method for adding Player variables to the database. Puts name, highScore and monkeyId-variables
+     * and puts them in the correct columns.
+     * @param player
+     */
     public void addPlayer(Player player) {
 
         db = this.getWritableDatabase();
@@ -210,6 +239,10 @@ public class DBHelper extends SQLiteOpenHelper {
         db.close();
     }
 
+    /**
+     * Method for getting all questions, this is only used to check if a database is made as of now.
+     * @return
+     */
     public List<Question> getAllQuestions() {
 
         List<Question> questionList = new ArrayList<Question>();
@@ -240,8 +273,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return questionList;
 
-
     }
+
+    /**
+     * Method for getting specific collumns of questions from database. An Arraylist of category-names
+     * is sent in and the rows equal to the String is returned in an another ArrayList.
+     * @param categories
+     * @return
+     */
     public ArrayList<Question> getSpecificQuestions(ArrayList<String> categories) {
 
 
@@ -306,6 +345,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    /**
+     * A String is checked for a match in the Player table, if it finds a match, it returns
+     * a Player object.
+     * @param name
+     * @return
+     */
     public Player getPlayerFromDB(String name) {
 
         String selectQuery = "SELECT * FROM " + P_TABLE + " WHERE " + P_NAME + "=\""+ name +"\"";
@@ -330,6 +375,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
         return player;
     }
+
+    /**
+     * Method for getting all the information from the Player Table.
+     * returns an ArrayList with Player objects.
+     * @return
+     */
     public List<Player> getAllPlayers() {
 
 
@@ -360,6 +411,12 @@ public class DBHelper extends SQLiteOpenHelper {
         return playerList;
     }
 
+    /**
+     * Method for getting a sorted ArrayList of Player objects. The query gets 10 rows from the
+     * Player table, it looks at Highscore and in a descending order, from highest to lowest returns
+     * Players in an ArrayList.
+     * @return
+     */
     public ArrayList<Player> getSortedPlayers(){
 
         Log.d(TAG, "getSortedPlayers: KOMMER IN I SORTED");
@@ -394,6 +451,12 @@ public class DBHelper extends SQLiteOpenHelper {
         return playerList;
     }
 
+    /**
+     * Method for updating values, in this case the Highscore column. The String in the argument
+     * decides which columns and P_HIGHSCORE column is updated with the value from the int.
+     * @param highScore
+     * @param pName
+     */
     public void updateHighScore(int highScore, String pName) {
 
         db = this.getWritableDatabase();
@@ -406,6 +469,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    /**
+     * method for removing a row in the database, the String in the argument decides which row to
+     * remove.
+     * @param pName
+     */
     public void removePlayer(String pName) {
 
     db = getWritableDatabase();
