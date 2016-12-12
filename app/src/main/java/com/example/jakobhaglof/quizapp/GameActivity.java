@@ -31,8 +31,7 @@ public class GameActivity extends AppCompatActivity {
     private ArrayList<String> answers;
     private Button btn, btn1, btn2, btn3, btn4;
     private Game game;
-    private TextView que;
-    private TextView qTimer;
+    private TextView que, qTimer, currentPoints;
     private CountDownTimer countDownTimer;
     private boolean isBackPressed = false;
 
@@ -118,13 +117,15 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    public void categoryBoxes(View view) {
+    public void btnGuess(View view) {
 
         disableButtons();
 
         btn = (Button)view;
         guess = btn.getText().toString();
         playerScore += game.roundGuess(guess, gameQuestions.get(rndNumber), timer);
+        currentPoints = (TextView) findViewById(R.id.setPoints);
+        currentPoints.setText(" " + playerScore);
 
         countDownTimer.cancel();
 
