@@ -86,7 +86,11 @@ public class GameSettingsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    /**
+     * handles a button click, if clicked it will check if any of the checkboxes are checked. If so
+     * it will start GameActivity
+     * @param view
+     */
     public void sendToGame(View view) {
 
 
@@ -105,6 +109,12 @@ public class GameSettingsActivity extends AppCompatActivity {
 
 
     }
+
+    /**
+     * method checks which checkbox is enabled and adds a String into the clickedCat arrayList.
+     * If a checkbox is unchecked, it removes the String from the clickedCat arrayList.
+     * @param view
+     */
     public void addOrRemoveChecked(View view) {
 
         if (checkBox1.isChecked() && (!clickedCat.contains("TV"))){
@@ -135,6 +145,12 @@ public class GameSettingsActivity extends AppCompatActivity {
 
         }
     }
+
+    /**
+     * Method on the "allCategory"-button. It sets all checkboxes to true and then calls
+     * the addOrRemoveChecked-method.
+     * @param view
+     */
     public void checkIfAllChecked(View view) {
 
         if(checkBox5.isChecked()) {

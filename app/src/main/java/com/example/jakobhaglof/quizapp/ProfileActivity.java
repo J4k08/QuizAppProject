@@ -95,6 +95,13 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Handles button click. If the playerName array contains the String pname, it'll Toast the user.
+     * Else if the Pname contains the wrong set of characters, it'll also Toast the user.
+     * else it will instanciate a Player object and call the DBHelper addPlayer(Player)-method
+     * and create a profile and save it in the database.
+     * @param view
+     */
     public void saveProfile(View view) {
 
         et = (EditText)findViewById(R.id.add_name);
@@ -120,7 +127,7 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
-    public void listProfiles(ArrayList<String> playerNames) {
+    private void listProfiles(ArrayList<String> playerNames) {
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, playerNames);
 
@@ -130,6 +137,10 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * handles button click, sends pName with the intent and then starts MainMenuActivity
+     * @param view
+     */
     public void sendToMain(View view) {
 
         Intent intent = new Intent(this, MainMenuActivity.class);
@@ -137,6 +148,12 @@ public class ProfileActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * handles a button click, depending on which button the user clicks, that id will be set as
+     * the monkeyId. Also if you click one button it'll change the picture to a similiar picture
+     * but with a frame around it.
+     * @param view
+     */
     public void saveMonkey(View view) {
 
         monkey1 = (Button) findViewById(R.id.monkey1);

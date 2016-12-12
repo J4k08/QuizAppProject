@@ -78,23 +78,41 @@ public class SettingsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Handles button click, it'll Toast the user and call DbHandler method updateHighsScore
+     * with String Pname and a 0-value as an int.
+     * @param view
+     */
     public void resetHighScore(View view) {
         Toast.makeText(this, "Ditt Highscore är 0!", Toast.LENGTH_SHORT).show();
         db.updateHighScore(0, pName);
     }
 
+    /**
+     * Handles button click, Toasts the user and calls DbHandler method removePlayer(String) with
+     * pName as an argument.
+     * @param view
+     */
     public void removeCurrentProfile(View view) {
         Toast.makeText(this, "Din profil är borttagen!", Toast.LENGTH_SHORT).show();
         db.removePlayer(pName);
         startActivity(new Intent(this, ProfileActivity.class));
     }
 
+    /**
+     * handles button click, sends pName with the intent and then starts AddQuestionActivity.
+     * @param view
+     */
     public void sendToAddQuestion(View view) {
         Intent intent = new Intent(this, AddQuestionActivity.class);
         intent.putExtra("pName", pName);
         startActivity(intent);
     }
 
+    /**
+     * handles button click, sends pName with the intent and then starts SendToRemoveQuestion.
+     * @param view
+     */
     public void SendToRemoveQuestion(View view) {
         Intent intent = new Intent(this, RemoveQuestionActivity.class);
         intent.putExtra("pName", pName);

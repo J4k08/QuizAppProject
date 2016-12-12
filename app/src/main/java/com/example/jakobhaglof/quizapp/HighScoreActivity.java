@@ -108,7 +108,11 @@ public class HighScoreActivity extends AppCompatActivity implements Serializable
 
     }
 
-   public void sendToPersonal(View view) {
+    /**
+     * handles button click, sends String pName in the intent to PersonalProfileActivity.
+     * @param view
+     */
+    public void sendToPersonal(View view) {
        Intent intent = new Intent(HighScoreActivity.this, PersonalProfileActivity.class);
        intent.putExtra("pName", pName);
        intent.putExtra("clickedPlayer", clickedPlayer);

@@ -119,6 +119,10 @@ public class PostGameActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * handles button click, sends pName with the intent and then starts GameSettingsActivity
+     * @param view
+     */
     public void sendToGameSettings(View view) {
 
         Intent intent = new Intent(this, GameSettingsActivity.class);
@@ -126,6 +130,10 @@ public class PostGameActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * handles button click, sends pName with the intent and then starts MainMenuActivity
+     * @param view
+     */
     public void sendToMain(View view) {
 
         Intent intent = new Intent(this, MainMenuActivity.class);
@@ -133,6 +141,10 @@ public class PostGameActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * handles button click, sends pName with the intent and then starts HighScoreActivity.
+     * @param view
+     */
     public void sendToHighScore(View view) {
 
         Intent intent = new Intent(this, HighScoreActivity.class);

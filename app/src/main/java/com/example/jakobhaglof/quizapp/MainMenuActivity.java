@@ -77,6 +77,11 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Handles button click. pName-variable is put in the intent and then starts
+     * GameSettingsActivity.
+     * @param view
+     */
     public void sendToGameSettings(View view) {
 
         Intent intent = new Intent(this, GameSettingsActivity.class);
@@ -84,6 +89,11 @@ public class MainMenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Handles button click. pName-variable is put in the intent and then starts
+     * ProfileActivity.
+     * @param view
+     */
     public void sendToProfiles(View view) {
 
         Intent intent = new Intent(this, ProfileActivity.class);
@@ -91,6 +101,11 @@ public class MainMenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Handles button click. pName-variable is put in the intent and then starts
+     * SettingsActivity
+     * @param view
+     */
     public void sendToSettings(View view) {
 
         Intent intent = new Intent(this, SettingsActivity.class);
@@ -98,6 +113,11 @@ public class MainMenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Handles button click. pName-variable is put in the intent and then starts
+     * HighScoreActivity.
+     * @param view
+     */
     public void sendToHighScore(View view) {
 
         Intent intent = new Intent(this, HighScoreActivity.class);
