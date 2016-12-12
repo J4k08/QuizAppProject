@@ -40,7 +40,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String P_MONKEY = "monkey";
 
     public DBHelper(Context context) {
-        super(context, db_name, null, 2);
+        super(context, db_name, null, 3);
         this.context = context;
     }
 
@@ -174,7 +174,7 @@ public class DBHelper extends SQLiteOpenHelper {
         this.addQuestion(q7D);
         Question q8D = new Question("Ungefär hur mycket av vår atmsofär är syre?","Diverse","20%","20%","50%","30%","60%");
         this.addQuestion(q8D);
-        Question q9D = new Question("Vilken religion har flest anhängare i världen?","Diverse","Kristemdomen","Kristendomen","Islam","Hinduismen","Buddhismen");
+        Question q9D = new Question("Vilken religion har flest anhängare i världen?","Diverse","Kristendomen","Kristendomen","Islam","Hinduismen","Buddhismen");
         this.addQuestion(q9D);
         Question q10D = new Question("Vilket sädesslag har kortast ax?","Diverse","Vete","Vete","Råg","Korn","Havre");
         this.addQuestion(q10D);
