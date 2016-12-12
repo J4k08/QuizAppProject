@@ -50,6 +50,7 @@
     <string name="to_menu">Till Meny</string>
     <string name="to_highscore">Till Rekord</string>
     <string name="personal_highscore">Highscore</string>
+    <string name="time">TID</string>
 
     <string-array name="categories">
         <item>Film &amp; TV</item>
