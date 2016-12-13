@@ -21,9 +21,10 @@ public class PostGameActivity extends AppCompatActivity {
     private String pName = "";
     private int lastRoundScore;
     private int correctGuesses;
+    private int playedTime;
     private ArrayList<String> clickedCat;
     private String playedCat;
-    private TextView TVplayerName, TVplayedCat, TVroundScore, TVplayerHighScore, TVcorrectAnswers;
+    private TextView TVplayerName, TVplayedCat, TVroundScore, TVplayerHighScore, TVcorrectAnswers, TVPlayedTime;
 
 
     @Override
@@ -33,6 +34,7 @@ public class PostGameActivity extends AppCompatActivity {
         db = new DBHelper(this);
 
         Intent i = getIntent();
+        playedTime = i.getExtras().getInt("playedTime");
         correctGuesses = i.getExtras().getInt("correctGuesses");
         lastRoundScore = i.getExtras().getInt("playerScore");
         clickedCat = i.getStringArrayListExtra("clickedCat");
@@ -120,6 +122,8 @@ public class PostGameActivity extends AppCompatActivity {
         TVcorrectAnswers = (TextView) findViewById(R.id.writeCorrects);
         TVcorrectAnswers.setText("" + correctGuesses + " / 10");
 
+        TVPlayedTime = (TextView) findViewById(R.id.writeTime);
+        TVPlayedTime.setText("" + playedTime + " sekunder");
     }
 
     /**

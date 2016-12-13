@@ -26,6 +26,7 @@ public class GameActivity extends AppCompatActivity {
     private int rndNumber;
     private int playerScore = 0;
     private int timer;
+    private int playedTime;
     private int correctGuesses = 0;
     private Player player;
     private String pName = "";
@@ -130,6 +131,8 @@ public class GameActivity extends AppCompatActivity {
         currentPoints = (TextView) findViewById(R.id.setPoints);
         currentPoints.setText(" " + playerScore);
 
+        playedTime += 11 - timer/1000;
+        Log.d(TAG, "btnGuess: " + playedTime);
         countDownTimer.cancel();
 
         if(guess.equals(gameQuestions.get(rndNumber).getCorrectAnswer())) {
@@ -239,10 +242,10 @@ public class GameActivity extends AppCompatActivity {
                         db.updateHighScore(playerScore, pName);
                     }
 
+                    i.putExtra("playedTime", playedTime);
                     i.putExtra("pName", pName);
                     i.putExtra("playerScore", playerScore);
                     i.putExtra("correctGuesses", correctGuesses);
-
                     i.putStringArrayListExtra("clickedCat", clickedCat);
 
                     startActivity(i);

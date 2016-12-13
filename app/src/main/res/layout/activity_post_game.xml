@@ -44,13 +44,14 @@
             android:layout_marginRight="10dp"
             android:text="@string/player"
             android:textColor="@color/textColorBlack"
-            android:textSize="17sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/writePlayerName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:text=""
             android:textColor="@color/textColorBlack" />
 
@@ -70,13 +71,14 @@
             android:layout_marginRight="10dp"
             android:text="@string/played_category"
             android:textColor="@color/textColorBlack"
-            android:textSize="17sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/writePlayedCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:text=""
             android:textColor="@color/textColorBlack" />
     </LinearLayout>
@@ -95,7 +97,7 @@
             android:layout_marginRight="10dp"
             android:text="@string/points_game"
             android:textColor="@color/textColorBlack"
-            android:textSize="17sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -103,6 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
+            android:textSize="20sp"
             android:textColor="@color/textColorBlack" />
     </LinearLayout>
 
@@ -120,7 +123,7 @@
             android:layout_marginRight="10dp"
             android:text="@string/highScore_player"
             android:textColor="@color/textColorBlack"
-            android:textSize="17sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -128,6 +131,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
+            android:textSize="20sp"
             android:textColor="@color/textColorBlack" />
 
     </LinearLayout>
@@ -146,7 +150,7 @@
             android:layout_marginRight="10dp"
             android:text="@string/correct_answers"
             android:textColor="@color/textColorBlack"
-            android:textSize="17sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -154,10 +158,37 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
+            android:textSize="20sp"
             android:textColor="@color/textColorBlack" />
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/highScore_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/highScore_corrects"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/time_played"
+            android:textColor="@color/textColorBlack"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/writeTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20sp"
+            android:textColor="@color/textColorBlack" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -44,7 +44,7 @@ public class DBHelper extends SQLiteOpenHelper {
      * @param context
      */
     public DBHelper(Context context) {
-        super(context, db_name, null, 3);
+        super(context, db_name, null,4);
         this.context = context;
     }
 
