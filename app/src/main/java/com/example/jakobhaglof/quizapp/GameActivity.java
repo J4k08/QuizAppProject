@@ -1,6 +1,7 @@
 package com.example.jakobhaglof.quizapp;
 
 import android.content.Intent;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -38,7 +39,7 @@ public class GameActivity extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private boolean isBackPressed = false;
     private MediaPlayer mpC, mpW;
-    private MediaPlayer mp;
+    private AudioManager am;
 
 
     @Override
@@ -55,6 +56,7 @@ public class GameActivity extends AppCompatActivity {
         clickedCat = i.getStringArrayListExtra("clickedCat");
         mpC = MediaPlayer.create(this, R.raw.correct_answer);
         mpW = MediaPlayer.create(this, R.raw.wrong_answer);
+        mpC.setVolume(1.0f,1.0f);
 
 
         game = new Game(this, 10000, clickedCat, player);
