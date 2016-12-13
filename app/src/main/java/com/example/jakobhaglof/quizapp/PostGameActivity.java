@@ -19,11 +19,11 @@ public class PostGameActivity extends AppCompatActivity {
     private DBHelper db;
     private Player player;
     private String pName = "";
-    private String isFromMenu = "Yes";
     private int lastRoundScore;
+    private int correctGuesses;
     private ArrayList<String> clickedCat;
     private String playedCat;
-    private TextView TVplayerName, TVplayedCat, TVroundScore, TVplayerHighScore;
+    private TextView TVplayerName, TVplayedCat, TVroundScore, TVplayerHighScore, TVcorrectAnswers;
 
 
     @Override
@@ -33,6 +33,7 @@ public class PostGameActivity extends AppCompatActivity {
         db = new DBHelper(this);
 
         Intent i = getIntent();
+        correctGuesses = i.getExtras().getInt("correctGuesses");
         lastRoundScore = i.getExtras().getInt("playerScore");
         clickedCat = i.getStringArrayListExtra("clickedCat");
         player = db.getPlayerFromDB(pName = i.getExtras().getString("pName"));
@@ -65,7 +66,6 @@ public class PostGameActivity extends AppCompatActivity {
         if (id == R.id.toolbarMonkey){
             Intent intent = new Intent(this, PersonalProfileActivity.class);
             intent.putExtra("pName", pName);
-            intent.putExtra("isFromMenu", isFromMenu);
             startActivity(intent);
         }
         if (id == R.id.toolbarpName) {
@@ -116,6 +116,9 @@ public class PostGameActivity extends AppCompatActivity {
 
         TVplayerHighScore = (TextView)findViewById(R.id.writePlayerHighScore);
         TVplayerHighScore.setText("" + player.getHighScore());
+
+        TVcorrectAnswers = (TextView) findViewById(R.id.writeCorrects);
+        TVcorrectAnswers.setText("" + correctGuesses + " / 10");
 
     }
 

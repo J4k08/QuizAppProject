@@ -26,6 +26,7 @@ public class GameActivity extends AppCompatActivity {
     private int rndNumber;
     private int playerScore = 0;
     private int timer;
+    private int correctGuesses = 0;
     private Player player;
     private String pName = "";
     private String guess = "";
@@ -133,6 +134,7 @@ public class GameActivity extends AppCompatActivity {
 
         if(guess.equals(gameQuestions.get(rndNumber).getCorrectAnswer())) {
             btn.setBackgroundResource(R.drawable.btngreen);
+            correctGuesses++;
             mpC.start();
 
         }
@@ -237,7 +239,10 @@ public class GameActivity extends AppCompatActivity {
                         db.updateHighScore(playerScore, pName);
                     }
 
-                    i.putExtra("pName", pName); i.putExtra("playerScore", playerScore);
+                    i.putExtra("pName", pName);
+                    i.putExtra("playerScore", playerScore);
+                    i.putExtra("correctGuesses", correctGuesses);
+
                     i.putStringArrayListExtra("clickedCat", clickedCat);
 
                     startActivity(i);

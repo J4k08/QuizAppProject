@@ -51,6 +51,7 @@
     <string name="to_highscore">Till Rekord</string>
     <string name="personal_highscore">Highscore</string>
     <string name="time">TID</string>
+    <string name="correct_answers">Antal rätt:</string>
 
     <string-array name="categories">
         <item>Film &amp; TV</item>
