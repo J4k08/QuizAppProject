@@ -20,7 +20,6 @@ public class PersonalProfileActivity extends AppCompatActivity implements Serial
     private String pName = "";
     private String clickedName = "";
     private String isFromMenu = "";
-    private int highscore = 0;
 
 
     @Override

@@ -28,7 +28,6 @@ public class GameActivity extends AppCompatActivity {
     private int timer;
     private Player player;
     private String pName = "";
-    private String isFromMenu = "Yes";
     private String guess = "";
     private ArrayList<String> clickedCat;
     private ArrayList<Question> gameQuestions;
@@ -39,7 +38,6 @@ public class GameActivity extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private boolean isBackPressed = false;
     private MediaPlayer mpC, mpW;
-    private AudioManager am;
 
 
     @Override
@@ -82,6 +80,8 @@ public class GameActivity extends AppCompatActivity {
         MenuItem M2 = menu.getItem(1);
 
         M2.setIcon(player.getMonkeyID());
+
+        menu.getItem(2).setVisible(false);
         return true;
     }
 
@@ -90,22 +90,8 @@ public class GameActivity extends AppCompatActivity {
 
         int id = item.getItemId();
 
-        if (id == R.id.toolbarMonkey){
-            Intent intent = new Intent(this, ProfileActivity.class);
-            startActivity(intent);
-        }
-        if (id == R.id.toolbarpName) {
-            Intent intent = new Intent(this, PersonalProfileActivity.class);
-            intent.putExtra("isFromMenu", isFromMenu);
-            intent.putExtra("pName", pName);
-            startActivity(intent);
-        }
-        if (id == R.id.settings) {
-            Intent intent = new Intent(this, SettingsActivity.class);
-            intent.putExtra("pName", pName);
-            startActivity(intent);
-        }
         if (id == R.id.quitApp) {
+            countDownTimer.cancel();
             this.finishAffinity();
         }
 
@@ -246,6 +232,7 @@ public class GameActivity extends AppCompatActivity {
 
                     Intent i = new Intent(GameActivity.this, PostGameActivity.class);
 
+                    countDownTimer.cancel();
                     if(playerScore > player.getHighScore()) {
                         db.updateHighScore(playerScore, pName);
                     }
