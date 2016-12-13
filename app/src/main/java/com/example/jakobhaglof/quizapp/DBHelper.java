@@ -283,16 +283,12 @@ public class DBHelper extends SQLiteOpenHelper {
      */
     public ArrayList<Question> getSpecificQuestions(ArrayList<String> categories) {
 
-
-        Log.d(TAG, "getSpecificQuestions: " + categories.get(0));
-
         String choices = CATEGORY+"=?";
 
         ArrayList<Question> questionList = new ArrayList<Question>();
 
 
         if(categories.size() > 1) {
-            Log.d(TAG, "getSpecificQuestions: GÅR IN I FORLOOPEN");
 
             for(int i = 1; i < categories.size(); i++) {
 
@@ -311,13 +307,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
         Cursor cursor = db.query(true, QUEST_TABLE, null, choices, categoriesArray, null, null, null, null);
 
-
-        Log.d(TAG, "getSpecificQuestions: Innan If-sats");
-
         if (cursor.moveToFirst()) {
             do {
-
-                Log.d(TAG, "getSpecificQuestions: Efter if-sats");
                 Question quest = new Question();
 
                 quest.setQuestion(cursor.getString(cursor.getColumnIndex((QUEST))));
@@ -340,7 +331,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.close();
 
-        Log.d(TAG, "getSpecificQuestions: Kommer till slutet");
         return questionList;
 
     }
@@ -406,8 +396,6 @@ public class DBHelper extends SQLiteOpenHelper {
             cursor.close();
             db.close();
 
-            Log.d(TAG, "PlayerList skapad!");
-
         return playerList;
     }
 
@@ -419,14 +407,11 @@ public class DBHelper extends SQLiteOpenHelper {
      */
     public ArrayList<Player> getSortedPlayers(){
 
-        Log.d(TAG, "getSortedPlayers: KOMMER IN I SORTED");
-
         ArrayList<Player> playerList = new ArrayList<>();
 
         db = this.getReadableDatabase();
 
         Cursor cursor = db.query(P_TABLE, null, null, null, null, null, P_HIGHSCORE + " DESC","10");
-        Log.d(TAG, "getSortedPlayers: HÄMTAT PLAYERS" + cursor);
 
         if (cursor.moveToFirst()) {
             do {
@@ -440,13 +425,8 @@ public class DBHelper extends SQLiteOpenHelper {
                 playerList.add(p);
             } while (cursor.moveToNext());
         }
-        for(int i = 0; i < playerList.size(); i++){
-            Log.d(TAG, "getSortedPlayers: " + playerList.get(i).getName() + " " + playerList.get(i).getHighScore());
-        }
         cursor.close();
         db.close();
-
-        Log.d(TAG, "PlayerList skapad!");
 
         return playerList;
     }
