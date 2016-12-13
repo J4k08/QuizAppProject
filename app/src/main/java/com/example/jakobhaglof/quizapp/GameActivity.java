@@ -1,6 +1,7 @@
 package com.example.jakobhaglof.quizapp;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class GameActivity extends AppCompatActivity {
@@ -34,6 +37,8 @@ public class GameActivity extends AppCompatActivity {
     private TextView que, qTimer, currentPoints;
     private CountDownTimer countDownTimer;
     private boolean isBackPressed = false;
+    private MediaPlayer mpC, mpW;
+    private MediaPlayer mp;
 
 
     @Override
@@ -48,6 +53,9 @@ public class GameActivity extends AppCompatActivity {
 
         Log.d(TAG, player.getName());
         clickedCat = i.getStringArrayListExtra("clickedCat");
+        mpC = MediaPlayer.create(this, R.raw.correct_answer);
+        mpW = MediaPlayer.create(this, R.raw.wrong_answer);
+
 
         game = new Game(this, 10000, clickedCat, player);
         gameQuestions = game.prepGame(clickedCat);
@@ -123,7 +131,7 @@ public class GameActivity extends AppCompatActivity {
      * it will color it red. After it will call the guessDelay() method
      * @param view
      */
-    public void btnGuess(View view) {
+    public void btnGuess(View view) throws IOException {
 
         disableButtons();
 
@@ -137,9 +145,12 @@ public class GameActivity extends AppCompatActivity {
 
         if(guess.equals(gameQuestions.get(rndNumber).getCorrectAnswer())) {
             btn.setBackgroundResource(R.drawable.btngreen);
+            mpC.start();
+
         }
         else{
             btn.setBackgroundResource(R.drawable.btnred);
+            mpW.start();
         }
         guessDelay();
 
@@ -218,6 +229,12 @@ public class GameActivity extends AppCompatActivity {
 
             @Override
             public void run() {
+
+                if(mpC.isPlaying()){
+                    mpC.reset();
+                } else if(mpW.isPlaying()) {
+                    mpW.reset();
+                }
 
                 btn.setBackgroundResource(R.drawable.btn);
                 rndNumber++;
